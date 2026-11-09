@@ -71,7 +71,6 @@ body {
   min-height: 100vh;
 }
 
-/* Ambient ivory gradient backdrop */
 body::before {
   content: '';
   position: fixed;
@@ -168,7 +167,6 @@ input, textarea, select { font: inherit; }
   gap: 40px;
 }
 
-/* Brand wordmark */
 .brand {
   font-family: var(--font-serif);
   font-size: 24px;
@@ -190,7 +188,6 @@ input, textarea, select { font: inherit; }
   font-weight: 400;
 }
 
-/* Primary nav */
 .nav {
   display: flex;
   gap: 28px;
@@ -222,7 +219,6 @@ input, textarea, select { font: inherit; }
 .nav__item.is-active { color: var(--champagne); }
 .nav__item.is-active::after { width: 100%; }
 
-/* Toolbar */
 .toolbar {
   display: flex;
   gap: 4px;
@@ -262,7 +258,6 @@ input, textarea, select { font: inherit; }
 }
 .icon-btn__badge.is-empty { display: none; }
 
-/* Mega menu */
 .mega {
   position: absolute;
   left: 0;
@@ -308,7 +303,6 @@ input, textarea, select { font: inherit; }
 }
 .mega__col a:hover { color: var(--champagne); transform: translateX(3px); }
 
-/* Mobile nav toggle */
 .mobile-toggle { display: none; }
 @media (max-width: 900px) {
   .nav { display: none; }
@@ -1324,57 +1318,41 @@ input, textarea, select { font: inherit; }
   padding: 26px;
 }
 
-/* ================ NEWSLETTER ================ */
-.newsletter {
-  position: relative;
-  background: linear-gradient(135deg, #242424 0%, #111111 100%);
-  color: var(--ivory);
+/* ================ DISCOVER CTA ================ */
+.discover {
   padding: 88px 32px;
   text-align: center;
+  background: linear-gradient(160deg, #EFEAE0 0%, #E3DDD1 100%);
+  position: relative;
   overflow: hidden;
 }
-.newsletter::before {
+.discover::before {
   content: '';
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(50vw 40vh at 20% 20%, rgba(176, 141, 87, 0.18), transparent 60%),
+    radial-gradient(50vw 40vh at 20% 20%, rgba(176, 141, 87, 0.12), transparent 60%),
     radial-gradient(50vw 40vh at 80% 80%, rgba(217, 190, 143, 0.14), transparent 60%);
   pointer-events: none;
 }
-.newsletter > * { position: relative; }
-.newsletter h2 {
-  color: var(--ivory);
+.discover > * { position: relative; }
+.discover h2 {
   font-size: clamp(28px, 4vw, 44px);
-  margin-bottom: 18px;
+  margin: 14px 0 22px;
   letter-spacing: 0.06em;
 }
-.newsletter p {
-  color: rgba(247, 245, 240, 0.72);
-  margin-bottom: 32px;
-  font-size: 13.5px;
+.discover p {
+  max-width: 520px;
+  margin: 0 auto 34px;
+  color: var(--grey);
+  font-size: 14px;
+  line-height: 1.8;
 }
-.newsletter__form {
-  max-width: 480px;
-  margin: 0 auto;
+.discover__cta {
   display: flex;
-  gap: 8px;
-}
-.newsletter__form input {
-  flex: 1;
-  padding: 15px 20px;
-  border-radius: var(--radius-pill);
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: var(--ivory);
-  font-size: 13px;
-  backdrop-filter: blur(10px);
-}
-.newsletter__form input::placeholder { color: rgba(255, 255, 255, 0.5); }
-.newsletter__form input:focus {
-  outline: none;
-  border-color: var(--champagne);
-  background: rgba(255, 255, 255, 0.12);
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 /* ================ FOOTER ================ */
@@ -1633,7 +1611,7 @@ input, textarea, select { font: inherit; }
 
 /* ================ PRINT ================ */
 @media print {
-  .header, .footer, .announcement, .newsletter { display: none; }
+  .header, .footer, .announcement, .discover { display: none; }
 }
 </style>
 </head>
@@ -1693,14 +1671,18 @@ input, textarea, select { font: inherit; }
 <!-- ============ APP ============ -->
 <main id="app"></main>
 
-<!-- ============ NEWSLETTER ============ -->
-<section class="newsletter">
-  <h2>Join the Maison</h2>
-  <p>New collections, atelier stories and private previews — delivered with discretion.</p>
-  <form class="newsletter__form" id="newsletterForm" novalidate>
-    <input type="email" id="newsletterEmail" placeholder="Your email address" required />
-    <button type="submit" class="btn">Subscribe</button>
-  </form>
+<!-- ============ DISCOVER CTA (replaces newsletter) ============ -->
+<section class="discover">
+  <div class="container">
+    <span class="section__eyebrow">Continue exploring</span>
+    <h2>The Bellini World</h2>
+    <p>Discover the collections, the atelier story, and the pieces that define the maison.</p>
+    <div class="discover__cta">
+      <a href="#/women" class="btn">Shop Women</a>
+      <a href="#/men" class="btn btn--glass">Shop Men</a>
+      <a href="#/collections" class="btn btn--outline">Collections</a>
+    </div>
+  </div>
 </section>
 
 <!-- ============ FOOTER ============ -->
@@ -1789,9 +1771,6 @@ input, textarea, select { font: inherit; }
    BELLINI — APPLICATION
    ============================================================ */
 
-// ============================================================
-// UTILITIES
-// ============================================================
 const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 const money = (n) => new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(n);
@@ -1802,34 +1781,21 @@ function hash(str) {
   return Math.abs(h);
 }
 
-function shade(hex, factor) {
-  const n = parseInt(hex.slice(1), 16);
-  let r = (n >> 16) & 255, g = (n >> 8) & 255, b = n & 255;
-  if (factor > 0) { r += (255 - r) * factor; g += (255 - g) * factor; b += (255 - b) * factor; }
-  else { r *= 1 + factor; g *= 1 + factor; b *= 1 + factor; }
-  const c = (x) => Math.round(Math.max(0, Math.min(255, x))).toString(16).padStart(2, '0');
-  return '#' + c(r) + c(g) + c(b);
+function escapeHtml(str) {
+  return String(str).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 }
 
-// ============================================================
-// PRODUCT IMAGERY
-//
-// HONEST STATE: We do not have 1,220 real product photographs.
-// Each product card renders a premium typographic state showing
-// its silhouette — unique per product, never recycled, never
-// a cartoon, never a fake photo URL.
-//
-// To integrate real photos: point `productImage(p)` at a path
-// such as `/images/products/{subcategory}/{NN}.webp`. The rest
-// of the site requires no changes.
-// ============================================================
+/* ------------------------------------------------------------
+   PRODUCT IMAGERY — honest state.
+   To use real photographs, make this return a URL string.
+   ------------------------------------------------------------ */
 function productImage(_product) {
-  return null; // null → typographic state. Return a URL string to use a real photo.
+  return null;
 }
 
-// ============================================================
-// DATA — COLORS + CATEGORIES
-// ============================================================
+/* ------------------------------------------------------------
+   COLOURS + SIZE SETS
+   ------------------------------------------------------------ */
 const COLORS = {
   ivory: { name: 'Ivory', hex: '#EFE8DC' },
   cream: { name: 'Cream', hex: '#F4EEE3' },
@@ -1863,9 +1829,10 @@ const SIZE_SETS = {
   one: ['One Size']
 };
 
-// 61 subcategories
+/* ------------------------------------------------------------
+   61 SUBCATEGORIES
+   ------------------------------------------------------------ */
 const SUBS = [
-  // MEN — CLOTHING (16)
   { g: 'men', grp: 'Clothing', id: 'men-tshirts', label: 'T-Shirts', family: 'tshirt', noun: 'T-Shirt', sil: ['Relaxed', 'Oversized', 'Slim-Fit', 'Boxy', 'Heavyweight', 'Ribbed', 'Longline', 'Drop-Shoulder', 'Henley', 'V-Neck', 'Pocket', 'Contrast-Collar', 'Textured', 'Vintage-Wash', 'Long-Sleeve', 'Cropped', 'Structured', 'Mercerized', 'Relaxed-Crew', 'Premium-Crew'], cols: ['white', 'black', 'navy', 'olive', 'sage', 'charcoal', 'sand', 'terracotta', 'ivory', 'stone'], price: [45, 95], sizes: 'menTop', mat: 'Organic cotton jersey' },
   { g: 'men', grp: 'Clothing', id: 'men-polo', label: 'Polo Shirts', family: 'polo', noun: 'Polo Shirt', sil: ['Classic', 'Slim-Fit', 'Relaxed', 'Knitted', 'Long-Sleeve', 'Contrast-Collar', 'Piqué', 'Ribbed', 'Tipped', 'Oversized', 'Camp-Collar', 'Zip-Neck', 'Mesh', 'Sport', 'Cotton-Jersey', 'Textured', 'Jacquard', 'Striped', 'Popover', 'Mercerized'], cols: ['navy', 'ivory', 'olive', 'burgundy', 'charcoal', 'sky', 'sand', 'black', 'sage', 'stone'], price: [65, 140], sizes: 'menTop', mat: 'Mercerised piqué cotton' },
   { g: 'men', grp: 'Clothing', id: 'men-casual-shirts', label: 'Casual Shirts', family: 'shirt', noun: 'Shirt', sil: ['Relaxed', 'Oversized', 'Slim-Fit', 'Camp-Collar', 'Utility', 'Grandad-Collar', 'Western', 'Checked', 'Denim', 'Overshirt', 'Cuban-Collar', 'Short-Sleeve', 'Textured', 'Band-Collar', 'Double-Pocket', 'Striped', 'Chambray', 'Flannel', 'Popover', 'Pleated'], cols: ['sky', 'ivory', 'olive', 'sand', 'navy', 'stone', 'sage', 'terracotta', 'charcoal', 'white'], price: [75, 165], sizes: 'menTop', mat: 'Brushed Italian cotton' },
@@ -1881,15 +1848,11 @@ const SUBS = [
   { g: 'men', grp: 'Clothing', id: 'men-sweaters', label: 'Sweaters', family: 'sweater', noun: 'Sweater', sil: ['Crewneck', 'V-Neck', 'Cable-Knit', 'Ribbed', 'Half-Zip', 'Turtleneck', 'Mock-Neck', 'Fair-Isle', 'Chunky', 'Fine-Gauge', 'Fisherman', 'Cable-Turtleneck', 'Shoulder-Zip', 'Textured', 'Collared', 'Lambswool', 'Cashmere', 'Mohair', 'Merino', 'Wool-Blend'], cols: ['ivory', 'camel', 'charcoal', 'navy', 'olive', 'burgundy', 'stone', 'sage', 'cream', 'taupe'], price: [120, 340], sizes: 'menTop', mat: 'Merino wool' },
   { g: 'men', grp: 'Clothing', id: 'men-hoodies', label: 'Hoodies & Sweatshirts', family: 'hoodie', noun: 'Hoodie', sil: ['Classic', 'Oversized', 'Boxy', 'Zip-Through', 'Cropped', 'Heavyweight', 'Garment-Dyed', 'Half-Zip', 'Relaxed', 'Sport', 'Pullover', 'Crewneck', 'Fleece-Back', 'Loopback', 'French-Terry', 'Raglan', 'Tracksuit', 'Athletic', 'Hooded', 'Vintage'], cols: ['charcoal', 'ivory', 'navy', 'olive', 'black', 'stone', 'sand', 'sage', 'taupe', 'sky'], price: [95, 240], sizes: 'menTop', mat: 'Loopback cotton fleece' },
   { g: 'men', grp: 'Clothing', id: 'men-knitwear', label: 'Knitwear', family: 'sweater', noun: 'Knitwear', sil: ['Cable-Knit', 'Ribbed', 'Textured', 'Waffle', 'Mesh', 'Bouclé', 'Fisherman', 'Cable-Turtleneck', 'Open-Knit', 'Heavy-Gauge', 'Chunky', 'Fine-Gauge', 'Intarsia', 'Pointelle', 'Waffle-Stitch', 'Half-Cardigan', 'Shawl-Collar', 'Aran', 'Guernsey', 'Fair-Isle'], cols: ['ivory', 'camel', 'sand', 'charcoal', 'sage', 'navy', 'stone', 'taupe', 'cream', 'olive'], price: [150, 420], sizes: 'menTop', mat: 'Virgin wool knit' },
-  { g: 'men', grp: 'Clothing', id: 'men-coats', label: 'Coats', family: 'coat', noun: 'Coat', sil: ['Wool Overcoat', 'Trench', 'Peacoat', 'Puffer', 'Parka', 'Duffle', 'Car Coat', 'Raincoat', 'Shearling', 'Double-Breasted', 'Crombie', 'Longline', 'Wrap', 'Belted', 'Hooded', 'Down', 'Quilted', 'Mac', 'Field', 'Cape'], cols: ['camel', 'charcoal', 'navy', 'espresso', 'black', 'sand', 'stone', 'olive', 'taupe', 'ivory'], price: [380, 1200], sizes: 'menTop', mat: 'Wool-cashmere blend' },
-
-  // MEN — FOOTWEAR (4)
+  { g: 'men', grp: 'Clothing', id: 'men-coats', label: 'Coats', family: 'coat', noun: 'Coat', sil: ['Wool-Overcoat', 'Trench', 'Peacoat', 'Puffer', 'Parka', 'Duffle', 'Car-Coat', 'Raincoat', 'Shearling', 'Double-Breasted', 'Crombie', 'Longline', 'Wrap', 'Belted', 'Hooded', 'Down', 'Quilted', 'Mac', 'Field', 'Cape'], cols: ['camel', 'charcoal', 'navy', 'espresso', 'black', 'sand', 'stone', 'olive', 'taupe', 'ivory'], price: [380, 1200], sizes: 'menTop', mat: 'Wool-cashmere blend' },
   { g: 'men', grp: 'Footwear', id: 'men-sneakers', label: 'Sneakers', family: 'shoe', shoeType: 'sneaker', noun: 'Sneakers', sil: ['Low-Top', 'Retro-Runner', 'Court', 'Chunky', 'Slip-On', 'High-Top', 'Minimal', 'Trail', 'Canvas', 'Leather', 'Runner', 'Basketball', 'Skate', 'Running', 'Classic', 'Tennis', 'Moto', 'Lifestyle', 'Tech', 'Suede'], cols: ['white', 'black', 'ivory', 'navy', 'stone', 'sand', 'charcoal', 'taupe', 'silver', 'sage'], price: [120, 390], sizes: 'menShoe', mat: 'Italian calf leather' },
   { g: 'men', grp: 'Footwear', id: 'men-formal-shoes', label: 'Formal Shoes', family: 'shoe', shoeType: 'formal', noun: 'Shoes', sil: ['Oxford', 'Derby', 'Wholecut', 'Brogue', 'Cap-Toe', 'Patent', 'Monk-Strap', 'Wingtip', 'Suede', 'Double-Monk', 'Loafer-Formal', 'Chelsea', 'Lace-Up', 'Straight-Tip', 'Semi-Brogue', 'Quarter-Brogue', 'Full-Brogue', 'Perforated', 'Sole-Leather', 'Dress'], cols: ['black', 'espresso', 'charcoal', 'navy', 'camel', 'taupe', 'burgundy', 'stone', 'cream', 'silver'], price: [220, 690], sizes: 'menShoe', mat: 'Goodyear-welted calf' },
   { g: 'men', grp: 'Footwear', id: 'men-loafers', label: 'Loafers', family: 'shoe', shoeType: 'loafer', noun: 'Loafers', sil: ['Penny', 'Tassel', 'Horsebit', 'Suede', 'Driving', 'Belgian', 'Kiltie', 'Backless', 'Leather', 'Velvet', 'Moccasin', 'Apron-Front', 'Diamond', 'Lug-Sole', 'Slip-On', 'Boat', 'Apron-Toe', 'Slipper', 'Casual', 'Dress'], cols: ['espresso', 'black', 'camel', 'navy', 'taupe', 'burgundy', 'sand', 'olive', 'stone', 'charcoal'], price: [180, 520], sizes: 'menShoe', mat: 'Hand-stitched suede' },
   { g: 'men', grp: 'Footwear', id: 'men-boots', label: 'Boots', family: 'shoe', shoeType: 'boot', noun: 'Boots', sil: ['Chelsea', 'Lace-Up', 'Chukka', 'Combat', 'Hiking', 'Western', 'Jodhpur', 'Ankle', 'Chelsea-Suede', 'Moto', 'Riding', 'Work', 'Deck', 'Snow', 'Dress', 'Balmoral', 'Side-Zip', 'Chukka-Suede', 'Country', 'Dress-Chelsea'], cols: ['espresso', 'black', 'camel', 'charcoal', 'sand', 'taupe', 'navy', 'olive', 'stone', 'burgundy'], price: [240, 720], sizes: 'menShoe', mat: 'Waxed calf leather' },
-
-  // WOMEN — CLOTHING (18)
   { g: 'women', grp: 'Clothing', id: 'women-dresses', label: 'Dresses', family: 'dress', noun: 'Dress', sil: ['A-Line-Midi', 'Wrap', 'Pleated-Midi', 'Slip', 'Blazer', 'Square-Neck', 'Puff-Sleeve', 'Shirt', 'Asymmetric', 'Tiered-Maxi', 'Ribbed-Knit', 'Column', 'One-Shoulder', 'Empire-Waist', 'Tailored', 'High-Neck', 'Belted-Shirt', 'Linen', 'Fit-and-Flare', 'Sculpted'], cols: ['ivory', 'black', 'blush', 'navy', 'burgundy', 'sage', 'sand', 'terracotta', 'stone', 'sky'], price: [120, 480], sizes: 'womenTop', mat: 'Italian silk crepe' },
   { g: 'women', grp: 'Clothing', id: 'women-tops', label: 'Tops', family: 'top', noun: 'Top', sil: ['Fitted', 'Relaxed', 'Cropped', 'Halter', 'Off-Shoulder', 'Square-Neck', 'Ruched', 'Peplum', 'Corset', 'Camisole', 'Tank', 'Wrap', 'Bustier', 'Sleeveless', 'Cowl-Neck', 'One-Shoulder', 'Cutout', 'Ribbed', 'Mock-Neck', 'Tie-Front'], cols: ['ivory', 'black', 'blush', 'sand', 'navy', 'sage', 'stone', 'terracotta', 'cream', 'sky'], price: [55, 180], sizes: 'womenTop', mat: 'Stretch jersey' },
   { g: 'women', grp: 'Clothing', id: 'women-tshirts', label: 'T-Shirts', family: 'tshirt', noun: 'T-Shirt', sil: ['Relaxed', 'Oversized', 'Slim-Fit', 'Boxy', 'Cropped', 'Ribbed', 'Longline', 'Cap-Sleeve', 'V-Neck', 'Heavyweight', 'Baby-Tee', 'Boat-Neck', 'Mock-Neck', 'Vintage', 'Boyfriend', 'Stripe', 'Graphic', 'Fitted', 'Long-Sleeve', 'Tie-Front'], cols: ['white', 'black', 'ivory', 'blush', 'sage', 'navy', 'sand', 'stone', 'sky', 'terracotta'], price: [40, 110], sizes: 'womenTop', mat: 'Organic cotton jersey' },
@@ -1908,15 +1871,11 @@ const SUBS = [
   { g: 'women', grp: 'Clothing', id: 'women-hoodies', label: 'Hoodies & Sweatshirts', family: 'hoodie', noun: 'Hoodie', sil: ['Relaxed', 'Oversized', 'Cropped', 'Zip-Through', 'Boxy', 'Heavyweight', 'Garment-Dyed', 'Half-Zip', 'Sport', 'Hooded', 'Pullover', 'Crewneck', 'Fleece-Back', 'Loopback', 'French-Terry', 'Raglan', 'Tracksuit', 'Athletic', 'Vintage', 'Longline'], cols: ['ivory', 'blush', 'charcoal', 'sage', 'black', 'navy', 'sand', 'stone', 'taupe', 'sky'], price: [85, 220], sizes: 'womenTop', mat: 'Brushed cotton fleece' },
   { g: 'women', grp: 'Clothing', id: 'women-jumpsuits', label: 'Jumpsuits', family: 'jumpsuit', noun: 'Jumpsuit', sil: ['Wide-Leg', 'Tailored', 'Belted', 'Utility', 'Strapless', 'Halter', 'Sleeveless', 'Cropped', 'Wrap', 'Fluid', 'Sleeveless-Tailored', 'Bardot', 'Ruched', 'Peplum', 'Drawstring', 'Bias-Cut', 'Wide-Pleat', 'Tapered', 'Sculpted', 'Straight-Leg'], cols: ['black', 'ivory', 'navy', 'sand', 'charcoal', 'sage', 'stone', 'blush', 'taupe', 'cream'], price: [140, 420], sizes: 'womenTop', mat: 'Crepe de chine' },
   { g: 'women', grp: 'Clothing', id: 'women-sets', label: 'Two-Piece Sets', family: 'set', noun: 'Set', sil: ['Knit-Co-ord', 'Linen-Co-ord', 'Tailored-Co-ord', 'Satin-Co-ord', 'Crochet-Co-ord', 'Ribbed-Co-ord', 'Wide-Leg-Co-ord', 'Skirt-Co-ord', 'Shorts-Co-ord', 'Seersucker-Co-ord', 'Tweed-Co-ord', 'Velvet-Co-ord', 'Jersey-Co-ord', 'Silk-Co-ord', 'Denim-Co-ord', 'Cotton-Co-ord', 'Waffle-Co-ord', 'Corduroy-Co-ord', 'Shirt-Co-ord', 'Vest-Co-ord'], cols: ['ivory', 'sand', 'sage', 'blush', 'navy', 'stone', 'cream', 'charcoal', 'sky', 'terracotta'], price: [150, 460], sizes: 'womenTop', mat: 'Matched Italian fabric' },
-
-  // WOMEN — FOOTWEAR (5)
   { g: 'women', grp: 'Footwear', id: 'women-sneakers', label: 'Sneakers', family: 'shoe', shoeType: 'sneaker', noun: 'Sneakers', sil: ['Low-Top', 'Retro-Runner', 'Court', 'Platform', 'Slip-On', 'High-Top', 'Minimal', 'Canvas', 'Leather', 'Chunky', 'Runner', 'Lifestyle', 'Skate', 'Running', 'Classic', 'Tennis', 'Basketball', 'Suede', 'Tech', 'Sport'], cols: ['white', 'ivory', 'black', 'blush', 'stone', 'sand', 'silver', 'sage', 'navy', 'taupe'], price: [110, 360], sizes: 'womenShoe', mat: 'Italian calf leather' },
   { g: 'women', grp: 'Footwear', id: 'women-heels', label: 'Heels', family: 'shoe', shoeType: 'heel', noun: 'Heels', sil: ['Stiletto', 'Block-Heel', 'Slingback', 'Ankle-Strap', 'Kitten-Heel', 'Platform', 'Mule', 'Court', 'Strappy', 'Sculpted', 'Pump', 'T-Strap', 'Mary-Jane', 'Peep-Toe', 'Caged', 'D-Orsay', 'Cone-Heel', 'Espadrille-Heel', 'Wedge', 'Sabot'], cols: ['black', 'ivory', 'blush', 'burgundy', 'sand', 'navy', 'silver', 'gold', 'stone', 'cream'], price: [160, 520], sizes: 'womenShoe', mat: 'Patent calf leather' },
   { g: 'women', grp: 'Footwear', id: 'women-flats', label: 'Flats', family: 'shoe', shoeType: 'flat', noun: 'Flats', sil: ['Ballet', 'Pointed', 'Loafers', 'Mary-Jane', 'Slingback', 'Mule', 'Ballerina', 'Woven', 'Suede', 'Square-Toe', 'D-Orsay', 'Loafer-Flat', 'Oxford', 'Brogue', 'T-Bar', 'Thong', 'Scrunch', 'Cap-Toe', 'Bow', 'Ankle-Strap'], cols: ['black', 'ivory', 'blush', 'camel', 'navy', 'sand', 'taupe', 'burgundy', 'stone', 'silver'], price: [120, 380], sizes: 'womenShoe', mat: 'Nappa leather' },
   { g: 'women', grp: 'Footwear', id: 'women-boots', label: 'Boots', family: 'shoe', shoeType: 'boot', noun: 'Boots', sil: ['Ankle', 'Chelsea', 'Knee-High', 'Over-the-Knee', 'Combat', 'Heeled', 'Western', 'Suede-Ankle', 'Lug-Sole', 'Moto', 'Riding', 'Platform', 'Sock', 'Lace-Up', 'Biker', 'Slouch', 'Block-Heel', 'Kitten-Heel', 'Stiletto', 'Zip'], cols: ['black', 'espresso', 'camel', 'charcoal', 'sand', 'taupe', 'burgundy', 'navy', 'stone', 'cream'], price: [190, 680], sizes: 'womenShoe', mat: 'Waxed calf leather' },
   { g: 'women', grp: 'Footwear', id: 'women-sandals', label: 'Sandals', family: 'shoe', shoeType: 'sandal', noun: 'Sandals', sil: ['Strappy', 'Block-Heel', 'Flat', 'Slide', 'Gladiator', 'Mule', 'Wedge', 'T-Bar', 'Sport', 'Ankle-Tie', 'Kitten-Heel', 'Platform', 'Slingback', 'Thong', 'Caged', 'Minimal', 'Crossover', 'H-Band', 'Two-Strap', 'Padded'], cols: ['sand', 'black', 'ivory', 'camel', 'gold', 'silver', 'blush', 'taupe', 'espresso', 'stone'], price: [95, 340], sizes: 'womenShoe', mat: 'Vegetable-tanned leather' },
-
-  // ACCESSORIES (18)
   { g: 'accessories', grp: 'Bags', id: 'acc-handbags', label: 'Handbags', family: 'bag', bagType: 'handbag', noun: 'Handbag', sil: ['Structured-Top-Handle', 'Soft-Slouch', 'Bucket', 'Mini', 'Flap', 'Hobo', 'Geometric', 'Doctor', 'Quilted', 'Crescent', 'Satchel', 'Trapezoid', 'Clutch', 'Chain-Strap', 'Baguette', 'Camera', 'Box', 'Pouch', 'Barrel', 'Luggage'], cols: ['espresso', 'black', 'camel', 'ivory', 'burgundy', 'taupe', 'sand', 'stone', 'navy', 'cream'], price: [320, 1800], sizes: 'one', mat: 'Full-grain Italian leather' },
   { g: 'accessories', grp: 'Bags', id: 'acc-shoulder-bags', label: 'Shoulder Bags', family: 'bag', bagType: 'shoulder', noun: 'Shoulder Bag', sil: ['Baguette', 'Hobo', 'Crescent', 'Chain-Strap', 'Bucket', 'Soft-Leather', 'Structured', 'Mini', 'Oversized', 'Woven', 'Slouch', 'Envelope', 'Saddle', 'Crescent-Mini', 'Soft-Hobo', 'Convertible', 'Half-Moon', 'Cushion', 'Pillow', 'Drawstring'], cols: ['black', 'camel', 'ivory', 'espresso', 'burgundy', 'taupe', 'sand', 'stone', 'navy', 'cream'], price: [290, 1500], sizes: 'one', mat: 'Supple nappa leather' },
   { g: 'accessories', grp: 'Bags', id: 'acc-crossbody', label: 'Crossbody Bags', family: 'bag', bagType: 'crossbody', noun: 'Crossbody Bag', sil: ['Mini', 'Camera', 'Saddle', 'Box', 'Pouch', 'Chain', 'Belt-Bag', 'Crescent', 'Flap', 'Woven', 'Cylinder', 'Barrel', 'Bucket', 'Envelope', 'Camera-Zip', 'Half-Moon', 'Phone', 'Trio', 'Convertible', 'Drawstring'], cols: ['black', 'espresso', 'camel', 'ivory', 'sand', 'burgundy', 'navy', 'stone', 'taupe', 'cream'], price: [240, 1200], sizes: 'one', mat: 'Grained calf leather' },
@@ -1939,9 +1898,9 @@ const SUBS = [
 
 const CITIES = ['Milano', 'Roma', 'Firenze', 'Venezia', 'Torino', 'Napoli', 'Bologna', 'Verona', 'Genova', 'Palermo', 'Monza', 'Como', 'Bergamo', 'Parma', 'Siena', 'Lucca', 'Bari', 'Trieste', 'Padova', 'Brescia'];
 
-// ============================================================
-// BUILD PRODUCT CATALOG — 61 × 20 = 1,220 products
-// ============================================================
+/* ------------------------------------------------------------
+   BUILD PRODUCT CATALOG — 61 × 20 = 1,220 products
+   ------------------------------------------------------------ */
 function buildCatalog() {
   const out = [];
   SUBS.forEach((sub) => {
@@ -1952,7 +1911,6 @@ function buildCatalog() {
       const primary = COLORS[colorKey];
       const altKeys = [sub.cols[(i + 3) % sub.cols.length], sub.cols[(i + 7) % sub.cols.length]].filter((c) => c !== colorKey);
       const colors = [colorKey, ...altKeys].map((k) => COLORS[k]);
-
       const seed = hash(sub.id + '-' + i);
       const [minP, maxP] = sub.price;
       const rawPrice = minP + ((seed % 100) / 100) * (maxP - minP);
@@ -1961,10 +1919,8 @@ function buildCatalog() {
       const compareAt = onSale ? Math.round((price * 1.35) / 5) * 5 : null;
       const isNew = i % 4 === 0;
       const inStock = i % 11 !== 5;
-
       const id = sub.id + '-' + String(i + 1).padStart(2, '0');
       const humanSil = sil.replace(/-/g, ' ');
-
       out.push({
         id,
         name: city + ' ' + humanSil + ' ' + sub.noun,
@@ -1993,16 +1949,14 @@ function buildCatalog() {
 
 const PRODUCTS = buildCatalog();
 const PRODUCT_MAP = new Map(PRODUCTS.map((p) => [p.id, p]));
-
 const getProduct = (id) => PRODUCT_MAP.get(id) || null;
 const getSubcategory = (id) => SUBS.find((s) => s.id === id) || null;
 const getProductsByGender = (g) => PRODUCTS.filter((p) => p.gender === g);
-const getProductsBySubcategory = (sub) => PRODUCTS.filter((p) => p.subcategory === sub);
 const getRelated = (p, limit) => PRODUCTS.filter((x) => x.subcategory === p.subcategory && x.id !== p.id).slice(0, limit || 4);
 
-// ============================================================
-// STATE + PERSISTENCE
-// ============================================================
+/* ------------------------------------------------------------
+   STATE + PERSISTENCE
+   ------------------------------------------------------------ */
 const store = {
   get(key, fallback) {
     try {
@@ -2011,7 +1965,7 @@ const store = {
     } catch { return fallback; }
   },
   set(key, val) {
-    try { localStorage.setItem('bellini.' + key, JSON.stringify(val)); } catch (e) { /* storage may be full */ }
+    try { localStorage.setItem('bellini.' + key, JSON.stringify(val)); } catch (e) { /* ignore */ }
   }
 };
 
@@ -2027,26 +1981,23 @@ function saveWish() { store.set('wish', wish); syncBadges(); }
 function saveUser() { store.set('user', user); }
 
 function syncBadges() {
-  const cartCount = cart.reduce((s, l) => s + l.quantity, 0);
+  const cartCount = cart.reduce((s, l) => s + l.qty, 0);
   const bagBadge = $('#bagBadge');
   const wishBadge = $('#wishBadge');
   if (bagBadge) { bagBadge.textContent = cartCount; bagBadge.classList.toggle('is-empty', cartCount === 0); }
   if (wishBadge) { wishBadge.textContent = wish.length; wishBadge.classList.toggle('is-empty', wish.length === 0); }
 }
 
-// ============================================================
-// CART OPERATIONS
-// ============================================================
+/* ------------------------------------------------------------
+   CART
+   ------------------------------------------------------------ */
 function addToCart(product, size, color, qty) {
   const sz = size || (product.sizes && product.sizes[0]) || 'One Size';
   const cl = color || (product.primaryColor && product.primaryColor.name) || 'Default';
   const q = qty || 1;
   const existing = cart.findIndex((l) => l.id === product.id && l.size === sz && l.color === cl);
-  if (existing >= 0) {
-    cart[existing].qty += q;
-  } else {
-    cart.push({ id: product.id, size: sz, color: cl, qty: q });
-  }
+  if (existing >= 0) cart[existing].qty += q;
+  else cart.push({ id: product.id, size: sz, color: cl, qty: q });
   saveCart();
   renderBag();
   showToast(product.name + ' added to bag');
@@ -2081,16 +2032,15 @@ function toggleWish(id) {
   else { wish.push(id); showToast('Saved to wishlist'); }
   saveWish();
   renderWish();
-  // Re-render current page's wishlist buttons
   $$('[data-wish]').forEach((b) => {
     const pid = b.dataset.wish;
     b.classList.toggle('is-wished', wish.includes(pid));
   });
 }
 
-// ============================================================
-// FILTERS + SORT + SEARCH
-// ============================================================
+/* ------------------------------------------------------------
+   FILTERS / SORT / SEARCH
+   ------------------------------------------------------------ */
 function applyFilters(list) {
   return list.filter((p) => {
     if (p.price < filterState.priceMin || p.price > filterState.priceMax) return false;
@@ -2110,7 +2060,6 @@ function applySort(list) {
     case 'price-desc': l.sort((a, b) => b.price - a.price); break;
     case 'name': l.sort((a, b) => a.name.localeCompare(b.name)); break;
     case 'newest': l.sort((a, b) => Number(b.isNew) - Number(a.isNew)); break;
-    default: break;
   }
   return l;
 }
@@ -2125,15 +2074,12 @@ function searchProducts(query, limit) {
   }).slice(0, limit || 40);
 }
 
-// ============================================================
-// PRODUCT IMAGE RENDER
-// ============================================================
+/* ------------------------------------------------------------
+   PRODUCT IMAGE
+   ------------------------------------------------------------ */
 function renderProductImage(p) {
   const src = productImage(p);
-  if (src) {
-    return '<div class="product-image"><img src="' + src + '" alt="' + p.name + '" loading="lazy" onerror="this.parentNode.innerHTML=this.parentNode.dataset.fallback||''" data-fallback="" /></div>';
-  }
-  // Premium typographic state — honest about image availability
+  if (src) return '<div class="product-image"><img src="' + src + '" alt="' + escapeHtml(p.name) + '" loading="lazy" /></div>';
   return '<div class="product-image">' +
     '<div class="product-image__typographic">' +
       '<div class="product-image__meta">' + escapeHtml(p.subcategoryLabel) + '<br>' + escapeHtml(p.gender === 'men' ? 'Men' : p.gender === 'women' ? 'Women' : 'Accessories') + '</div>' +
@@ -2143,20 +2089,16 @@ function renderProductImage(p) {
   '</div>';
 }
 
-function escapeHtml(str) {
-  return String(str).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-}
-
-// ============================================================
-// PRODUCT CARD
-// ============================================================
+/* ------------------------------------------------------------
+   PRODUCT CARD
+   ------------------------------------------------------------ */
 function renderCard(p) {
   const wished = wish.includes(p.id);
   const tag = p.isNew ? '<span class="card__tag">New</span>' : (p.onSale ? '<span class="card__tag card__tag--sale">Sale</span>' : '');
   const swatches = p.colors.slice(0, 3).map((c) => '<span class="card__swatch" style="background:' + c.hex + '" title="' + c.name + '"></span>').join('');
   return '<article class="card" data-id="' + p.id + '">' +
     '<div class="card__media">' + tag +
-      '<a href="#/product/' + p.id + '" class="card__media-link" aria-label="' + p.name + '">' + renderProductImage(p) + '</a>' +
+      '<a href="#/product/' + p.id + '" class="card__media-link" aria-label="' + escapeHtml(p.name) + '">' + renderProductImage(p) + '</a>' +
       '<div class="card__actions">' +
         '<button class="card__action ' + (wished ? 'is-wished' : '') + '" data-wish="' + p.id + '" aria-label="Wishlist">' +
           '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1L12 21l7.7-7.6 1.1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>' +
@@ -2180,9 +2122,9 @@ function renderGrid(list) {
   return '<div class="grid">' + list.map(renderCard).join('') + '</div>';
 }
 
-// ============================================================
-// TOAST
-// ============================================================
+/* ------------------------------------------------------------
+   TOAST
+   ------------------------------------------------------------ */
 let toastTimer;
 function showToast(msg) {
   const el = $('#toast');
@@ -2192,18 +2134,16 @@ function showToast(msg) {
   toastTimer = setTimeout(() => el.classList.remove('is-open'), 2200);
 }
 
-// ============================================================
-// PAGE RENDERERS
-// ============================================================
+/* ------------------------------------------------------------
+   PAGE RENDERERS
+   ------------------------------------------------------------ */
 const app = $('#app');
 
 function pageHome() {
   const newArrivals = PRODUCTS.filter((p) => p.isNew).slice(0, 8);
   const featuredWomen = PRODUCTS.filter((p) => p.gender === 'women').slice(10, 14);
   const featuredMen = PRODUCTS.filter((p) => p.gender === 'men').slice(20, 24);
-
   return '' +
-    // HERO
     '<section class="hero">' +
       '<div class="hero__bg" style="background-image:url(https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=2000&q=85)"></div>' +
       '<div class="hero__content">' +
@@ -2217,7 +2157,6 @@ function pageHome() {
         '</div>' +
       '</div>' +
     '</section>' +
-    // COLLECTION TILES
     '<section class="section">' +
       '<div class="container">' +
         '<div class="section__head"><div>' +
@@ -2231,7 +2170,6 @@ function pageHome() {
         '</div>' +
       '</div>' +
     '</section>' +
-    // NEW ARRIVALS
     '<section class="section section--tight">' +
       '<div class="container">' +
         '<div class="section__head"><div>' +
@@ -2241,7 +2179,6 @@ function pageHome() {
         renderGrid(newArrivals) +
       '</div>' +
     '</section>' +
-    // EDITORIAL
     '<section class="section">' +
       '<div class="container">' +
         '<div class="editorial">' +
@@ -2256,7 +2193,6 @@ function pageHome() {
         '</div>' +
       '</div>' +
     '</section>' +
-    // WOMEN FEATURED
     '<section class="section section--tight">' +
       '<div class="container">' +
         '<div class="section__head"><div>' +
@@ -2266,7 +2202,6 @@ function pageHome() {
         renderGrid(featuredWomen) +
       '</div>' +
     '</section>' +
-    // MEN FEATURED
     '<section class="section section--tight">' +
       '<div class="container">' +
         '<div class="section__head"><div>' +
@@ -2284,19 +2219,11 @@ function pageCategory(gender, subId) {
   const pool = getProductsByGender(gender);
   let list = pool;
   if (subId) list = pool.filter((p) => p.subcategory === subId);
-
-  // Reset filters when arriving at a fresh category page unless user is interacting
   const activeSub = subId ? getSubcategory(subId) : null;
   const filtered = applySort(applyFilters(list));
-
-  // Filter options from current pool
   const allSizes = Array.from(new Set(pool.flatMap((p) => p.sizes)));
   const allColors = Array.from(new Set(pool.map((p) => p.primaryColor.name)));
-
-  const priceBands = [
-    [0, 100], [100, 250], [250, 600], [600, 4000]
-  ];
-
+  const priceBands = [[0, 100], [100, 250], [250, 600], [600, 4000]];
   return '' +
     '<section class="banner">' +
       '<div class="banner__eyebrow">' + (activeSub ? activeSub.group : 'The Maison') + '</div>' +
@@ -2357,7 +2284,6 @@ function pageProduct(id) {
   const sub = getSubcategory(p.subcategory);
   const genderPath = p.gender === 'accessories' ? 'accessories' : p.gender;
   const genderLabel = p.gender === 'men' ? 'Men' : p.gender === 'women' ? 'Women' : 'Accessories';
-
   return '' +
     '<div class="container">' +
       '<div class="breadcrumb"><a href="#/">Home</a> · <a href="#/' + genderPath + '">' + genderLabel + '</a> · <a href="#/' + genderPath + '/' + p.subcategory + '">' + (sub ? sub.label : '') + '</a></div>' +
@@ -2392,7 +2318,7 @@ function pageProduct(id) {
             '<button class="btn btn--outline" data-wish="' + p.id + '" style="min-width:auto;padding:15px 22px">' + (wished ? '♥' : '♡') + '</button>' +
           '</div>' +
           '<button class="btn btn--outline btn--block" data-pdp-buy="' + p.id + '" style="margin-bottom:34px">Buy Now</button>' +
-          '<details class="pdp__accordion"><summary>Materials &amp; Composition</summary><p>' + escapeHtml(p.material) + '. Dry clean only. Store folded away from direct sunlight. Handle with care.' + '</p></details>' +
+          '<details class="pdp__accordion"><summary>Materials &amp; Composition</summary><p>' + escapeHtml(p.material) + '. Dry clean only. Store folded away from direct sunlight. Handle with care.</p></details>' +
           '<details class="pdp__accordion"><summary>Delivery &amp; Returns</summary><p>Complimentary standard shipping on orders over €250. Express delivery available at checkout. Returns accepted within 30 days of delivery in original condition.</p></details>' +
           '<details class="pdp__accordion"><summary>Reference</summary><p>Reference code: ' + p.id.toUpperCase() + '</p></details>' +
         '</div>' +
@@ -2406,8 +2332,7 @@ function pageProduct(id) {
 
 function pageNew() {
   const list = applySort(applyFilters(PRODUCTS.filter((p) => p.isNew))).slice(0, 120);
-  return '' +
-    '<section class="banner"><div class="banner__eyebrow">Just arrived</div><h1>New Arrivals</h1><p>' + list.length + ' pieces · Season 2025</p></section>' +
+  return '<section class="banner"><div class="banner__eyebrow">Just arrived</div><h1>New Arrivals</h1><p>' + list.length + ' pieces · Season 2025</p></section>' +
     '<div class="container">' + renderGrid(list) + '</div>';
 }
 
@@ -2420,8 +2345,7 @@ function pageCollections() {
     ['contemporary-classics', 'Contemporary Classics', 'Modern cuts, classic proportions.', (p) => p.gender === 'men'],
     ['premium-accessories', 'Premium Accessories', 'Leather goods, eyewear and fine jewellery.', (p) => p.gender === 'accessories']
   ];
-  return '' +
-    '<section class="banner"><div class="banner__eyebrow">Curated</div><h1>Collections</h1><p>Six chapters from the Bellini atelier</p></section>' +
+  return '<section class="banner"><div class="banner__eyebrow">Curated</div><h1>Collections</h1><p>Six chapters from the Bellini atelier</p></section>' +
     '<div class="container">' +
       groups.map((g) => {
         const items = PRODUCTS.filter(g[3]).slice(0, 4);
@@ -2446,38 +2370,29 @@ function pageCollection(key) {
   const entry = map[key];
   if (!entry) return pageNotFound();
   const list = applySort(applyFilters(PRODUCTS.filter(entry[1]))).slice(0, 80);
-  return '' +
-    '<section class="banner"><div class="banner__eyebrow">Collection</div><h1>' + entry[0] + '</h1><p>' + list.length + ' pieces</p></section>' +
+  return '<section class="banner"><div class="banner__eyebrow">Collection</div><h1>' + entry[0] + '</h1><p>' + list.length + ' pieces</p></section>' +
     '<div class="container">' + renderGrid(list) + '</div>';
 }
 
 function pageSearch(q) {
   const results = q ? searchProducts(q, 80) : [];
-  return '' +
-    '<section class="banner"><div class="banner__eyebrow">Search</div><h1>' + (q ? 'Results' : 'Discover') + '</h1><p>' + (q ? results.length + ' pieces matching "' + escapeHtml(q) + '"' : 'Enter a search term') + '</p></section>' +
+  return '<section class="banner"><div class="banner__eyebrow">Search</div><h1>' + (q ? 'Results' : 'Discover') + '</h1><p>' + (q ? results.length + ' pieces matching "' + escapeHtml(q) + '"' : 'Enter a search term') + '</p></section>' +
     '<div class="container">' + (q ? renderGrid(results) : '') + '</div>';
 }
 
 function pageAbout() {
-  return '' +
-    '<section class="banner banner--image" style="background-image:url(https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=2000&q=85)">' +
-      '<div class="banner__eyebrow">The Maison</div>' +
-      '<h1>BELLINI</h1>' +
-      '<p>Monza · Italia</p>' +
-    '</section>' +
-    '<div class="container">' +
-      '<section class="section" style="max-width:760px;margin:0 auto">' +
-        '<p style="font-size:16px;line-height:2;color:var(--charcoal);font-family:var(--font-serif)">A house devoted to quiet Italian tailoring — garments cut to outlast the season, finished by hand, presented without noise.</p>' +
-        '<p style="margin-top:24px;line-height:1.9;color:var(--grey)">Bellini was founded in Monza with a single conviction: that a garment should outlive the season that inspired it. Every piece in the collection is cut, sewn and finished within a fifty-kilometre radius of the atelier, by makers whose families have worked Italian cloth for generations.</p>' +
-        '<p style="margin-top:18px;line-height:1.9;color:var(--grey)">We work in a narrow palette — ivory, camel, olive, charcoal, navy — and in fabrics chosen for how they age rather than how they photograph. Nothing is designed to shout. Everything is designed to remain.</p>' +
-        '<p style="margin-top:36px;letter-spacing:0.4em;color:var(--champagne);font-size:11px;text-transform:uppercase;font-family:var(--font-sans)">Stile Senza Tempo</p>' +
-      '</section>' +
-    '</div>';
+  return '<section class="banner banner--image" style="background-image:url(https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=2000&q=85)">' +
+    '<div class="banner__eyebrow">The Maison</div><h1>BELLINI</h1><p>Monza · Italia</p></section>' +
+    '<div class="container"><section class="section" style="max-width:760px;margin:0 auto">' +
+      '<p style="font-size:16px;line-height:2;color:var(--charcoal);font-family:var(--font-serif)">A house devoted to quiet Italian tailoring — garments cut to outlast the season, finished by hand, presented without noise.</p>' +
+      '<p style="margin-top:24px;line-height:1.9;color:var(--grey)">Bellini was founded in Monza with a single conviction: that a garment should outlive the season that inspired it. Every piece in the collection is cut, sewn and finished within a fifty-kilometre radius of the atelier, by makers whose families have worked Italian cloth for generations.</p>' +
+      '<p style="margin-top:18px;line-height:1.9;color:var(--grey)">We work in a narrow palette — ivory, camel, olive, charcoal, navy — and in fabrics chosen for how they age rather than how they photograph. Nothing is designed to shout. Everything is designed to remain.</p>' +
+      '<p style="margin-top:36px;letter-spacing:0.4em;color:var(--champagne);font-size:11px;text-transform:uppercase;font-family:var(--font-sans)">Stile Senza Tempo</p>' +
+    '</section></div>';
 }
 
 function pageContact() {
-  return '' +
-    '<section class="banner"><div class="banner__eyebrow">Get in touch</div><h1>Contact</h1><p>We answer within one working day</p></section>' +
+  return '<section class="banner"><div class="banner__eyebrow">Get in touch</div><h1>Contact</h1><p>We answer within one working day</p></section>' +
     '<div class="container" style="padding-bottom:88px">' +
       '<div style="display:grid;grid-template-columns:1fr 1.2fr;gap:60px;max-width:1000px;margin:0 auto">' +
         '<div class="panel-glass">' +
@@ -2499,8 +2414,7 @@ function pageContact() {
 
 function pageAccount() {
   if (user) {
-    return '' +
-      '<section class="banner"><div class="banner__eyebrow">Your account</div><h1>Bonjour, ' + escapeHtml(user.name) + '</h1><p>' + escapeHtml(user.email) + '</p></section>' +
+    return '<section class="banner"><div class="banner__eyebrow">Your account</div><h1>Bonjour, ' + escapeHtml(user.name) + '</h1><p>' + escapeHtml(user.email) + '</p></section>' +
       '<div class="container" style="padding-bottom:88px;max-width:680px">' +
         '<div class="panel-glass">' +
           '<h3 style="font-size:18px;margin-bottom:20px">Account</h3>' +
@@ -2509,8 +2423,7 @@ function pageAccount() {
         '</div>' +
       '</div>';
   }
-  return '' +
-    '<section class="banner"><div class="banner__eyebrow">Welcome back</div><h1>Account</h1><p>Sign in or create an account</p></section>' +
+  return '<section class="banner"><div class="banner__eyebrow">Welcome back</div><h1>Account</h1><p>Sign in or create an account</p></section>' +
     '<div class="container" style="padding-bottom:88px;max-width:520px">' +
       '<div class="panel-glass">' +
         '<div class="tabs" id="authTabs">' +
@@ -2521,7 +2434,7 @@ function pageAccount() {
           '<div class="field"><label for="sEmail">Email</label><input type="email" id="sEmail" required /></div>' +
           '<div class="field"><label for="sPass">Password</label><input type="password" id="sPass" required /></div>' +
           '<button type="submit" class="btn btn--block">Sign In</button>' +
-          '<p style="margin-top:16px;font-size:11px;color:var(--grey);text-align:center;line-height:1.7">Demonstration account. Real authentication requires a backend — see README.</p>' +
+          '<p style="margin-top:16px;font-size:11px;color:var(--grey);text-align:center;line-height:1.7">Demonstration account. Real authentication requires a backend.</p>' +
         '</form>' +
         '<form id="authRegister" class="auth-form hidden">' +
           '<div class="field"><label for="rName">Name</label><input type="text" id="rName" required /></div>' +
@@ -2536,19 +2449,15 @@ function pageAccount() {
 function pageShoppingBag() {
   const totals = cartTotals();
   if (!cart.length) {
-    return '' +
-      '<section class="banner"><div class="banner__eyebrow">Your selection</div><h1>Shopping Bag</h1><p>Empty</p></section>' +
-      '<div class="container">' +
-        '<div class="empty-state">' +
-          '<div class="empty-state__icon">—</div>' +
-          '<h2>Your bag is empty</h2>' +
-          '<p>Explore the collections and discover pieces worth keeping.</p>' +
-          '<a href="#/women" class="btn">Continue Shopping</a>' +
-        '</div>' +
-      '</div>';
+    return '<section class="banner"><div class="banner__eyebrow">Your selection</div><h1>Shopping Bag</h1><p>Empty</p></section>' +
+      '<div class="container"><div class="empty-state">' +
+        '<div class="empty-state__icon">—</div>' +
+        '<h2>Your bag is empty</h2>' +
+        '<p>Explore the collections and discover pieces worth keeping.</p>' +
+        '<a href="#/women" class="btn">Continue Shopping</a>' +
+      '</div></div>';
   }
-  return '' +
-    '<section class="banner"><div class="banner__eyebrow">Your selection</div><h1>Shopping Bag</h1><p>' + cart.reduce((s, l) => s + l.qty, 0) + ' items</p></section>' +
+  return '<section class="banner"><div class="banner__eyebrow">Your selection</div><h1>Shopping Bag</h1><p>' + cart.reduce((s, l) => s + l.qty, 0) + ' items</p></section>' +
     '<div class="container" style="padding-bottom:88px">' +
       '<div style="display:grid;grid-template-columns:1.4fr 1fr;gap:48px;max-width:1100px;margin:0 auto">' +
         '<div>' +
@@ -2586,8 +2495,7 @@ function pageShoppingBag() {
 function pageCheckout() {
   const totals = cartTotals();
   if (!cart.length) {
-    return '' +
-      '<section class="banner"><div class="banner__eyebrow">Checkout</div><h1>Checkout</h1><p>No items in your bag</p></section>' +
+    return '<section class="banner"><div class="banner__eyebrow">Checkout</div><h1>Checkout</h1><p>No items in your bag</p></section>' +
       '<div class="container"><div class="empty-state">' +
         '<div class="empty-state__icon">—</div>' +
         '<h2>Nothing to check out yet</h2>' +
@@ -2595,8 +2503,7 @@ function pageCheckout() {
         '<a href="#/women" class="btn">Continue Shopping</a>' +
       '</div></div>';
   }
-  return '' +
-    '<section class="banner"><div class="banner__eyebrow">Checkout</div><h1>Checkout</h1><p>Secure and discreet</p></section>' +
+  return '<section class="banner"><div class="banner__eyebrow">Checkout</div><h1>Checkout</h1><p>Secure and discreet</p></section>' +
     '<div class="container">' +
       '<div class="checkout">' +
         '<form id="checkoutForm" novalidate>' +
@@ -2662,7 +2569,6 @@ function pageLegal(title, body) {
 }
 
 function pageAudit() {
-  // Compute duplicate-image-per-subcategory status
   const bySub = {};
   PRODUCTS.forEach((p) => {
     if (!bySub[p.subcategory]) bySub[p.subcategory] = new Set();
@@ -2705,9 +2611,9 @@ function pageNotFound() {
   '</div></div>';
 }
 
-// ============================================================
-// ROUTER
-// ============================================================
+/* ------------------------------------------------------------
+   ROUTER
+   ------------------------------------------------------------ */
 function parseRoute() {
   const hash = location.hash.replace(/^#\/?/, '');
   return hash.split('/').filter(Boolean);
@@ -2717,58 +2623,29 @@ function route() {
   const parts = parseRoute();
   const page = parts[0] || 'home';
   let html = '';
-
-  // Update active nav
   $$('.nav__item').forEach((a) => a.classList.remove('is-active'));
-
   switch (page) {
     case 'home':
-    case '':
-      html = pageHome(); markNav('home'); break;
-    case 'men':
-      filterState = resetFilters();
-      html = pageCategory('men', parts[1]); markNav('men'); break;
-    case 'women':
-      filterState = resetFilters();
-      html = pageCategory('women', parts[1]); markNav('women'); break;
-    case 'accessories':
-      filterState = resetFilters();
-      html = pageCategory('accessories', parts[1]); markNav('accessories'); break;
-    case 'new':
-      filterState = resetFilters();
-      html = pageNew(); markNav('new'); break;
-    case 'collections':
-      filterState = resetFilters();
-      html = pageCollections(); markNav('collections'); break;
-    case 'collection':
-      filterState = resetFilters();
-      html = pageCollection(parts[1]); break;
-    case 'product':
-      html = pageProduct(parts[1]); break;
-    case 'search':
-      html = pageSearch(decodeURIComponent(parts[1] || '')); break;
-    case 'about':
-      html = pageAbout(); markNav('about'); break;
-    case 'contact':
-      html = pageContact(); markNav('contact'); break;
-    case 'account':
-      html = pageAccount(); break;
-    case 'bag':
-      html = pageShoppingBag(); break;
-    case 'checkout':
-      html = pageCheckout(); break;
-    case 'privacy':
-      html = pagePrivacy(); break;
-    case 'terms':
-      html = pageTerms(); break;
-    case 'cookies':
-      html = pageCookies(); break;
-    case 'audit':
-      html = pageAudit(); break;
-    default:
-      html = pageNotFound();
+    case '': html = pageHome(); markNav('home'); break;
+    case 'men': filterState = resetFilters(); html = pageCategory('men', parts[1]); markNav('men'); break;
+    case 'women': filterState = resetFilters(); html = pageCategory('women', parts[1]); markNav('women'); break;
+    case 'accessories': filterState = resetFilters(); html = pageCategory('accessories', parts[1]); markNav('accessories'); break;
+    case 'new': filterState = resetFilters(); html = pageNew(); markNav('new'); break;
+    case 'collections': filterState = resetFilters(); html = pageCollections(); markNav('collections'); break;
+    case 'collection': filterState = resetFilters(); html = pageCollection(parts[1]); break;
+    case 'product': html = pageProduct(parts[1]); break;
+    case 'search': html = pageSearch(decodeURIComponent(parts[1] || '')); break;
+    case 'about': html = pageAbout(); markNav('about'); break;
+    case 'contact': html = pageContact(); markNav('contact'); break;
+    case 'account': html = pageAccount(); break;
+    case 'bag': html = pageShoppingBag(); break;
+    case 'checkout': html = pageCheckout(); break;
+    case 'privacy': html = pagePrivacy(); break;
+    case 'terms': html = pageTerms(); break;
+    case 'cookies': html = pageCookies(); break;
+    case 'audit': html = pageAudit(); break;
+    default: html = pageNotFound();
   }
-
   app.innerHTML = html;
   syncBadges();
   window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
@@ -2789,23 +2666,14 @@ function markNav(key) {
 }
 
 function bindPageEvents() {
-  // Sort select
   const sortSel = $('#sortSelect');
-  if (sortSel) {
-    sortSel.addEventListener('change', (e) => {
-      sortState = e.target.value;
-      route();
-    });
-  }
-
-  // Filter clicks
+  if (sortSel) sortSel.addEventListener('change', (e) => { sortState = e.target.value; route(); });
   $$('[data-price]').forEach((b) => b.addEventListener('click', () => {
     const v = b.dataset.price;
     if (v === 'all') { filterState.priceMin = 0; filterState.priceMax = 4000; }
     else {
       const [a, bb] = v.split('-').map(Number);
-      filterState.priceMin = a;
-      filterState.priceMax = bb;
+      filterState.priceMin = a; filterState.priceMax = bb;
     }
     route();
   }));
@@ -2826,12 +2694,8 @@ function bindPageEvents() {
     route();
   }));
   $$('[data-clear-filters]').forEach((b) => b.addEventListener('click', () => {
-    filterState = resetFilters();
-    sortState = 'featured';
-    route();
+    filterState = resetFilters(); sortState = 'featured'; route();
   }));
-
-  // Card actions
   $$('[data-add]').forEach((b) => b.addEventListener('click', (e) => {
     e.preventDefault();
     const p = getProduct(b.dataset.add);
@@ -2850,27 +2714,22 @@ function bindPageEvents() {
 function bindPdpEvents() {
   const p = currentPdp;
   if (!p) return;
-
   let selectedSize = p.sizes[0];
   let selectedColor = p.primaryColor.name;
   let qty = 1;
-
   $$('#sizePick .pdp__size').forEach((b) => b.addEventListener('click', () => {
     $$('#sizePick .pdp__size').forEach((x) => x.classList.remove('is-active'));
-    b.classList.add('is-active');
-    selectedSize = b.dataset.psize;
+    b.classList.add('is-active'); selectedSize = b.dataset.psize;
   }));
   $$('.pdp__swatch').forEach((b) => b.addEventListener('click', () => {
     $$('.pdp__swatch').forEach((x) => x.classList.remove('is-active'));
-    b.classList.add('is-active');
-    selectedColor = b.dataset.pcolor;
+    b.classList.add('is-active'); selectedColor = b.dataset.pcolor;
   }));
   const qtyEl = $('#pdpQty');
   const dec = $('[data-qty-dec]');
   const inc = $('[data-qty-inc]');
   if (dec) dec.addEventListener('click', () => { qty = Math.max(1, qty - 1); qtyEl.textContent = qty; });
   if (inc) inc.addEventListener('click', () => { qty = qty + 1; qtyEl.textContent = qty; });
-
   const addBtn = $('[data-pdp-add]');
   if (addBtn) addBtn.addEventListener('click', () => addToCart(p, selectedSize, selectedColor, qty));
   const buyBtn = $('[data-pdp-buy]');
@@ -2878,12 +2737,9 @@ function bindPdpEvents() {
     addToCart(p, selectedSize, selectedColor, qty);
     location.hash = '#/checkout';
   });
-
-  // Thumbs
   $$('.pdp__thumb').forEach((t) => t.addEventListener('click', () => {
     $$('.pdp__thumb').forEach((x) => x.classList.remove('is-active'));
     t.classList.add('is-active');
-    // In a real build, swap main image; here stays the same typographic state.
     $('#pdpMain').innerHTML = renderProductImage(p);
   }));
 }
@@ -2904,9 +2760,7 @@ function bindAccountEvents() {
     const email = $('#sEmail').value.trim();
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showToast('Enter a valid email'); return; }
     user = { id: 'u' + Date.now(), email, name: email.split('@')[0] };
-    saveUser();
-    showToast('Welcome back');
-    route();
+    saveUser(); showToast('Welcome back'); route();
   });
   const rForm = $('#authRegister');
   if (rForm) rForm.addEventListener('submit', (e) => {
@@ -2915,15 +2769,10 @@ function bindAccountEvents() {
     const email = $('#rEmail').value.trim();
     if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showToast('Please complete the form'); return; }
     user = { id: 'u' + Date.now(), email, name };
-    saveUser();
-    showToast('Account created');
-    route();
+    saveUser(); showToast('Account created'); route();
   });
   $$('[data-signout]').forEach((b) => b.addEventListener('click', () => {
-    user = null;
-    saveUser();
-    showToast('Signed out');
-    route();
+    user = null; saveUser(); showToast('Signed out'); route();
   }));
 }
 
@@ -2951,7 +2800,6 @@ function bindCheckoutEvents() {
       const el = $('#' + id);
       if (el && !el.value.trim()) { showToast('Please complete all required fields'); el.focus(); return; }
     }
-    // Order placement stub — real payment integration required
     showToast('Order intent recorded — payment provider required');
     cart = [];
     saveCart();
@@ -2959,20 +2807,18 @@ function bindCheckoutEvents() {
   });
 }
 
-// ============================================================
-// CART + WISHLIST DRAWERS
-// ============================================================
+/* ------------------------------------------------------------
+   CART + WISHLIST DRAWERS
+   ------------------------------------------------------------ */
 function renderBag() {
   const body = $('#bagBody');
   const foot = $('#bagFoot');
   if (!body || !foot) return;
-
   if (!cart.length) {
     body.innerHTML = '<div class="cart-empty">Your bag is empty.<br><br><a href="#/women" data-close class="btn btn--outline btn--sm">Continue Shopping</a></div>';
     foot.innerHTML = '';
     return;
   }
-
   body.innerHTML = cart.map((l, i) => {
     const p = getProduct(l.id);
     if (!p) return '';
@@ -2993,7 +2839,6 @@ function renderBag() {
       '</div>' +
     '</div>';
   }).join('');
-
   const t = cartTotals();
   foot.innerHTML = '' +
     '<div class="cart-total"><span>Subtotal</span><span>' + money(t.subtotal) + '</span></div>' +
@@ -3001,8 +2846,6 @@ function renderBag() {
     '<div class="cart-total cart-total--grand"><span>Total</span><span>' + money(t.total) + '</span></div>' +
     '<a href="#/checkout" class="btn btn--block" data-close>Checkout</a>' +
     '<a href="#/bag" class="btn btn--outline btn--block" data-close style="margin-top:8px">View Bag</a>';
-
-  // Bind quantity buttons in drawer
   $$('[data-cart-dec], [data-cart-inc], [data-cart-rm]', body).forEach((b) => {
     b.addEventListener('click', () => {
       if (b.dataset.cartDec !== undefined) updateCartQty(+b.dataset.cartDec, -1);
@@ -3041,9 +2884,9 @@ function renderWish() {
   });
 }
 
-// ============================================================
-// QUICK VIEW
-// ============================================================
+/* ------------------------------------------------------------
+   QUICK VIEW
+   ------------------------------------------------------------ */
 function openQuickView(id) {
   const p = getProduct(id);
   if (!p) return;
@@ -3067,7 +2910,6 @@ function openQuickView(id) {
       '</div>' +
     '</div>';
   $('#quickview').classList.add('is-open');
-
   let qvSize = p.sizes[0];
   $$('[data-qv-size]', panel).forEach((b) => b.addEventListener('click', () => {
     $$('[data-qv-size]', panel).forEach((x) => x.classList.remove('is-active'));
@@ -3082,9 +2924,9 @@ function openQuickView(id) {
   $$('[data-qv-close]').forEach((b) => b.addEventListener('click', closeAll));
 }
 
-// ============================================================
-// OVERLAYS
-// ============================================================
+/* ------------------------------------------------------------
+   OVERLAYS
+   ------------------------------------------------------------ */
 function openDrawer(el) {
   $('#scrim').classList.add('is-open');
   el.classList.add('is-open');
@@ -3098,9 +2940,9 @@ function closeAll() {
   $('#mobileNav').classList.remove('is-open');
 }
 
-// ============================================================
-// MEGA MENU
-// ============================================================
+/* ------------------------------------------------------------
+   MEGA MENU
+   ------------------------------------------------------------ */
 function buildMega(g) {
   const subs = SUBS.filter((s) => s.g === g);
   const groups = {};
@@ -3116,9 +2958,9 @@ function buildMega(g) {
   $('#megaGrid').innerHTML = html;
 }
 
-// ============================================================
-// MOBILE NAV
-// ============================================================
+/* ------------------------------------------------------------
+   MOBILE NAV
+   ------------------------------------------------------------ */
 function buildMobileNav() {
   $('#mobileNavContent').innerHTML = '' +
     '<a href="#/">Home</a>' +
@@ -3132,9 +2974,9 @@ function buildMobileNav() {
     '<a href="#/contact">Contact</a>';
 }
 
-// ============================================================
-// EVENT WIRING — GLOBAL
-// ============================================================
+/* ------------------------------------------------------------
+   GLOBAL EVENT WIRING
+   ------------------------------------------------------------ */
 document.addEventListener('click', (e) => {
   if (e.target.closest('[data-close]')) closeAll();
 });
@@ -3158,7 +3000,6 @@ $('#searchInput').addEventListener('input', (e) => {
     if (!q) { $('#searchResults').innerHTML = ''; return; }
     const results = searchProducts(q, 24);
     $('#searchResults').innerHTML = results.length ? renderGrid(results) : '<p style="text-align:center;color:var(--grey);margin-top:40px">No results found</p>';
-    // Wire up new card buttons
     $$('#searchResults [data-add]').forEach((b) => b.addEventListener('click', (e2) => {
       e2.preventDefault();
       const p = getProduct(b.dataset.add);
@@ -3175,7 +3016,6 @@ $('#searchInput').addEventListener('input', (e) => {
   }, 200);
 });
 
-// Mega menu
 $$('[data-mega]').forEach((link) => {
   link.addEventListener('mouseenter', () => {
     const g = link.dataset.mega;
@@ -3187,32 +3027,23 @@ $('#nav').addEventListener('mouseleave', () => {
   $('#mega').classList.remove('is-open');
 });
 
-// Mobile nav
 $('#btnMobileNav').addEventListener('click', () => {
   buildMobileNav();
   $('#mobileNav').classList.add('is-open');
 });
 $('#mobileNavClose').addEventListener('click', () => $('#mobileNav').classList.remove('is-open'));
 
-// Newsletter
-$('#newsletterForm').addEventListener('submit', (e) => {
-  e.preventDefault();
-  const email = $('#newsletterEmail').value.trim();
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showToast('Enter a valid email'); return; }
-  showToast('Thank you — welcome to the maison');
-  $('#newsletterEmail').value = '';
-});
-
-// Header scroll shadow
 window.addEventListener('scroll', () => {
   $('#header').classList.toggle('is-scrolled', window.scrollY > 20);
 }, { passive: true });
 
-// Hash routing
 window.addEventListener('hashchange', route);
 
-// ============================================================
-// BOOT
-// ============================================================
+/* ------------------------------------------------------------
+   BOOT
+   ------------------------------------------------------------ */
 route();
 syncBadges();
+</script>
+</body>
+</html>
