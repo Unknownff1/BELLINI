@@ -168,7 +168,7 @@
             <div><label class="block text-xs uppercase tracking-widest text-brand-muted mb-2">Password</label>
                 <input type="password" required placeholder="••••••••••••" class="w-full bg-brand-surface border border-brand-border px-4 py-3 text-brand-ivory text-sm rounded-lg focus:outline-none focus:border-brand-champagne"></div>
             <button type="submit" class="w-full py-4 bg-brand-ivory text-brand-black font-medium hover:bg-brand-champagne transition-colors text-xs tracking-[0.2em] uppercase rounded-lg mt-2">Sign In / Register</button>
-            <p class="text-[10px] text-brand-muted text-center leading-relaxed pt-2">Demonstration portal only. Production authentication requires a backend identity provider (Supabase Auth, Auth0, etc.) — see delivery notes.</p>
+            <p class="text-[10px] text-brand-muted text-center leading-relaxed pt-2">Demonstration portal only. Production authentication requires a backend identity provider (Supabase Auth, Auth0, etc.).</p>
         </form>
     </div>
 </div>
@@ -264,17 +264,10 @@
 <script>
 /* ==========================================================================
    BELLINI — CATALOG ENGINE v2
-   Deterministic procedural design system: every product receives its own
-   parameter set and is rendered into an individual pure-white PNG-equivalent
-   SVG. No modulo image recycling. No shared silhouettes.
    ========================================================================== */
-
-/* ---------------------------- 0. Utilities ---------------------------- */
 const hashStr = s => { let h = 2166136261; for (let i=0;i<s.length;i++){ h ^= s.charCodeAt(i); h = Math.imul(h, 16777619);} return h>>>0; };
 function mulberry32(a){ return function(){ a|=0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a>>>15, 1|a); t = t + Math.imul(t ^ t>>>7, 61|t) ^ t; return ((t ^ t>>>14)>>>0)/4294967296; }; }
-const rndOf = seed => mulberry32(hashStr(String(seed)));
 
-/* ---------------------------- 1. Design tokens ---------------------------- */
 const PALETTES = [
   {n:'Nero',          fill:'#1B1B1B', dark:'#000000', light:'#3A3A3A'},
   {n:'Avorio',        fill:'#EFEAD9', dark:'#A69F8B', light:'#FBF8EF'},
@@ -290,7 +283,6 @@ const PALETTES = [
   {n:'Antracite',     fill:'#3A3D42', dark:'#141619', light:'#5A5E65'}
 ];
 const ACCENTS = ['#C9A227','#C0C0C0','#B08D57','#A8A8A8','#D4AF37'];
-
 const LEN_Y = {cropped:300, regular:348, long:400, knee:420, mini:372, midi:462, maxi:515, full:500, short:300, crop:420};
 
 const MATERIALS = {
@@ -309,24 +301,6 @@ const MATERIALS = {
   scarf:['Silk Twill','Fine Wool','Cashmere','Cotton Voile'],
   hat:['Wool Felt','Straw','Cotton Twill','Ribbed Wool']
 };
-
-/* ---------------------------- 2. Design archetypes (20 per family) ----------------------------
-   Each tuple is a genuinely different garment/object construction — NOT a colour swap.
-   top   : [label, length, silhouette, neckline, sleeve, pattern, detail]
-   knit  : same schema
-   outer : same schema
-   dress : same schema
-   skirt : [label, length, silhouette, pattern, detail]
-   bottom: [label, length, silhouette, pattern, detail]
-   shoe  : [label, toe, heel, shaft, closure, sole]
-   bag   : [label, shape, size, closure, handle, pattern]
-   belt  : [label, width, buckle, pattern, det]
-   glasses:[label, lensShape, frameThickness, tint, bridge]
-   watch : [label, caseShape, caseSize, strap, dial, markers]
-   jewel : [label, style, stone, chain]
-   scarf : [label, form, pattern, fringe]
-   hat   : [label, form, brim, band]
-   ---------------------------------------------------------------------------------------------- */
 
 const ARCH = {
 top:[
@@ -639,7 +613,6 @@ hat:[
 ]
 };
 
-/* ---------------------------- 3. Catalogue specification ---------------------------- */
 const CATALOG_SPEC = {
   Men: [
     ['T-Shirts','top','T-Shirt'],['Polo Shirts','top','Polo Shirt'],['Casual Shirts','top','Casual Shirt'],
@@ -673,7 +646,6 @@ const CATALOG_SPEC = {
 
 const PRICE_BASE = {top:120, knit:185, outer:395, dress:290, skirt:195, bottom:165, shoe:265, bag:430, belt:130, glasses:190, watch:640, jewel:350, scarf:115, hat:105};
 
-/* ---------------------------- 4. Catalogue builder ---------------------------- */
 const masterProducts = [];
 let uidCounter = 0;
 
@@ -691,7 +663,6 @@ function buildCatalogue(){
         const price = Math.round((base + rnd()*base*1.15)/5)*5 - 1;
         const label = row[0];
 
-        // Design params — genuinely different per archetype
         let params = {};
         if (family==='top'||family==='knit'||family==='outer'||family==='dress'){
           params = {len:row[1], sil:row[2], neck:row[3], sleeve:row[4], pat:row[5], det:row[6]};
@@ -757,7 +728,6 @@ function buildCatalogue(){
 }
 buildCatalogue();
 
-/* ---------------------------- 5. SVG product renderers ---------------------------- */
 const W=400, H=550;
 
 function svgWrap(inner, view){
@@ -953,7 +923,7 @@ function renderGarment(p){
   out += `<path d="${d}" fill="none" stroke="${pal.dark}" stroke-width="2.2" stroke-linejoin="round"/>`;
   out += collarMarkup(a.neck, cx, topY, sh, pal, ac, hemY);
 
-  if (a.split){ // jumpsuit / two-piece construction
+  if (a.split){
     out += `<path d="M ${cx} ${wy+40} L ${cx-26} ${hemY} L ${cx+26} ${hemY} Z" fill="#FFFFFF"/>`;
     out += `<line x1="${cx}" y1="${wy+40}" x2="${cx-26}" y2="${hemY}" stroke="${pal.dark}" stroke-width="2"/>`;
     out += `<line x1="${cx}" y1="${wy+40}" x2="${cx+26}" y2="${hemY}" stroke="${pal.dark}" stroke-width="2"/>`;
@@ -1026,24 +996,19 @@ function renderShoe(p){
   const heelH = a.heel * 90;
 
   let out = '';
-  // heel block
   if (heelH > 4){
     out += `<path d="M ${heelX+8} ${baseY} L ${heelX+34} ${baseY} L ${heelX+30} ${baseY+heelH} L ${heelX+14} ${baseY+heelH} Z" fill="${pal.dark}" opacity="0.9"/>`;
   }
-  // sole
   out += `<path d="M ${heelX-4} ${topSole} L ${toeX+8} ${topSole} Q ${toeX+20} ${topSole} ${toeX+18} ${baseY-4} L ${heelX-4} ${baseY} Z" fill="${pal.dark}"/>`;
-  // upper
   const toeCurve = a.toe==='pointed' ? `Q ${toeX+22} ${topSole-34} ${toeX-46} ${topSole-54}`
                  : a.toe==='square'  ? `L ${toeX+2} ${topSole-56}`
                  : a.toe==='almond'  ? `Q ${toeX+6} ${topSole-42} ${toeX-56} ${topSole-56}`
                  : `Q ${toeX-6} ${topSole-38} ${toeX-62} ${topSole-56}`;
   out += `<path d="M ${heelX+10} ${topSole-shaftH-14} L ${heelX+10} ${topSole} L ${toeX+8} ${topSole} ${toeCurve} Q ${heelX+90} ${topSole-70} ${heelX+12} ${topSole-46} Z" fill="${pal.fill}" stroke="${pal.dark}" stroke-width="2.2" stroke-linejoin="round"/>`;
-  // shaft
   if (shaftH > 12){
     out += `<path d="M ${heelX+12} ${topSole-46} L ${heelX+12} ${topSole-shaftH-14} L ${heelX+112} ${topSole-shaftH-14} L ${heelX+106} ${topSole-52} Z" fill="${pal.fill}" stroke="${pal.dark}" stroke-width="2.2" stroke-linejoin="round"/>`;
     out += `<rect x="${heelX+10}" y="${topSole-shaftH-16}" width="104" height="14" fill="${pal.dark}" opacity="0.25" rx="3"/>`;
   }
-  // closure
   if (a.closure==='laces'){
     for (let i=0;i<4;i++){
       const x = heelX+58+i*22, y = topSole-58-i*6;
@@ -1059,7 +1024,6 @@ function renderShoe(p){
   } else if (a.closure==='elastic'){
     out += `<rect x="${heelX+30}" y="${topSole-70}" width="26" height="42" rx="6" fill="${pal.dark}" opacity="0.35"/>`;
   }
-  // toe cap seam
   out += `<path d="M ${toeX-96} ${topSole-6} Q ${toeX-70} ${topSole-58} ${toeX-34} ${topSole-56}" fill="none" stroke="${pal.dark}" stroke-width="1.6" opacity="0.5"/>`;
   return out;
 }
@@ -1080,7 +1044,6 @@ function renderBag(p){
     default:          body = `M ${cx-halfW} ${topY} L ${cx+halfW} ${topY} L ${cx+halfW} ${botY} L ${cx-halfW} ${botY} Z`;
   }
   let out = '';
-  // handles behind
   if (a.handle==='top')
     out += `<path d="M ${cx-halfW*0.55} ${topY+4} Q ${cx} ${topY-104} ${cx+halfW*0.55} ${topY+4}" fill="none" stroke="${pal.dark}" stroke-width="9" stroke-linecap="round"/>`;
   if (a.handle==='shoulder')
@@ -1146,7 +1109,6 @@ function renderGlasses(p){
   const L = {cx:128, R:272};
   let out = '';
   out += `<line x1="66" y1="${cy-18}" x2="${L.cx-56}" y2="${cy-18}" stroke="${pal.fill}" stroke-width="${thick}" stroke-linecap="round"/>`;
-  out += `<line x1="${H?0:0}" y1="0" x2="0" y2="0" stroke="none"/>`;
   out += `<line x1="${R.cx+56}" y1="${cy-18}" x2="334" y2="${cy-18}" stroke="${pal.fill}" stroke-width="${thick}" stroke-linecap="round"/>`;
   [L,R].forEach(pos=>{
     const x = pos.cx;
@@ -1177,7 +1139,6 @@ function renderWatch(p){
   const a = p.params, pal = p.palette, ac = p.accentHex, cx = 200, cy = 275;
   const r = 62 * a.caseSize;
   let out = '';
-  // strap
   out += `<rect x="${cx-38}" y="70" width="76" height="410" rx="10" fill="${pal.fill}" stroke="${pal.dark}" stroke-width="2"/>`;
   if (a.strap==='bracelet'){
     for (let y=80;y<470;y+=22) out += `<rect x="${cx-38}" y="${y}" width="76" height="16" rx="4" fill="${pal.dark}" opacity="0.35"/>`;
@@ -1188,7 +1149,6 @@ function renderWatch(p){
   } else if (a.strap==='rubber'){
     for (let y=90;y<470;y+=30) out += `<rect x="${cx-30}" y="${y}" width="60" height="10" rx="3" fill="${pal.dark}" opacity="0.3"/>`;
   }
-  // case
   let caseShape='';
   if (a.caseShape==='square') caseShape = `<rect x="${cx-r}" y="${cy-r}" width="${r*2}" height="${r*2}" rx="${r*0.18}"/>`;
   else if (a.caseShape==='cushion') caseShape = `<rect x="${cx-r}" y="${cy-r}" width="${r*2}" height="${r*2}" rx="${r*0.42}"/>`;
@@ -1196,7 +1156,6 @@ function renderWatch(p){
   else if (a.caseShape==='octagon') caseShape = `<path d="M ${cx-r*0.42} ${cy-r} L ${cx+r*0.42} ${cy-r} L ${cx+r} ${cy-r*0.42} L ${cx+r} ${cy+r*0.42} L ${cx+r*0.42} ${cy+r} L ${cx-r*0.42} ${cy+r} L ${cx-r} ${cy+r*0.42} L ${cx-r} ${cy-r*0.42} Z"/>`;
   else caseShape = `<circle cx="${cx}" cy="${cy}" r="${r}"/>`;
   out += `<g fill="${ac}" stroke="${pal.dark}" stroke-width="3">${caseShape}</g>`;
-  // dial
   const dialFill = a.dial==='black'?'#141414':a.dial==='navy'?'#1E2A44':a.dial==='champagne'?'#E4D3A6':a.dial==='skeleton'?'#2A2A2A':a.dial==='khaki'?'#6B6B4A':a.dial==='brown'?'#5A3A22':'#F7F4EC';
   out += `<circle cx="${cx}" cy="${cy}" r="${r*0.82}" fill="${dialFill}" stroke="${pal.dark}" stroke-width="1.6"/>`;
   if (a.markers==='roman'){
@@ -1297,7 +1256,7 @@ function renderHat(p){
   } else if (a.form==='cloche'){
     out += `<ellipse cx="${cx}" cy="330" rx="${88+brim*50}" ry="${22+brim*14}" fill="${pal.fill}" stroke="${pal.dark}" stroke-width="2.4"/>`;
     out += `<path d="M ${cx-70} 322 Q ${cx-78} 200 ${cx} 192 Q ${cx+78} 200 ${cx+70} 322 Z" fill="${pal.fill}" stroke="${pal.dark}" stroke-width="2.4"/>`;
-  } else { // fedora
+  } else {
     out += `<ellipse cx="${cx}" cy="330" rx="${92+brim*60}" ry="${24+brim*16}" fill="${pal.fill}" stroke="${pal.dark}" stroke-width="2.4"/>`;
     out += `<path d="M ${cx-66} 322 Q ${cx-58} 186 ${cx} 178 Q ${cx+58} 186 ${cx+66} 322 Z" fill="${pal.fill}" stroke="${pal.dark}" stroke-width="2.4"/>`;
     out += `<path d="M ${cx-60} 250 L ${cx+60} 250 L ${cx+62} 236 L ${cx-62} 236 Z" fill="${pal.dark}" opacity="0.3"/>`;
@@ -1306,7 +1265,6 @@ function renderHat(p){
   return out;
 }
 
-/* ---- dispatcher + cache ---- */
 const imgCache = new Map();
 function renderProductSvg(p, view){
   switch(p.family){
@@ -1378,7 +1336,6 @@ function renderPage(){
   }
 }
 
-/* ---------------------------- Filtering & sorting ---------------------------- */
 function applyFilters(list){
   const min = viewState.minPrice === '' ? 0 : Number(viewState.minPrice);
   const max = viewState.maxPrice === '' ? Infinity : Number(viewState.maxPrice);
@@ -1430,7 +1387,6 @@ function refreshGrid(){
   if (count) count.textContent = list.length;
 }
 
-/* ---------------------------- Product card ---------------------------- */
 function renderProductCard(p){
   const wished = wishlist.some(w => w.id === p.id);
   return `
@@ -1456,7 +1412,6 @@ function renderProductCard(p){
   </div>`;
 }
 
-/* ---------------------------- Pages ---------------------------- */
 function renderHomePage(){
   const featured = masterProducts.filter(p => p.isFeatured).slice(0, 8);
   return `
@@ -1676,7 +1631,6 @@ function renderContactPage(){
   </div>`;
 }
 
-/* ---------------------------- Product detail ---------------------------- */
 function openProductDetail(id){
   const p = masterProducts.find(x => x.id === id);
   if (!p) return;
@@ -1786,7 +1740,6 @@ function closeProductDetailModal(){
   activeProduct = null;
 }
 
-/* ---------------------------- Cart & Wishlist ---------------------------- */
 function addToCartFromModal(){
   if (!activeProduct) return;
   const item = {
@@ -1920,7 +1873,6 @@ function moveWishlistToBag(id){
   showToast('Moved to your shopping bag.');
 }
 
-/* ---------------------------- Search ---------------------------- */
 function openSearchModal(){
   document.getElementById('search-modal').classList.remove('hidden');
   document.getElementById('search-modal').classList.add('flex');
@@ -1956,7 +1908,6 @@ function handleLiveSearch(q){
     : `<div class="col-span-full text-center text-brand-muted text-xs uppercase tracking-widest py-8">No matching products.</div>`;
 }
 
-/* ---------------------------- Auth / Checkout / Misc ---------------------------- */
 function openAuthModal(){ const m = document.getElementById('auth-modal'); m.classList.remove('hidden'); m.classList.add('flex'); }
 function closeAuthModal(){ const m = document.getElementById('auth-modal'); m.classList.add('hidden'); m.classList.remove('flex'); }
 function handleAuthSubmit(e){ e.preventDefault(); closeAuthModal(); showToast('Demo portal — authentication requires a configured backend.'); }
@@ -1988,9 +1939,6 @@ function showToast(msg){
   window.__toastTimer = setTimeout(()=>t.classList.add('translate-y-20','opacity-0'), 3200);
 }
 
-/* ==========================================================================
-   SECTION 29 — AUTOMATED PRODUCT UNIQUENESS AUDIT
-   ========================================================================== */
 function renderAuditPage(){
   return `
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -2074,7 +2022,6 @@ function runAudit(){
     </table>`;
 }
 
-/* ---------------------------- Boot ---------------------------- */
 window.addEventListener('DOMContentLoaded', () => {
   renderPage();
   updateBadges();
