@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet">
 <style>
 /* ============================================
-   BELLINI — DESIGN SYSTEM (UNCHANGED)
+   BELLINI — DESIGN SYSTEM (PRESERVED)
    ============================================ */
 :root{
   --cream:#F5F1E9;--cream-2:#EDE7DB;--bone:#E3DCCD;
@@ -27,7 +27,7 @@ body.lock{overflow:hidden}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 button{font-family:inherit;border:none;background:none;cursor:pointer;color:inherit}
-input,select{font-family:inherit}
+input,select,textarea{font-family:inherit}
 ::selection{background:var(--ink);color:var(--cream)}
 ::-webkit-scrollbar{width:9px}
 ::-webkit-scrollbar-track{background:var(--cream-2)}
@@ -101,14 +101,6 @@ body.cursor-on .cursor-dot,body.cursor-on .cursor-ring{opacity:1}
 .mobile-menu nav a{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,7vw,2.6rem);line-height:1.25;border-bottom:1px solid var(--line);padding:.55rem 0;display:flex;justify-content:space-between;align-items:baseline;opacity:0;transform:translateY(20px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
 .mobile-menu.open nav a{opacity:1;transform:none}
 .mobile-menu nav a span{font-family:'Jost',sans-serif;font-size:.6rem;letter-spacing:.25em;color:var(--muted)}
-.mobile-menu nav a:nth-child(1){transition-delay:.15s}
-.mobile-menu nav a:nth-child(2){transition-delay:.2s}
-.mobile-menu nav a:nth-child(3){transition-delay:.25s}
-.mobile-menu nav a:nth-child(4){transition-delay:.3s}
-.mobile-menu nav a:nth-child(5){transition-delay:.35s}
-.mobile-menu nav a:nth-child(6){transition-delay:.4s}
-.mobile-menu nav a:nth-child(7){transition-delay:.45s}
-.mobile-menu nav a:nth-child(8){transition-delay:.5s}
 .mobile-foot{margin-top:2.5rem;font-size:.66rem;letter-spacing:.18em;color:var(--muted);text-transform:uppercase}
 .mobile-foot a{display:block;margin-top:.5rem;color:var(--ink)}
 
@@ -133,7 +125,7 @@ body.cursor-on .cursor-dot,body.cursor-on .cursor-ring{opacity:1}
 .btn:hover .arrow{transform:translateX(5px)}
 .btn.sm{padding:.8rem 1.5rem;font-size:.6rem}
 
-/* Hero */
+/* Hero & Structure (Preserved) */
 .hero{position:relative;min-height:calc(100svh - 36px);display:flex;align-items:flex-end;overflow:hidden;margin-top:calc(-1 * var(--header-h));padding-bottom:clamp(2.5rem,6vh,5rem)}
 .hero-media{position:absolute;inset:0;overflow:hidden}
 .hero-media img{width:100%;height:100%;object-fit:cover;object-position:center 30%;animation:heroZoom 2.6s var(--ease) forwards;filter:saturate(.92) contrast(1.02)}
@@ -159,8 +151,6 @@ body.cursor-on .cursor-dot,body.cursor-on .cursor-ring{opacity:1}
 .hero-scroll i{display:block;width:1px;height:34px;background:rgba(245,241,233,.4);position:relative;overflow:hidden}
 .hero-scroll i::after{content:'';position:absolute;top:0;left:0;width:100%;height:50%;background:var(--cream);animation:scrollLine 2s var(--ease-soft) infinite}
 @keyframes scrollLine{0%{transform:translateY(-100%)}60%,100%{transform:translateY(200%)}}
-
-/* Marquee */
 .marquee{background:var(--ink);color:var(--cream);overflow:hidden;padding:1.05rem 0;border-top:1px solid rgba(245,241,233,.08)}
 .marquee-track{display:flex;width:max-content;animation:marquee 42s linear infinite}
 .marquee:hover .marquee-track{animation-play-state:paused}
@@ -168,16 +158,12 @@ body.cursor-on .cursor-dot,body.cursor-on .cursor-ring{opacity:1}
 .marquee-set{display:flex;align-items:center;flex-shrink:0}
 .marquee-set span{font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;padding:0 1.8rem;font-weight:300;white-space:nowrap}
 .marquee-set i{color:var(--gold);font-size:.5rem;font-style:normal}
-
-/* Section */
 .section{max-width:1600px;margin:0 auto;padding:clamp(4.5rem,10vw,9rem) var(--pad)}
 .section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap;margin-bottom:clamp(2.2rem,4.5vw,4rem)}
 .section-title{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(2rem,4.6vw,3.9rem);line-height:1.02;letter-spacing:-.01em;margin-top:1rem}
 .section-title em{font-style:italic;color:var(--accent)}
 .link-arrow{font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;display:inline-flex;align-items:center;gap:.7rem;padding-bottom:.35rem;border-bottom:1px solid var(--line);transition:border-color .4s,gap .4s var(--ease)}
 .link-arrow:hover{border-color:var(--ink);gap:1.2rem}
-
-/* Maison */
 .maison{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,6vw,6rem);align-items:center;max-width:1600px;margin:0 auto;padding:clamp(4.5rem,10vw,9rem) var(--pad)}
 .maison-visual{position:relative}
 .maison-visual .parallax-wrap{aspect-ratio:4/5;overflow:hidden;background:var(--bone)}
@@ -193,7 +179,7 @@ body.cursor-on .cursor-dot,body.cursor-on .cursor-ring{opacity:1}
 .stats strong{display:block;font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,2.4vw,2rem);font-weight:400;line-height:1}
 .stats span{font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);display:block;margin-top:.55rem}
 
-/* Collections cards */
+/* Product Cards & Grid (Enhanced for Premium Studio Look) */
 .collections-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(.8rem,1.6vw,1.6rem)}
 .collection-card{position:relative;overflow:hidden;aspect-ratio:3/4.1;background:var(--bone);display:block}
 .collection-card img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease),filter 1s;filter:saturate(.9)}
@@ -205,13 +191,12 @@ body.cursor-on .cursor-dot,body.cursor-on .cursor-ring{opacity:1}
 .collection-cta{display:flex;align-items:center;gap:.7rem;margin-top:1.3rem;font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;opacity:0;transform:translateY(12px);transition:opacity .55s var(--ease),transform .55s var(--ease)}
 .collection-card:hover .collection-cta{opacity:1;transform:none}
 
-/* Products */
 .products-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(1rem,2.4vw,2.4rem) clamp(.8rem,1.6vw,1.6rem)}
 .product{position:relative;animation:prodIn .7s var(--ease) both}
 @keyframes prodIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 .product.hide{display:none}
-.product-media{position:relative;aspect-ratio:3/4;overflow:hidden;background:var(--bone);display:block}
-.product-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .8s var(--ease),transform 1.3s var(--ease);filter:saturate(.93)}
+.product-media{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--bone);display:block;border-radius:2px}
+.product-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .8s var(--ease),transform 1.3s var(--ease);filter:saturate(.93);mix-blend-mode:multiply}
 .product-media img.alt{opacity:0}
 .product:hover .product-media img{transform:scale(1.05)}
 .product:hover .product-media img.alt{opacity:1}
@@ -233,11 +218,16 @@ body.cursor-on .cursor-dot,body.cursor-on .cursor-ring{opacity:1}
 .product-price{font-size:.82rem;letter-spacing:.05em;color:var(--ink-2);margin-top:.15rem}
 .product-price .old{color:var(--muted);text-decoration:line-through;margin-right:.5rem;font-size:.78rem}
 
-/* Image fallback */
-.img-fallback{background:linear-gradient(135deg,#E3DCCD 0%,#CFC5B2 100%)!important;position:relative}
-.img-fallback::after{content:attr(data-fallback);position:absolute;inset:0;display:grid;place-items:center;font-family:'Cormorant Garamond',serif;font-size:.8rem;letter-spacing:.15em;color:rgba(21,18,15,.35);text-align:center;padding:1rem;text-transform:uppercase}
+/* Image Fallback / Studio Backgrounds */
+.img-fallback{position:relative;overflow:hidden;background:linear-gradient(135deg,#EDE7DB 0%,#DCD3C3 100%)!important}
+.img-fallback::after{content:attr(data-fallback);position:absolute;inset:0;display:grid;place-items:center;font-family:'Cormorant Garamond',serif;font-size:.9rem;letter-spacing:.1em;color:rgba(21,18,15,.4);text-align:center;padding:2rem;text-transform:uppercase;line-height:1.4}
+.bg-studio-1{background:linear-gradient(135deg, #F5F1E9, #EDE7DB)!important}
+.bg-studio-2{background:linear-gradient(135deg, #E8E1D5, #DCD3C3)!important}
+.bg-studio-3{background:linear-gradient(135deg, #DED8CC, #CCC4B5)!important}
+.bg-studio-dark{background:linear-gradient(135deg, #4A4540, #2A2521)!important}
+.bg-studio-dark::after{color:rgba(245,241,233,.6)!important}
 
-/* Editorial */
+/* Editorial & Lookbook */
 .editorial{position:relative;min-height:78vh;display:grid;place-items:center;overflow:hidden;text-align:center;color:var(--cream);padding:clamp(5rem,12vw,9rem) var(--pad)}
 .editorial-bg{position:absolute;inset:0;overflow:hidden}
 .editorial-bg img{width:100%;height:130%;object-fit:cover;position:absolute;top:-15%;left:0;will-change:transform;filter:saturate(.85) brightness(.75)}
@@ -247,8 +237,6 @@ body.cursor-on .cursor-dot,body.cursor-on .cursor-ring{opacity:1}
 .editorial-inner .eyebrow::after{content:'';width:36px;height:1px;background:currentColor;opacity:.55}
 .quote{font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic;font-size:clamp(1.7rem,4.6vw,3.6rem);line-height:1.24;margin:1.8rem 0 2rem;letter-spacing:-.01em}
 .quote-attr{font-size:.6rem;letter-spacing:.34em;text-transform:uppercase;color:rgba(245,241,233,.6)}
-
-/* Lookbook */
 .lookbook{padding:clamp(4.5rem,10vw,8rem) 0}
 .lookbook-head{max-width:1600px;margin:0 auto clamp(2rem,4vw,3.4rem);padding:0 var(--pad);display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap}
 .lookbook-scroll{display:flex;gap:clamp(.8rem,1.6vw,1.6rem);overflow-x:auto;padding:0 var(--pad) 1.6rem;scroll-snap-type:x mandatory;scrollbar-width:none;cursor:grab}
@@ -259,7 +247,7 @@ body.cursor-on .cursor-dot,body.cursor-on .cursor-ring{opacity:1}
 .look-item:hover img{transform:scale(1.06)}
 .look-item figcaption{position:absolute;left:0;bottom:0;padding:1.2rem 1.4rem;color:var(--cream);font-size:.56rem;letter-spacing:.28em;text-transform:uppercase;background:linear-gradient(to top,rgba(10,8,6,.7),transparent);width:100%}
 
-/* Testimonials */
+/* Testimonials, Newsletter, Footer */
 .testimonials{background:var(--cream-2)}
 .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2.4vw,2.2rem)}
 .testi{background:var(--cream);padding:clamp(1.8rem,3.4vw,2.8rem);border:1px solid rgba(21,18,15,.07);transition:transform .6s var(--ease),box-shadow .6s var(--ease)}
@@ -270,8 +258,6 @@ body.cursor-on .cursor-dot,body.cursor-on .cursor-ring{opacity:1}
 .avatar{width:38px;height:38px;border-radius:50%;background:var(--bone);display:grid;place-items:center;font-family:'Cormorant Garamond',serif;font-size:.9rem;color:var(--ink-2);flex-shrink:0}
 .testi-author strong{display:block;font-size:.72rem;letter-spacing:.1em;font-weight:500}
 .testi-author small{display:block;font-size:.58rem;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;margin-top:.2rem}
-
-/* Newsletter */
 .newsletter{background:var(--ink);color:var(--cream);text-align:center;padding:clamp(4rem,9vw,7.5rem) var(--pad);position:relative;overflow:hidden}
 .newsletter::before{content:'';position:absolute;left:50%;top:-40%;width:900px;height:900px;transform:translateX(-50%);pointer-events:none;background:radial-gradient(circle,rgba(176,141,87,.16),transparent 62%)}
 .newsletter .eyebrow{color:rgba(245,241,233,.55);justify-content:center}
@@ -286,8 +272,6 @@ body.cursor-on .cursor-dot,body.cursor-on .cursor-ring{opacity:1}
 .news-form button{padding:1.1rem .4rem 1.1rem 1.6rem;font-size:.63rem;letter-spacing:.26em;text-transform:uppercase;color:var(--cream);display:flex;align-items:center;gap:.6rem;transition:color .35s,gap .4s var(--ease)}
 .news-form button:hover{color:var(--gold);gap:1rem}
 .news-note{font-size:.56rem;letter-spacing:.18em;color:rgba(245,241,233,.35);margin-top:1.6rem;text-transform:uppercase;position:relative;z-index:1}
-
-/* Footer */
 .site-footer{background:var(--cream);border-top:1px solid var(--line)}
 .footer-main{max-width:1600px;margin:0 auto;padding:clamp(3.5rem,7vw,6rem) var(--pad) 3rem;display:grid;grid-template-columns:1.6fr 1fr 1fr 1.3fr;gap:clamp(2rem,4vw,4rem)}
 .footer-brand .logo-main{font-size:1.6rem}
@@ -347,7 +331,7 @@ body.cursor-on .cursor-dot,body.cursor-on .cursor-ring{opacity:1}
 .qv-panel{background:var(--cream);width:min(940px,100%);max-height:88vh;overflow:auto;display:grid;grid-template-columns:1fr 1fr;transform:translateY(30px) scale(.98);transition:transform .65s var(--ease);position:relative}
 .quickview.show .qv-panel{transform:none}
 .qv-img{background:var(--bone);min-height:340px;position:relative;overflow:hidden}
-.qv-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.qv-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;mix-blend-mode:multiply}
 .qv-body{padding:clamp(1.6rem,3.4vw,3rem);display:flex;flex-direction:column}
 .qv-close{position:absolute;top:1rem;right:1rem;z-index:3;width:36px;height:36px;display:grid;place-items:center;background:rgba(245,241,233,.9);border-radius:50%;transition:transform .5s var(--ease)}
 .qv-close:hover{transform:rotate(90deg)}
@@ -367,16 +351,12 @@ body.cursor-on .cursor-dot,body.cursor-on .cursor-ring{opacity:1}
 .toast.show{transform:translate(-50%,0)}
 .toast i{width:5px;height:5px;border-radius:50%;background:var(--gold);display:block;flex-shrink:0}
 
-/* ============================================
-   NEW — ROUTER PAGES
-   ============================================ */
+/* Router Pages */
 .page{min-height:60vh;animation:pageIn .7s var(--ease)}
 @keyframes pageIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 .crumbs{display:flex;gap:.5rem;flex-wrap:wrap;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);padding:calc(var(--header-h) * .5) var(--pad) 0;max-width:1600px;margin:0 auto}
 .crumbs a:hover{color:var(--ink)}
 .crumbs span{opacity:.4}
-
-/* Category page */
 .cat-page{max-width:1600px;margin:0 auto;padding:1.5rem var(--pad) clamp(4rem,8vw,7rem)}
 .cat-hero{position:relative;overflow:hidden;background:var(--bone);min-height:clamp(180px,26vw,300px);display:flex;align-items:flex-end;padding:clamp(1.6rem,3vw,2.6rem);margin-bottom:1.5rem}
 .cat-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.6) saturate(.9)}
@@ -386,18 +366,11 @@ body.cursor-on .cursor-dot,body.cursor-on .cursor-ring{opacity:1}
 .cat-hero-content .eyebrow::before{background:var(--gold);opacity:1}
 .cat-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4.4vw,3.4rem);font-weight:400;line-height:1;margin-top:.6rem;letter-spacing:-.005em}
 .cat-count{font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(245,241,233,.6);margin-top:.8rem}
-
-/* Sub pills */
 .sub-pills{display:flex;gap:.4rem;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:1rem;margin-bottom:1.8rem}
 .sub-pill{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;padding:.55rem .95rem;border:1px solid var(--line);color:var(--muted);transition:all .35s var(--ease);white-space:nowrap}
 .sub-pill:hover{color:var(--ink);border-color:var(--ink)}
 .sub-pill.active{background:var(--ink);color:var(--cream);border-color:var(--ink)}
-
-/* Category layout */
 .cat-layout{display:grid;grid-template-columns:230px 1fr;gap:clamp(1.5rem,3vw,2.8rem);align-items:start}
-@media (max-width:960px){.cat-layout{grid-template-columns:1fr}}
-
-/* Filter panel */
 .filters-panel{border:1px solid var(--line);padding:1.4rem;background:rgba(245,241,233,.4)}
 .filters-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;padding-bottom:.8rem;border-bottom:1px solid var(--line)}
 .filters-head h4{font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;font-weight:500}
@@ -416,20 +389,14 @@ body.cursor-on .cursor-dot,body.cursor-on .cursor-ring{opacity:1}
 .filter-check input:checked{background:var(--ink);border-color:var(--ink)}
 .filter-check input:checked::after{content:'';position:absolute;left:3px;top:1px;width:6px;height:9px;border:solid var(--cream);border-width:0 1.5px 1.5px 0;transform:rotate(45deg)}
 .filter-check .count{color:var(--muted);font-size:.62rem;margin-left:auto}
-
-/* Price range */
 .price-range{display:flex;gap:.6rem;align-items:center;margin-top:.4rem}
 .price-range input{flex:1;background:transparent;border:1px solid var(--line);padding:.5rem;font-size:.72rem;color:var(--ink);outline:none;text-align:center}
 .price-range input:focus{border-color:var(--ink)}
 .price-range span{color:var(--muted);font-size:.6rem}
-
-/* Color swatches */
 .color-filter{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.3rem}
 .color-chip{width:26px;height:26px;border-radius:50%;border:1px solid var(--line);cursor:pointer;position:relative;transition:transform .3s var(--ease)}
 .color-chip:hover{transform:scale(1.15)}
 .color-chip.active::after{content:'';position:absolute;inset:-3px;border:1px solid var(--ink);border-radius:50%}
-
-/* Sort bar */
 .sort-bar{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:1.6rem;padding-bottom:1rem;border-bottom:1px solid var(--line)}
 .sort-info{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
 .sort-info strong{color:var(--ink);font-weight:500}
@@ -441,18 +408,16 @@ body.cursor-on .cursor-dot,body.cursor-on .cursor-ring{opacity:1}
   .mobile-filter-btn{display:inline-flex;align-items:center;gap:.5rem}
   .filters-panel{display:none;position:fixed;inset:0;z-index:960;overflow-y:auto;background:var(--cream);padding:1.4rem;border:none;max-width:340px;margin-left:auto}
   .filters-panel.open{display:block}
+  .cat-layout{grid-template-columns:1fr}
 }
-
-/* Product detail */
 .pd{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(2rem,5vw,5rem);align-items:start}
-@media (max-width:900px){.pd{grid-template-columns:1fr}}
 .pd-gallery{position:sticky;top:100px}
-.pd-main{aspect-ratio:3/4;background:var(--bone);overflow:hidden;position:relative}
-.pd-main img{width:100%;height:100%;object-fit:cover;transition:opacity .4s}
+.pd-main{aspect-ratio:4/5;background:var(--bone);overflow:hidden;position:relative}
+.pd-main img{width:100%;height:100%;object-fit:cover;transition:opacity .4s;mix-blend-mode:multiply}
 .pd-thumbs{display:flex;gap:.5rem;margin-top:.7rem;flex-wrap:wrap}
-.pd-thumb{width:70px;height:88px;background:var(--bone);overflow:hidden;border:1px solid transparent;cursor:pointer;transition:border-color .3s,opacity .3s}
+.pd-thumb{width:70px;height:88px;background:var(--bone);overflow:hidden;border:1px solid transparent;cursor:pointer;transition:border-color .3s,opacity .3s;position:relative}
 .pd-thumb.active{border-color:var(--ink)}
-.pd-thumb img{width:100%;height:100%;object-fit:cover}
+.pd-thumb img{width:100%;height:100%;object-fit:cover;mix-blend-mode:multiply}
 .pd-thumb:hover{opacity:.75}
 .pd-info{padding-top:.6rem}
 .pd-cat{font-size:.58rem;letter-spacing:.26em;text-transform:uppercase;color:var(--muted)}
@@ -481,13 +446,9 @@ body.cursor-on .cursor-dot,body.cursor-on .cursor-ring{opacity:1}
 .acc-body{max-height:0;overflow:hidden;transition:max-height .5s var(--ease)}
 .acc-item.open .acc-body{max-height:400px}
 .acc-body-inner{padding:0 0 1.4rem;font-size:.85rem;line-height:1.9;color:var(--muted);max-width:52ch}
-
-/* Empty state */
 .empty{text-align:center;padding:clamp(3rem,8vw,6rem) 1rem;color:var(--muted)}
 .empty h3{font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,3vw,2.2rem);font-weight:400;color:var(--ink);margin-bottom:.8rem}
 .empty p{font-size:.85rem;margin-bottom:1.6rem}
-
-/* Search overlay */
 .search-overlay{position:fixed;inset:0;z-index:965;background:rgba(245,241,233,.98);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);display:flex;flex-direction:column;padding:clamp(3rem,8vw,6rem) var(--pad);opacity:0;pointer-events:none;transition:opacity .5s var(--ease)}
 .search-overlay.show{opacity:1;pointer-events:auto}
 .search-close{align-self:flex-end;font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;padding:.6rem 1rem;border:1px solid var(--line);margin-bottom:2rem}
@@ -498,14 +459,9 @@ body.cursor-on .cursor-dot,body.cursor-on .cursor-ring{opacity:1}
 .search-hint{max-width:800px;margin:1.5rem auto 0;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
 .search-hint span{color:var(--ink);cursor:pointer;border-bottom:1px solid var(--line);margin-right:.8rem;padding-bottom:1px}
 .search-hint span:hover{border-color:var(--ink)}
-
-/* Wishlist page */
 .wish-page{max-width:1600px;margin:0 auto;padding:clamp(2rem,4vw,3rem) var(--pad) clamp(4rem,8vw,7rem)}
-
-/* Collections landing */
 .collections-landing{max-width:1600px;margin:0 auto;padding:clamp(2rem,4vw,3rem) var(--pad) clamp(4rem,8vw,7rem)}
 .collections-grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(1rem,2vw,2rem)}
-@media (max-width:720px){.collections-grid-2{grid-template-columns:1fr}}
 .collection-tile{position:relative;overflow:hidden;aspect-ratio:16/10;background:var(--bone);display:block}
 .collection-tile img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease);filter:brightness(.7) saturate(.9)}
 .collection-tile:hover img{transform:scale(1.06)}
@@ -513,15 +469,12 @@ body.cursor-on .cursor-dot,body.cursor-on .cursor-ring{opacity:1}
 .collection-tile-info h3{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3vw,2.6rem);font-weight:400;line-height:1.05}
 .collection-tile-info p{font-size:.82rem;color:rgba(245,241,233,.75);margin-top:.6rem;max-width:38ch;line-height:1.7}
 .collection-tile-info .collection-cta{opacity:1;transform:none;margin-top:1.2rem}
-
-/* Page heading */
 .page-head{max-width:1600px;margin:0 auto;padding:clamp(2.5rem,5vw,4rem) var(--pad) clamp(1.5rem,3vw,2rem)}
 .page-head .eyebrow{margin-bottom:.8rem}
 .page-head h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,5vw,4.2rem);font-weight:400;line-height:1.02;letter-spacing:-.01em}
 .page-head h1 em{font-style:italic;color:var(--accent)}
 .page-head p{margin-top:1rem;color:var(--muted);max-width:60ch;line-height:1.85;font-size:.92rem}
 
-/* Responsive */
 @media (max-width:1180px){.products-grid{grid-template-columns:repeat(3,1fr)}.footer-main{grid-template-columns:1fr 1fr;gap:2.6rem}}
 @media (max-width:980px){
   .nav{display:none}.burger{display:flex}
@@ -534,7 +487,7 @@ body.cursor-on .cursor-dot,body.cursor-on .cursor-ring{opacity:1}
   .quickview .qv-panel{grid-template-columns:1fr}
   .qv-img{min-height:280px;max-height:300px}
   .editorial{min-height:60vh}
-  .cat-layout{grid-template-columns:1fr}
+  .pd{grid-template-columns:1fr}
   .pd-gallery{position:static}
 }
 @media (max-width:680px){
@@ -557,6 +510,7 @@ body.cursor-on .cursor-dot,body.cursor-on .cursor-ring{opacity:1}
   .wish{opacity:1;transform:none}
   .pd-actions-row{flex-direction:column}
   .sub-pills{overflow-x:auto;flex-wrap:nowrap;padding-bottom:1rem}
+  .collections-grid-2{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
@@ -641,7 +595,7 @@ body.cursor-on .cursor-dot,body.cursor-on .cursor-ring{opacity:1}
   </div>
 </div>
 
-<!-- APP (router renders pages) -->
+<!-- APP -->
 <main id="app"></main>
 
 <!-- FOOTER -->
@@ -760,7 +714,7 @@ body.cursor-on .cursor-dot,body.cursor-on .cursor-ring{opacity:1}
 
 <script>
 /* ============================================================
-   BELLINI — APPLICATION CORE
+   BELLINI — APPLICATION CORE & CATALOG GENERATOR
    ============================================================ */
 
 /* ---------- Utilities ---------- */
@@ -768,77 +722,89 @@ const $ = (s, ctx = document) => ctx.querySelector(s);
 const $$ = (s, ctx = document) => [...ctx.querySelectorAll(s)];
 const fmt = n => '€ ' + Math.round(n).toLocaleString('it-IT');
 const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const rng = seed => { let s = seed; return () => { s = (s * 9301 + 49297) % 233280; return s / 233280; }; };
 const hash = str => { let h = 0; for (let i = 0; i < str.length; i++) h = (h * 31 + str.charCodeAt(i)) | 0; return Math.abs(h); };
 
 /* ---------- localStorage State ---------- */
-const LS = { cart: 'bellini_cart_v3', wish: 'bellini_wish_v3' };
+const LS = { cart: 'bellini_cart_v4', wish: 'bellini_wish_v4' };
 let cart = JSON.parse(localStorage.getItem(LS.cart) || '[]');
 let wishlist = new Set(JSON.parse(localStorage.getItem(LS.wish) || '[]'));
 const saveCart = () => localStorage.setItem(LS.cart, JSON.stringify(cart));
 const saveWish = () => localStorage.setItem(LS.wish, JSON.stringify([...wishlist]));
 
-/* ---------- Image Bank (curated Unsplash IDs per category) ---------- */
+/* ---------- Curated Human-Free Image Bank (Unsplash) ---------- */
 const U = id => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=900&q=80`;
-const IMG_BANK = {
-  tshirt: ['1521572163474-6864f9cf17ab','1503341504253-dff4815485f1','1583743814966-8936f5b7be1a','1620799140408-edc6dcb6d633','1527719327859-c6ce80353573','1576566588028-4147f3842f27'],
-  polo: ['1620012253295-c15cc3e65df4','1586790170083-2f9ceadc732d','1618354691373-d851c5c3a990','1598033129183-c4f50c736f10'],
-  shirt: ['1596755094514-f87e34085b2c','1598033129183-c4f50c736f10','1602810318383-e386cc2a3ccf','1594938298603-c8148c4dae35','1596755094514-f87e34085b2c'],
-  linen: ['1564859228273-274232fdb910','1594938298603-c8148c4dae35','1596755094514-f87e34085b2c'],
-  jeans: ['1608234808654-2a8875faa7fd','1542272604-787c3835535d','1541099649105-f69ad21f3246','1608234808654-2a8875faa7fd'],
-  trousers: ['1473966968600-fa801b869a1a','1594633312681-425c7b97ccd1','1624378439575-d8705ad7ae80'],
-  chinos: ['1473966968600-fa801b869a1a','1594633312681-425c7b97ccd1'],
-  shorts: ['1591195853828-11db59a44f6b','1564859228273-274232fdb910','1591195853828-11db59a44f6b'],
-  jacket: ['1551028719-00167b16eac5','1591047139829-d91aecb6caea','1544022613-e87ca75a784a'],
-  blazer: ['1507679799987-c73779587ccf','1617137968427-85924c800a22','1591047139829-d91aecb6caea','1507679799987-c73779587ccf'],
-  sweater: ['1434389677669-e08b4cac3105','1576566588028-4147f3842f27','1620799140408-edc6dcb6d633'],
-  hoodie: ['1611911813383-67769b37a149','1556821840-3a63f95609a7','1611911813383-67769b37a149'],
-  knit: ['1434389677669-e08b4cac3105','1620799140408-edc6dcb6d633','1576566588028-4147f3842f27'],
-  coat: ['1576871337622-98d48d1cf531','1539533113208-f6df8cc8b543','1591047139829-d91aecb6caea','1496747611176-843222e1e57c'],
-  sneaker: ['1542291026-7eec264c27ff','1600185365483-26d7a4cc7519','1595950653106-6c9ebd614d3a','1560769629-975ec94e6a86','1549298916-b41d501d3772'],
-  'formal-shoe': ['1549298916-b41d501d3772','1614252235316-8c857d38b5f4','1549298916-b41d501d3772'],
-  loafer: ['1560343090-f0409e92791a','1549298916-b41d501d3772','1560343090-f0409e92791a'],
-  boot: ['1608256246200-53e635b5b65f','1542843806-3c1f172e55a2','1608256246200-53e635b5b65f'],
-  dress: ['1490481651871-ab68de25d43d','1539008835657-9e8e9680c956','1595777457583-95e059d581b8','1564257631407-4deb1f99d992','1496747611176-843222e1e57c'],
-  top: ['1564257631407-4deb1f99d992','1503341504253-dff4815485f1','1564257631407-4deb1f99d992'],
-  blouse: ['1596755094514-f87e34085b2c','1598033129183-c4f50c736f10','1487222477894-8943e31ef7b2'],
-  shirtw: ['1596755094514-f87e34085b2c','1487222477894-8943e31ef7b2','1598033129183-c4f50c736f10'],
-  jeansw: ['1541099649105-f69ad21f3246','1608234808654-2a8875faa7fd','1542272604-787c3835535d'],
-  trousersw: ['1473966968600-fa801b869a1a','1594633312681-425c7b97ccd1','1624378439575-d8705ad7ae80'],
-  skirt: ['1572804013309-59a88b7e92f1','1583496661160-fb5886a0aaaa','1572804013309-59a88b7e92f1'],
-  shortsw: ['1591195853828-11db59a44f6b','1564859228273-274232fdb910'],
-  blazerw: ['1591047139829-d91aecb6caea','1507679799987-c73779587ccf','1617137968427-85924c800a22'],
-  jacketw: ['1551028719-00167b16eac5','1544022613-e87ca75a784a','1551028719-00167b16eac5'],
-  coatw: ['1539533113208-f6df8cc8b543','1576871337622-98d48d1cf531','1496747611176-843222e1e57c'],
-  sweaterw: ['1434389677669-e08b4cac3105','1576566588028-4147f3842f27','1434389677669-e08b4cac3105'],
-  knitw: ['1434389677669-e08b4cac3105','1620799140408-edc6dcb6d633'],
-  cardigan: ['1434389677669-e08b4cac3105','1576566588028-4147f3842f27','1434389677669-e08b4cac3105'],
-  hoodiew: ['1611911813383-67769b37a149','1556821840-3a63f95609a7'],
-  jumpsuit: ['1496747611176-843222e1e57c','1490481651871-ab68de25d43d','1496747611176-843222e1e57c'],
-  twopiece: ['1496747611176-843222e1e57c','1487222477894-8943e31ef7b2','1490481651871-ab68de25d43d'],
-  sneakerw: ['1560769629-975ec94e6a86','1595950653106-6c9ebd614d3a','1542291026-7eec264c27ff'],
-  heels: ['1509551388413-e18d0ac5d495','1543163521-1bf539c55dd2','1509551388413-e18d0ac5d495'],
-  flats: ['1560343090-f0409e92791a','1549298916-b41d501d3772','1560343090-f0409e92791a'],
-  bootw: ['1608256246200-53e635b5b65f','1542843806-3c1f172e55a2','1608256246200-53e635b5b65f'],
-  sandals: ['1603487742131-4160ec999306','1562273576092-6d03036c3531','1603487742131-4160ec999306'],
-  handbag: ['1584917865442-de89df76afd3','1548036328-c9fa89d128fa','1591561954557-26941169b49e','1566150905458-1bf1fc113f0d'],
-  'shoulder-bag': ['1584917865442-de89df76afd3','1548036328-c9fa89d128fa','1591561954557-26941169b49e'],
-  crossbody: ['1591561954557-26941169b49e','1566150905458-1bf1fc113f0d','1591561954557-26941169b49e'],
-  wallet: ['1627123424574-724758594e93','1553062407-98eeb64c6a62','1627123424574-724758594e93'],
-  belt: ['1624222247344-550fb60583dc','1553062407-98eeb64c6a62','1624222247344-550fb60583dc'],
-  sunglasses: ['1533867617858-e7b97e060509','1511499767150-a48a237f0083','1533867617858-e7b97e060509'],
-  watch: ['1523170335258-f5ed11844a49','1524805444758-089113d48a6d','1434056886845-dac89ffe9b56','1523170335258-f5ed11844a49'],
-  jewellery: ['1599643478518-a784e5dc4c8f','1515562141207-7a88fb7ce338','1599643478518-a784e5dc4c8f'],
-  necklace: ['1611652022419-a9419f74343d','1599643478518-a784e5dc4c8f','1611652022419-a9419f74343d'],
-  bracelet: ['1611652022419-a9419f74343d','1599643478518-a784e5dc4c8f','1611652022419-a9419f74343d'],
-  earrings: ['1535632066927-ab7c9ab60908','1599643478518-a784e5dc4c8f','1535632066927-ab7c9ab60908'],
-  ring: ['1599643478518-a784e5dc4c8f','1605100804763-247f67b3557e','1599643478518-a784e5dc4c8f'],
-  scarf: ['1522312346375-d1a52e2b99b3','1601924994987-69e26d50dc26','1522312346375-d1a52e2b99b3'],
-  hat: ['1521369909029-2afed882baee','1584917865442-de89df76afd3','1521369909029-2afed882baee'],
-  backpack: ['1553062407-98eeb64c6a62','1622560480605-d83c853bc5c3','1553062407-98eeb64c6a62'],
-  travel: ['1553062407-98eeb64c6a62','1584917865442-de89df76afd3','1553062407-98eeb64c6a62'],
-  tote: ['1591561954557-26941169b49e','1548036328-c9fa89d128fa','1591561954557-26941169b49e'],
-  'fashion-acc': ['1522312346375-d1a52e2b99b3','1521369909029-2afed882baee','1522312346375-d1a52e2b99b3']
+
+const IMAGE_MAP = {
+  // Men Clothing
+  'men/tshirts': [U('1521572163474-6864f9cf17ab'), U('1583743814966-8936f5b7be1a'), U('1503341504253-dff4815485f1'), U('1576566588028-4147f3842f27')],
+  'men/polo': [U('1586790170083-2f9ceadc732d'), U('1620012253295-c15cc3e65df4'), U('1618354691373-d851c5c3a990')],
+  'men/casual-shirts': [U('1596755094514-f87e34085b2c'), U('1598033129183-c4f50c736f10'), U('1602810318383-e386cc2a3ccf')],
+  'men/formal-shirts': [U('1594938298603-c8148c4dae35'), U('1602810318383-e386cc2a3ccf'), U('1596755094514-f87e34085b2c')],
+  'men/linen-shirts': [U('1564859228273-274232fdb910'), U('1594938298603-c8148c4dae35')],
+  'men/jeans': [U('1608234808654-2a8875faa7fd'), U('1542272604-787c3835535d'), U('1541099649105-f69ad21f3246')],
+  'men/casual-trousers': [U('1473966968600-fa801b869a1a'), U('1594633312681-425c7b97ccd1'), U('1624378439575-d8705ad7ae80')],
+  'men/formal-trousers': [U('1594633312681-425c7b97ccd1'), U('1473966968600-fa801b869a1a')],
+  'men/chinos': [U('1624378439575-d8705ad7ae80'), U('1473966968600-fa801b869a1a')],
+  'men/shorts': [U('1591195853828-11db59a44f6b'), U('1564859228273-274232fdb910')],
+  'men/jackets': [U('1551028719-00167b16eac5'), U('1591047139829-d91aecb6caea'), U('1544022613-e87ca75a784a')],
+  'men/blazers': [U('1507679799987-c73779587ccf'), U('1617137968427-85924c800a22'), U('1591047139829-d91aecb6caea')],
+  'men/sweaters': [U('1434389677669-e08b4cac3105'), U('1576566588028-4147f3842f27'), U('1620799140408-edc6dcb6d633')],
+  'men/hoodies': [U('1611911813383-67769b37a149'), U('1556821840-3a63f95609a7')],
+  'men/knitwear': [U('1434389677669-e08b4cac3105'), U('1620799140408-edc6dcb6d633')],
+  'men/coats': [U('1576871337622-98d48d1cf531'), U('1539533113208-f6df8cc8b543'), U('1496747611176-843222e1e57c')],
+  
+  // Men Footwear
+  'men/sneakers': [U('1542291026-7eec264c27ff'), U('1600185365483-26d7a4cc7519'), U('1595950653106-6c9ebd614d3a'), U('1560769629-975ec94e6a86')],
+  'men/formal-shoes': [U('1549298916-b41d501d3772'), U('1614252235316-8c857d38b5f4')],
+  'men/loafers': [U('1560343090-f0409e92791a'), U('1549298916-b41d501d3772')],
+  'men/boots': [U('1608256246200-53e635b5b65f'), U('1542843806-3c1f172e55a2')],
+
+  // Women Clothing
+  'women/dresses': [U('1539008835657-9e8e9680c956'), U('1595777457583-95e059d581b8'), U('1564257631407-4deb1f99d992'), U('1496747611176-843222e1e57c')],
+  'women/tops': [U('1564257631407-4deb1f99d992'), U('1503341504253-dff4815485f1')],
+  'women/tshirts': [U('1521572163474-6864f9cf17ab'), U('1583743814966-8936f5b7be1a')],
+  'women/blouses': [U('1596755094514-f87e34085b2c'), U('1598033129183-c4f50c736f10'), U('1487222477894-8943e31ef7b2')],
+  'women/shirts': [U('1596755094514-f87e34085b2c'), U('1487222477894-8943e31ef7b2')],
+  'women/jeans': [U('1541099649105-f69ad21f3246'), U('1608234808654-2a8875faa7fd')],
+  'women/trousers': [U('1473966968600-fa801b869a1a'), U('1594633312681-425c7b97ccd1')],
+  'women/skirts': [U('1572804013309-59a88b7e92f1'), U('1583496661160-fb5886a0aaaa')],
+  'women/shorts': [U('1591195853828-11db59a44f6b'), U('1564859228273-274232fdb910')],
+  'women/blazers': [U('1591047139829-d91aecb6caea'), U('1507679799987-c73779587ccf')],
+  'women/jackets': [U('1551028719-00167b16eac5'), U('1544022613-e87ca75a784a')],
+  'women/coats': [U('1539533113208-f6df8cc8b543'), U('1576871337622-98d48d1cf531')],
+  'women/sweaters': [U('1434389677669-e08b4cac3105'), U('1576566588028-4147f3842f27')],
+  'women/knitwear': [U('1434389677669-e08b4cac3105'), U('1620799140408-edc6dcb6d633')],
+  'women/cardigans': [U('1434389677669-e08b4cac3105'), U('1576566588028-4147f3842f27')],
+  'women/hoodies': [U('1611911813383-67769b37a149'), U('1556821840-3a63f95609a7')],
+  'women/jumpsuits': [U('1496747611176-843222e1e57c'), U('1490481651871-ab68de25d43d')],
+  'women/two-piece': [U('1496747611176-843222e1e57c'), U('1487222477894-8943e31ef7b2')],
+
+  // Women Footwear
+  'women/sneakers-w': [U('1560769629-975ec94e6a86'), U('1595950653106-6c9ebd614d3a'), U('1542291026-7eec264c27ff')],
+  'women/heels': [U('1509551388413-e18d0ac5d495'), U('1543163521-1bf539c55dd2')],
+  'women/flats': [U('1560343090-f0409e92791a'), U('1549298916-b41d501d3772')],
+  'women/boots-w': [U('1608256246200-53e635b5b65f'), U('1542843806-3c1f172e55a2')],
+  'women/sandals': [U('1603487742131-4160ec999306'), U('1562273576092-6d03036c3531')],
+
+  // Accessories
+  'accessories/handbags': [U('1584917865442-de89df76afd3'), U('1548036328-c9fa89d128fa'), U('1591561954557-26941169b49e')],
+  'accessories/shoulder-bags': [U('1584917865442-de89df76afd3'), U('1548036328-c9fa89d128fa'), U('1591561954557-26941169b49e')],
+  'accessories/crossbody': [U('1591561954557-26941169b49e'), U('1566150905458-1bf1fc113f0d')],
+  'accessories/totes': [U('1591561954557-26941169b49e'), U('1548036328-c9fa89d128fa')],
+  'accessories/wallets': [U('1627123424574-724758594e93'), U('1553062407-98eeb64c6a62')],
+  'accessories/belts': [U('1624222247344-550fb60583dc'), U('1553062407-98eeb64c6a62')],
+  'accessories/jewellery': [U('1599643478518-a784e5dc4c8f'), U('1515562141207-7a88fb7ce338')],
+  'accessories/necklaces': [U('1611652022419-a9419f74343d'), U('1599643478518-a784e5dc4c8f')],
+  'accessories/bracelets': [U('1611652022419-a9419f74343d'), U('1599643478518-a784e5dc4c8f')],
+  'accessories/earrings': [U('1535632066927-ab7c9ab60908'), U('1599643478518-a784e5dc4c8f')],
+  'accessories/rings': [U('1599643478518-a784e5dc4c8f'), U('1605100804763-247f67b3557e')],
+  'accessories/watches': [U('1523170335258-f5ed11844a49'), U('1524805444758-089113d48a6d'), U('1434056886845-dac89ffe9b56')],
+  'accessories/sunglasses': [U('1533867617858-e7b97e060509'), U('1511499767150-a48a237f0083')],
+  'accessories/scarves': [U('1522312346375-d1a52e2b99b3'), U('1601924994987-69e26d50dc26')],
+  'accessories/hats': [U('1521369909029-2afed882baee'), U('1584917865442-de89df76afd3')],
+  'accessories/backpacks': [U('1553062407-98eeb64c6a62'), U('1622560480605-d83c853bc5c3')],
+  'accessories/travel': [U('1553062407-98eeb64c6a62'), U('1584917865442-de89df76afd3')],
+  'accessories/fashion-acc': [U('1522312346375-d1a52e2b99b3'), U('1521369909029-2afed882baee')]
 };
 
 /* ---------- Color & Size Pools ---------- */
@@ -866,102 +832,78 @@ const SIZES = {
   rings: ['10','12','14','16','18','20']
 };
 
-/* ---------- Catalog Definition ---------- */
-const S = (slug,label,img,pMin,pMax,sz,mat,nouns) => ({slug,label,img,pMin,pMax,sz,mat,nouns});
+/* ---------- Design Diversity Definition ---------- */
+const DESIGNS = {
+  // Men Clothing
+  'men/tshirts': ['Classic Crewneck', 'Oversized Heavyweight', 'Slim-Fit Premium', 'Boxy Drop-Shoulder', 'Minimal Embroidered', 'Horizontal Striped', 'Vertical Striped', 'Textured Waffle-Knit', 'Ribbed Cotton', 'Henley Button-Neck', 'V-Neck Cotton', 'Contrast-Binding', 'Vintage Washed', 'Pocket Detail', 'Color-Block', 'Longline', 'Structured Heavyweight', 'Mercerized Cotton', 'Minimal Graphic', 'Relaxed Box-Fit'],
+  'men/polo': ['Classic Piqué', 'Long-Sleeve Piqué', 'Knitted Polo', 'Slim-Fit Jersey', 'Contrast-Tipping', 'Terry-Cloth Polo', 'Button-Down Collar', 'Striped Piqué', 'Textured Knit', 'Merino Wool Polo', 'Ribbed Polo', 'Zip-Neck Polo', 'Retro Sport', 'Linen-Blend Polo', 'Cutaway Collar', 'Tonal-Stitch Polo', 'Short-Sleeve Knit', 'Heavyweight Cotton', 'Minimalist Polo', 'Relaxed Fit Polo'],
+  'men/casual-shirts': ['Classic Oxford', 'Brushed Flannel', 'Chambray Utility', 'Relaxed Fit Denim', 'Garment-Dyed Twill', 'Corduroy Button-Down', 'Camp Collar', 'Oversized Fit', 'Western Style', 'Checked Overshirt', 'Mandarin Collar', 'Plaid Flannel', 'Linen-Blend Casual', 'Poplin Casual', 'Utility Pocket', 'Tonal Logo', 'Curved Hem', 'Drop-Shoulder Casual', 'Vintage Wash', 'Striped Cotton'],
+  'men/formal-shirts': ['Classic Poplin', 'Slim-Fit Twill', 'Herringbone Weave', 'Egyptian Cotton', 'French Cuff', 'Cutaway Collar', 'Spread Collar', 'Pinpoint Oxford', 'Non-Iron Finish', 'Tonal Stripe', 'End-on-End', 'Bib Front Dress', 'Tuxedo Pleated', 'Hidden Button-Down', 'Windsor Collar', 'Slim-Fit Poplin', 'Classic Twill', 'Royal Oxford', 'Micro-Check', 'Heritage Weave'],
+  'men/linen-shirts': ['Classic Linen', 'Washed Linen', 'Slub Linen', 'Camp Collar Linen', 'Band Collar Linen', 'Linen-Blend Popover', 'Short-Sleeve Linen', 'Striped Linen', 'Check Linen', 'Oversized Linen', 'Pocket Linen', 'Tunic Linen', 'Grandad Collar Linen', 'Relaxed Linen', 'Tailored Linen', 'Mandarin Linen', 'Natural Dye Linen', 'Textured Linen', 'Fine Linen', 'Heavyweight Linen'],
+  'men/jeans': ['Slim-Fit Denim', 'Straight-Leg Denim', 'Relaxed Fit Denim', 'Skinny Jeans', 'Bootcut Jeans', 'Tapered Fit', 'Athletic Fit', 'Selvedge Denim', 'Japanese Denim', 'Stretch Denim', 'Rigid Denim', 'Distressed Denim', 'Vintage Wash', 'Black Denim', 'Grey Denim', 'Cropped Denim', 'Wide-Leg Denim', 'Double-Knee Utility', 'Carpenter Jeans', 'Light Wash'],
+  'men/casual-trousers': ['Classic Chino', 'Slim-Fit Twill', 'Relaxed Fit Cotton', 'Garment-Dyed Twill', 'Pleated Front', 'Flat Front', 'Cargo Pocket', 'Drawstring Waist', 'Elastic Cuff', 'Cropped Leg', 'Wide-Leg Casual', 'Linen-Blend Casual', 'Corduroy Casual', 'Flannel Casual', 'Utility Pant', 'Tapered Casual', 'Straight-Leg Casual', 'Tapered Twill', 'Textured Cotton', 'Lightweight Poplin'],
+  'men/formal-trousers': ['Tailored Wool', 'Slim-Fit Suit', 'Pleated Wool', 'Flat-Front Wool', 'Side-Adjuster', 'Tuxedo Stripe', 'High-Waist Formal', 'Wide-Leg Formal', 'Tapered Formal', 'Cuffed Hem', 'Uncuffed Hem', 'Herringbone Formal', 'Flannel Formal', 'Gabardine Formal', 'Twill Formal', 'Crease-Resistant', 'Single-Pleat', 'Double-Pleat', 'Classic Fit', 'Modern Fit'],
+  'men/chinos': ['Classic Fit Chino', 'Slim-Fit Chino', 'Tapered Chino', 'Relaxed Fit Chino', 'Stretch Chino', 'Garment-Dyed Chino', 'Pleated Chino', 'Flat-Front Chino', 'Cropped Chino', 'Wide-Leg Chino', 'Cotton-Twill Chino', 'Linen-Blend Chino', 'Textured Chino', 'Utility Chino', 'Drawstring Chino', 'Cuffed Chino', 'Lightweight Chino', 'Heavyweight Chino', 'Tonal Chino', 'Contrast-Stitch Chino'],
+  'men/shorts': ['Classic Chino Short', 'Linen Short', 'Seersucker Short', 'Cargo Short', 'Swim Short', 'Drawstring Short', 'Tailored Short', 'Denim Short', 'Utility Short', 'Pleated Short', 'Relaxed Fit Short', 'Slim-Fit Short', 'Striped Short', 'Check Short', 'Textured Short', 'Tonal Short', 'Cropped Short', 'Elastic Waist Short', 'Pocket Detail Short', 'Contrast-Trim Short'],
+  'men/jackets': ['Harrington Jacket', 'Bomber Jacket', 'Denim Jacket', 'Suede Jacket', 'Leather Biker', 'Utility Jacket', 'Field Jacket', 'Coach Jacket', 'Windbreaker', 'Quilted Jacket', 'Puffer Jacket', 'Track Jacket', 'Overshirt Jacket', 'Cropped Jacket', 'Zip-Through Jacket', 'Hooded Jacket', 'Fleece Jacket', 'Softshell Jacket', 'Twill Jacket', 'Waxed Jacket'],
+  'men/blazers': ['Single-Breasted Wool', 'Double-Breasted Wool', 'Unstructured Linen', 'Slim-Fit Cotton', 'Classic Fit Twill', 'Tonal Check', 'Herringbone Blazer', 'Pinstripe Blazer', 'Velvet Blazer', 'Tweed Blazer', 'Patch-Pocket Blazer', 'Flap-Pocket Blazer', 'Peak Lapel', 'Notch Lapel', 'Shawl Lapel', 'Textured Blazer', 'Lightweight Blazer', 'Tailored Blazer', 'Soft-Shoulder Blazer', 'Italian Fit'],
+  'men/sweaters': ['Merino Crewneck', 'Cashmere V-Neck', 'Lambswool Crew', 'Cotton Cable-Knit', 'Waffle-Knit Sweater', 'Ribbed Crewneck', 'Turtleneck Sweater', 'Mock-Neck Sweater', 'Half-Zip Sweater', 'Button-Shoulder Sweater', 'Textured Knit', 'Striped Knit', 'Color-Block Knit', 'Oversized Knit', 'Slim-Fit Knit', 'Tonal Knit', 'Heavyweight Knit', 'Lightweight Knit', 'Fair Isle Knit', 'Cable-Knit Crew'],
+  'men/hoodies': ['Classic Pullover', 'Zip-Up Hoodie', 'Oversized Hoodie', 'Cropped Hoodie', 'Heavyweight Fleece', 'Lightweight Terry', 'Graphic Print', 'Embossed Logo', 'Tonal Stitch', 'Drawstring Hood', 'Kangaroo Pocket', 'Side-Zip Hoodie', 'Hooded Sweatshirt', 'Relaxed Fit', 'Slim Fit', 'Boxy Fit', 'Vintage Wash', 'Garment-Dyed', 'Fleece-Lined', 'French Terry'],
+  'men/knitwear': ['Merino Crewneck', 'Cashmere V-Neck', 'Lambswool Crew', 'Cotton Cable-Knit', 'Waffle-Knit', 'Ribbed Crewneck', 'Turtleneck', 'Mock-Neck', 'Half-Zip', 'Button-Shoulder', 'Textured Knit', 'Striped Knit', 'Color-Block', 'Oversized Knit', 'Slim-Fit Knit', 'Tonal Knit', 'Heavyweight Knit', 'Lightweight Knit', 'Fair Isle', 'Cable-Knit'],
+  'men/coats': ['Wool Overcoat', 'Cashmere-Blend Coat', 'Trench Coat', 'Mac Coat', 'Pea Coat', 'Duffle Coat', 'Parka Coat', 'Puffer Coat', 'Wool-Blend Coat', 'Single-Breasted Coat', 'Double-Breasted Coat', 'Belted Coat', 'Unbelted Coat', 'Longline Coat', 'Cropped Coat', 'Camel Coat', 'Charcoal Coat', 'Navy Coat', 'Herringbone Coat', 'Twill Coat'],
+  
+  // Men Footwear
+  'men/sneakers': ['Classic Leather', 'Suede Low-Top', 'Canvas Trainer', 'Running Style', 'Retro Court', 'Minimalist White', 'Chunky Sole', 'Slip-On', 'High-Top', 'Mesh Trainer', 'Nappa Leather', 'Contrast Sole', 'Tonal Stitch', 'Perforated Detail', 'Lace-Up', 'Velcro Strap', 'Platform Sole', 'Vegan Leather', 'Knit Upper', 'Suede Panel'],
+  'men/formal-shoes': ['Oxford Classic', 'Derby Classic', 'Brogue Detail', 'Cap-Toe Oxford', 'Plain-Toe Derby', 'Wholecut Oxford', 'Patent Leather', 'Suede Formal', 'Calf Leather', 'Goodyear Welt', 'Leather Sole', 'Rubber Sole', 'Tonal Stitch', 'Medallion Toe', 'Wingtip Brogue', 'Semi-Brogue', 'Double Monk', 'Single Monk', 'Loafer Formal', 'Tuxedo Shoe'],
+  'men/loafers': ['Penny Loafer', 'Tassel Loafer', 'Horsebit Loafer', 'Suede Loafer', 'Leather Loafer', 'Nappa Loafer', 'Driving Loafer', 'Moccasin', 'Slip-On Loafer', 'Contrast Stitch', 'Tonal Stitch', 'Calf Leather', 'Patent Loafer', 'Woven Loafer', 'Kiltie Loafer', 'Belgian Loafer', 'Venetian Loafer', 'Apron Toe', 'Leather Sole', 'Rubber Sole'],
+  'men/boots': ['Chelsea Boot', 'Ankle Boot', 'Lace-Up Boot', 'Suede Boot', 'Leather Boot', 'Calf Leather', 'Waxed Leather', 'Combat Boot', 'Chukka Boot', 'Hiking Boot', 'Cap-Toe Boot', 'Plain-Toe Boot', 'Side-Zip Boot', 'Tonal Stitch', 'Contrast Sole', 'Rubber Sole', 'Leather Sole', 'Vibram Sole', 'Goodyear Welt', 'Moc-Toe Boot'],
 
-const CATALOG = {
-  men: {
-    label: 'Uomo', title: 'Men', subtitle: 'Sartorialità italiana contemporanea',
-    groups: [
-      { label: 'Clothing', subs: [
-        S('tshirts','T-Shirts','tshirt',35,95,'xxl',['Cotton','Pima','Organic','Supima','Jersey'],['T-Shirt','Tee','Crew Neck','Polo Neck']),
-        S('polo','Polo Shirts','polo',55,135,'xxl',['Piqué','Cotton','Mercerized','Jersey','Knit'],['Polo','Polo Shirt','Piqué Polo','Knit Polo']),
-        S('casual-shirts','Casual Shirts','shirt',65,150,'xxl',['Oxford','Chambray','Cotton','Linen-Blend','Flannel'],['Shirt','Casual Shirt','Overshirt']),
-        S('formal-shirts','Formal Shirts','shirt',85,180,'num',['Poplin','Twill','Herringbone','Cotton','Egyptian Cotton'],['Dress Shirt','Formal Shirt','Poplin Shirt']),
-        S('linen-shirts','Linen Shirts','linen',75,165,'xxl',['Linen','Irish Linen','Linen-Blend','Washed Linen','Slub Linen'],['Linen Shirt','Summer Shirt','Camp Shirt']),
-        S('jeans','Jeans','jeans',95,220,'xxl',['Denim','Selvedge','Stretch-Denim','Japanese Denim','Rigid Denim'],['Jeans','5-Pocket','Straight Jeans']),
-        S('casual-trousers','Casual Trousers','trousers',85,195,'num',['Cotton','Twill','Chino','Stretch Cotton','Garment-Dyed Cotton'],['Trousers','Pants','Casual Trousers']),
-        S('formal-trousers','Formal Trousers','trousers',110,240,'num',['Wool','Wool-Blend','Gabardine','Flannel','Twill'],['Dress Trousers','Tailored Trousers','Suit Trousers']),
-        S('chinos','Chinos','chinos',75,175,'num',['Cotton','Twill','Stretch','Garment-Dyed Cotton'],['Chinos','Chino Pants','Slim Chinos']),
-        S('shorts','Shorts','shorts',55,130,'xxl',['Cotton','Linen','Twill','Seersucker'],['Shorts','Bermuda','Chino Shorts']),
-        S('jackets','Jackets','jacket',180,450,'xxl',['Cotton','Nylon','Wool-Blend','Suede','Technical Fabric'],['Jacket','Harrington','Bomber']),
-        S('blazers','Blazers','blazer',250,600,'num',['Wool','Linen','Cotton','Silk-Blend'],['Blazer','Sport Jacket','Unstructured Blazer']),
-        S('sweaters','Sweaters','sweater',120,320,'xxl',['Wool','Merino','Cashmere-Blend','Lambswool','Cotton'],['Sweater','Crewneck Sweater','V-Neck Sweater']),
-        S('hoodies','Hoodies & Sweatshirts','hoodie',75,180,'xxl',['Cotton','Fleece','French Terry','Loopback Cotton'],['Hoodie','Sweatshirt','Hooded Sweatshirt']),
-        S('knitwear','Knitwear','knit',140,380,'xxl',['Merino','Cashmere','Wool','Cashmere-Blend','Alpaca'],['Knit','Knitwear','Pullover']),
-        S('coats','Coats','coat',320,850,'xxl',['Wool','Cashmere-Blend','Recycled Wool','Wool-Cashmere','Twill'],['Coat','Overcoat','Trench Coat'])
-      ]},
-      { label: 'Footwear', subs: [
-        S('sneakers','Sneakers','sneaker',120,320,'shoeM',['Leather','Suede','Canvas','Nappa','Mesh'],['Sneaker','Low-Top','Trainer']),
-        S('formal-shoes','Formal Shoes','formal-shoe',180,450,'shoeM',['Leather','Patent-Leather','Suede','Calf Leather'],['Oxford','Derby','Brogue']),
-        S('loafers','Loafers','loafer',150,380,'shoeM',['Leather','Suede','Nappa','Calf Leather'],['Loafer','Penny Loafer','Moccasin']),
-        S('boots','Boots','boot',180,450,'shoeM',['Leather','Suede','Calf Leather','Waxed Leather'],['Boot','Chelsea Boot','Ankle Boot'])
-      ]}
-    ]
-  },
-  women: {
-    label: 'Donna', title: 'Women', subtitle: 'Eleganza italiana senza tempo',
-    groups: [
-      { label: 'Clothing', subs: [
-        S('dresses','Dresses','dress',95,350,'xl',['Silk','Viscose','Cotton','Satin','Crepe'],['Dress','Midi Dress','Maxi Dress']),
-        S('tops','Tops','top',55,165,'xl',['Cotton','Silk','Viscose','Jersey','Satin'],['Top','Blouse Top','Knit Top']),
-        S('tshirts','T-Shirts','tshirt',35,95,'xl',['Cotton','Pima','Organic','Supima','Jersey'],['T-Shirt','Tee','Crop Tee']),
-        S('blouses','Blouses','blouse',75,195,'xl',['Silk','Satin','Viscose','Chiffon','Crepe'],['Blouse','Silk Blouse','Sheer Blouse']),
-        S('shirts','Shirts','shirtw',65,175,'xl',['Cotton','Poplin','Linen','Silk-Blend','Oxford'],['Shirt','Oversized Shirt','Button-Up']),
-        S('jeans','Jeans','jeansw',85,210,'xl',['Denim','Stretch-Denim','Selvedge','Rigid Denim'],['Jeans','Skinny Jeans','Straight Jeans']),
-        S('trousers','Trousers','trousersw',85,210,'xl',['Cotton','Wool','Viscose','Crepe','Twill'],['Trousers','Pants','Wide-Leg Trousers']),
-        S('skirts','Skirts','skirt',75,195,'xl',['Viscose','Cotton','Satin','Crepe','Linen'],['Skirt','Midi Skirt','Pleated Skirt']),
-        S('shorts','Shorts','shortsw',55,140,'xl',['Cotton','Linen','Denim','Twill'],['Shorts','Denim Shorts','High-Waist Shorts']),
-        S('blazers','Blazers','blazerw',180,450,'xl',['Wool','Linen','Cotton','Crepe','Wool-Blend'],['Blazer','Tailored Blazer','Boyfriend Blazer']),
-        S('jackets','Jackets','jacketw',150,380,'xl',['Leather','Cotton','Nylon','Suede','Trench Cotton'],['Jacket','Biker Jacket','Trench']),
-        S('coats','Coats','coatw',250,680,'xl',['Wool','Cashmere-Blend','Trench Cotton','Wool-Blend'],['Coat','Wool Coat','Trench Coat']),
-        S('sweaters','Sweaters','sweaterw',95,280,'xl',['Wool','Merino','Cashmere','Cotton','Lambswool'],['Sweater','Pullover','Crewneck']),
-        S('knitwear','Knitwear','knitw',110,320,'xl',['Merino','Cashmere','Wool','Alpaca','Cotton'],['Knit','Knitwear','Pullover']),
-        S('cardigans','Cardigans','cardigan',85,240,'xl',['Wool','Cotton','Merino','Cashmere-Blend'],['Cardigan','Button Cardigan','Long Cardigan']),
-        S('hoodies','Hoodies & Sweatshirts','hoodiew',65,165,'xl',['Cotton','Fleece','French Terry','Loopback Cotton'],['Hoodie','Sweatshirt','Cropped Hoodie']),
-        S('jumpsuits','Jumpsuits','jumpsuit',120,320,'xl',['Viscose','Cotton','Satin','Crepe','Linen'],['Jumpsuit','Playsuit','Wide-Leg Jumpsuit']),
-        S('two-piece','Two-Piece Sets','twopiece',130,340,'xl',['Cotton','Linen','Viscose','Crepe','Twill'],['Set','Co-ord Set','Two-Piece Set'])
-      ]},
-      { label: 'Footwear', subs: [
-        S('sneakers-w','Sneakers','sneakerw',95,260,'shoeW',['Leather','Canvas','Suede','Nappa'],['Sneaker','Trainer','Low-Top']),
-        S('heels','Heels','heels',120,380,'shoeW',['Leather','Satin','Patent','Suede'],['Heel','Pump','Stiletto']),
-        S('flats','Flats','flats',95,280,'shoeW',['Leather','Suede','Nappa','Patent'],['Flat','Ballerina','Loafer']),
-        S('boots-w','Boots','bootw',150,450,'shoeW',['Leather','Suede','Calf Leather'],['Boot','Ankle Boot','Knee Boot']),
-        S('sandals','Sandals','sandals',85,280,'shoeW',['Leather','Suede','Nappa','Patent'],['Sandal','Heeled Sandal','Flat Sandal'])
-      ]}
-    ]
-  },
-  accessories: {
-    label: 'Accessori', title: 'Accessories', subtitle: 'Dettagli che definiscono lo stile',
-    groups: [
-      { label: 'Bags', subs: [
-        S('handbags','Handbags','handbag',180,650,'one',['Leather','Suede','Nappa','Calf Leather','Patent'],['Handbag','Top-Handle Bag','Satchel']),
-        S('shoulder-bags','Shoulder Bags','shoulder-bag',150,550,'one',['Leather','Suede','Nappa','Calf Leather'],['Shoulder Bag','Hobo','Baguette']),
-        S('crossbody','Crossbody Bags','crossbody',120,450,'one',['Leather','Nappa','Suede','Calf Leather'],['Crossbody','Messenger','Crossbody Bag']),
-        S('totes','Totes','tote',120,450,'one',['Leather','Canvas','Nylon','Nappa'],['Tote','Shopper','Tote Bag'])
-      ]},
-      { label: 'Small Leather Goods', subs: [
-        S('wallets','Wallets','wallet',65,220,'one',['Leather','Nappa','Saffiano','Calf Leather'],['Wallet','Bifold','Zip Wallet']),
-        S('belts','Belts','belt',55,195,'one',['Leather','Suede','Calf Leather','Nappa'],['Belt','Leather Belt','Woven Belt'])
-      ]},
-      { label: 'Jewellery & Watches', subs: [
-        S('jewellery','Jewellery','jewellery',65,450,'one',['Gold-Tone','Sterling-Silver','Stainless-Steel','Plated'],['Jewellery Set','Piece','Collection']),
-        S('necklaces','Necklaces','necklace',55,380,'one',['Gold-Tone','Silver','Plated','Sterling-Silver'],['Necklace','Chain','Pendant']),
-        S('bracelets','Bracelets','bracelet',45,320,'one',['Gold-Tone','Silver','Leather','Stainless-Steel'],['Bracelet','Bangle','Cuff']),
-        S('earrings','Earrings','earrings',35,280,'one',['Gold-Tone','Silver','Pearl','Plated'],['Earrings','Studs','Hoops']),
-        S('rings','Rings','ring',45,350,'rings',['Gold-Tone','Silver','Steel','Plated'],['Ring','Signet','Stacking Ring']),
-        S('watches','Watches','watch',180,950,'one',['Steel','Leather','Gold-Tone','Titanium'],['Watch','Automatic Watch','Dress Watch'])
-      ]},
-      { label: 'Other', subs: [
-        S('sunglasses','Sunglasses','sunglasses',95,320,'one',['Acetate','Metal','Titanium','Bio-Acetate'],['Sunglasses','Eyewear','Shades']),
-        S('scarves','Scarves','scarf',45,180,'one',['Silk','Wool','Cashmere','Modal'],['Scarf','Silk Scarf','Wool Scarf']),
-        S('hats','Hats & Caps','hat',35,150,'one',['Wool','Cotton','Straw','Felt'],['Hat','Cap','Bucket Hat']),
-        S('backpacks','Backpacks','backpack',95,320,'one',['Leather','Nylon','Canvas','Technical Fabric'],['Backpack','Daypack','City Backpack']),
-        S('travel','Travel Bags','travel',180,650,'one',['Leather','Nylon','Canvas','Technical Fabric'],['Travel Bag','Weekender','Duffel']),
-        S('fashion-acc','Fashion Accessories','fashion-acc',45,250,'one',['Leather','Metal','Mixed','Silk'],['Accessory','Piece','Charm'])
-      ]}
-    ]
-  }
+  // Women Clothing
+  'women/dresses': ['A-Line Midi', 'Minimalist Slip', 'Structured Blazer', 'Pleated Midi', 'Wrap Dress', 'Square-Neck', 'Asymmetric Neckline', 'Puff-Sleeve', 'Long-Sleeve Knit', 'Sleeveless Column', 'Shirt Dress', 'Tiered Maxi', 'Tailored Waist', 'Ribbed Bodycon', 'Empire-Waist', 'One-Shoulder', 'High-Neck Midi', 'Pleated Shirt', 'Belted Minimal', 'Relaxed Linen'],
+  'women/tops': ['Silk Camisole', 'V-Neck Blouse', 'Off-Shoulder Top', 'Puff-Sleeve Top', 'Crop Top', 'Bandeau Top', 'Wrap Top', 'Peplum Top', 'Tie-Front Top', 'Smocked Top', 'Ruched Top', 'Asymmetric Top', 'One-Shoulder Top', 'Halter Top', 'Turtle Neck Top', 'Square-Neck Top', 'Sleeveless Shell', 'Button-Down Top', 'Knit Cami', 'Lace-Trim Top'],
+  'women/tshirts': ['Classic Crewneck', 'Oversized Boxy', 'Slim-Fit Premium', 'Cropped Tee', 'V-Neck Cotton', 'Pocket Tee', 'Graphic Print', 'Striped Tee', 'Ribbed Cotton', 'Longline Tee', 'Drop-Shoulder', 'Contrast Binding', 'Vintage Wash', 'Tonal Stitch', 'Embroidered Logo', 'Mesh Tee', 'Linen-Blend Tee', 'Organic Cotton', 'Pima Cotton', 'Relaxed Fit'],
+  'women/blouses': ['Silk Button-Down', 'Satin Blouse', 'V-Neck Blouse', 'Pussy-Bow Blouse', 'Ruffle Blouse', 'Sheer Chiffon', 'Wrap Blouse', 'Peplum Blouse', 'Smocked Blouse', 'Tunic Blouse', 'High-Neck Blouse', 'Off-Shoulder Blouse', 'Bell-Sleeve Blouse', 'Bishop-Sleeve Blouse', 'Tie-Neck Blouse', 'Embroidered Blouse', 'Lace Blouse', 'Crepe Blouse', 'Poplin Blouse', 'Relaxed Blouse'],
+  'women/shirts': ['Classic Poplin', 'Oversized Fit', 'Slim-Fit Cotton', 'Linen Shirt', 'Silk Shirt', 'Denim Shirt', 'Flannel Shirt', 'Utility Shirt', 'Camp Collar', 'Mandarin Collar', 'Pleated Shirt', 'Tunic Shirt', 'Curved Hem', 'Drop-Shoulder', 'Pocket Detail', 'Contrast Stitch', 'Tonal Stripe', 'Check Shirt', 'Vintage Wash', 'Cropped Shirt'],
+  'women/jeans': ['Skinny Jeans', 'Straight-Leg', 'Wide-Leg', 'Bootcut', 'Flared', 'Boyfriend Fit', 'Mom Jeans', 'High-Waist', 'Mid-Rise', 'Low-Rise', 'Cropped Jeans', 'Raw Hem', 'Distressed', 'Vintage Wash', 'Black Denim', 'White Denim', 'Grey Denim', 'Stretch Denim', 'Rigid Denim', 'Selvedge'],
+  'women/trousers': ['Tailored Wool', 'Wide-Leg Crepe', 'Slim-Fit Twill', 'Pleated Trouser', 'Cigarette Pant', 'Cropped Trouser', 'Paperbag Waist', 'Drawstring Trouser', 'Linen Trouser', 'High-Waist', 'Mid-Rise', 'Low-Rise', 'Flared Trouser', 'Straight-Leg', 'Tapered Trouser', 'Cargo Trouser', 'Utility Trouser', 'Satin Trouser', 'Velvet Trouser', 'Corduroy Trouser'],
+  'women/skirts': ['A-Line Midi', 'Pleated Midi', 'Pencil Skirt', 'Mini Skirt', 'Maxi Skirt', 'Wrap Skirt', 'Tiered Skirt', 'Slip Skirt', 'Denim Skirt', 'Leather Skirt', 'Satin Skirt', 'Linen Skirt', 'Cotton Skirt', 'Wool Skirt', 'Asymmetric Skirt', 'High-Waist Skirt', 'Mid-Rise Skirt', 'Cropped Skirt', 'Button-Front Skirt', 'Bias-Cut Skirt'],
+  'women/shorts': ['Denim Shorts', 'Linen Shorts', 'Tailored Shorts', 'High-Waist Shorts', 'Mid-Rise Shorts', 'Paperbag Shorts', 'Pleated Shorts', 'Cuffed Shorts', 'Raw Hem Shorts', 'Drawstring Shorts', 'Utility Shorts', 'Seersucker Shorts', 'Cotton Shorts', 'Twill Shorts', 'Relaxed Fit', 'Slim Fit', 'Cropped Shorts', 'Bermuda Shorts', 'Skort', 'Running Shorts'],
+  'women/blazers': ['Tailored Wool', 'Oversized Blazer', 'Slim-Fit Blazer', 'Double-Breasted', 'Single-Breasted', 'Linen Blazer', 'Cotton Blazer', 'Crepe Blazer', 'Tweed Blazer', 'Velvet Blazer', 'Check Blazer', 'Stripe Blazer', 'Peak Lapel', 'Notch Lapel', 'Shawl Lapel', 'Patch Pocket', 'Flap Pocket', 'Boyfriend Fit', 'Cropped Blazer', 'Longline Blazer'],
+  'women/jackets': ['Leather Biker', 'Denim Jacket', 'Suede Jacket', 'Trench Jacket', 'Utility Jacket', 'Bomber Jacket', 'Quilted Jacket', 'Puffer Jacket', 'Cropped Jacket', 'Oversized Jacket', 'Fleece Jacket', 'Track Jacket', 'Windbreaker', 'Blazer Jacket', 'Shirt Jacket', 'Zip Jacket', 'Hooded Jacket', 'Wool Jacket', 'Tweed Jacket', 'Cotton Jacket'],
+  'women/coats': ['Wool Overcoat', 'Cashmere-Blend', 'Trench Coat', 'Mac Coat', 'Pea Coat', 'Duffle Coat', 'Parka Coat', 'Puffer Coat', 'Wool-Blend Coat', 'Single-Breasted', 'Double-Breasted', 'Belted Coat', 'Unbelted Coat', 'Longline Coat', 'Cropped Coat', 'Camel Coat', 'Charcoal Coat', 'Navy Coat', 'Herringbone Coat', 'Twill Coat'],
+  'women/sweaters': ['Merino Crewneck', 'Cashmere V-Neck', 'Lambswool Crew', 'Cotton Cable-Knit', 'Waffle-Knit', 'Ribbed Crewneck', 'Turtleneck', 'Mock-Neck', 'Half-Zip', 'Button-Shoulder', 'Textured Knit', 'Striped Knit', 'Color-Block', 'Oversized Knit', 'Slim-Fit Knit', 'Tonal Knit', 'Heavyweight Knit', 'Lightweight Knit', 'Fair Isle', 'Cable-Knit'],
+  'women/knitwear': ['Merino Crewneck', 'Cashmere V-Neck', 'Lambswool Crew', 'Cotton Cable-Knit', 'Waffle-Knit', 'Ribbed Crewneck', 'Turtleneck', 'Mock-Neck', 'Half-Zip', 'Button-Shoulder', 'Textured Knit', 'Striped Knit', 'Color-Block', 'Oversized Knit', 'Slim-Fit Knit', 'Tonal Knit', 'Heavyweight Knit', 'Lightweight Knit', 'Fair Isle', 'Cable-Knit'],
+  'women/cardigans': ['V-Neck Cardigan', 'Crewneck Cardigan', 'Longline Cardigan', 'Cropped Cardigan', 'Chunky Knit', 'Fine Knit', 'Button-Front', 'Zip-Front', 'Belted Cardigan', 'Textured Knit', 'Ribbed Cardigan', 'Cable-Knit', 'Tonal Stitch', 'Contrast Button', 'Wool Cardigan', 'Cotton Cardigan', 'Cashmere Cardigan', 'Oversized Fit', 'Slim Fit', 'Patch Pocket'],
+  'women/hoodies': ['Classic Pullover', 'Zip-Up Hoodie', 'Oversized Hoodie', 'Cropped Hoodie', 'Heavyweight Fleece', 'Lightweight Terry', 'Graphic Print', 'Embossed Logo', 'Tonal Stitch', 'Drawstring Hood', 'Kangaroo Pocket', 'Side-Zip Hoodie', 'Hooded Sweatshirt', 'Relaxed Fit', 'Slim Fit', 'Boxy Fit', 'Vintage Wash', 'Garment-Dyed', 'Fleece-Lined', 'French Terry'],
+  'women/jumpsuits': ['Wide-Leg Jumpsuit', 'Slim-Fit Jumpsuit', 'Strapless Jumpsuit', 'Halter Jumpsuit', 'Wrap Jumpsuit', 'Utility Jumpsuit', 'Linen Jumpsuit', 'Crepe Jumpsuit', 'Satin Jumpsuit', 'Denim Jumpsuit', 'Cropped Jumpsuit', 'Belted Jumpsuit', 'Tie-Waist Jumpsuit', 'Square-Neck Jumpsuit', 'V-Neck Jumpsuit', 'Sleeveless Jumpsuit', 'Long-Sleeve Jumpsuit', 'Cargo Jumpsuit', 'Tuxedo Jumpsuit', 'Playsuit'],
+  'women/two-piece': ['Linen Set', 'Crepe Set', 'Satin Set', 'Cotton Set', 'Knit Set', 'Tweed Set', 'Denim Set', 'Twill Set', 'Wide-Leg Set', 'Slim-Fit Set', 'Cropped Set', 'Belted Set', 'Tie-Waist Set', 'Sleeveless Set', 'Long-Sleeve Set', 'Short-Sleeve Set', 'Blazer Set', 'Skirt Set', 'Trouser Set', 'Shorts Set'],
+
+  // Women Footwear
+  'women/sneakers-w': ['Classic Leather', 'Suede Low-Top', 'Canvas Trainer', 'Running Style', 'Retro Court', 'Minimalist White', 'Chunky Sole', 'Slip-On', 'High-Top', 'Mesh Trainer', 'Nappa Leather', 'Contrast Sole', 'Tonal Stitch', 'Perforated Detail', 'Lace-Up', 'Velcro Strap', 'Platform Sole', 'Vegan Leather', 'Knit Upper', 'Suede Panel'],
+  'women/heels': ['Stiletto Pump', 'Block Heel', 'Kitten Heel', 'Slingback', 'Ankle Strap', 'Mule Heel', 'Platform Heel', 'Wedge Heel', 'Pointed Toe', 'Square Toe', 'Open Toe', 'Strappy Heel', 'T-Strap Heel', 'D\'Orsay Pump', 'Court Shoe', 'Mary Jane Heel', 'Satin Heel', 'Patent Heel', 'Leather Heel', 'Suede Heel'],
+  'women/flats': ['Ballerina Flat', 'Pointed-Toe Flat', 'Round-Toe Flat', 'Loafer Flat', 'Mule Flat', 'Slingback Flat', 'Ankle-Strap Flat', 'Ballet Sneaker', 'Woven Flat', 'Leather Flat', 'Suede Flat', 'Patent Flat', 'Nappa Flat', 'Tonal Stitch', 'Contrast Trim', 'Bow Detail', 'Tassel Flat', 'Penny Loafer', 'Driving Shoe', 'Espadrille'],
+  'women/boots-w': ['Ankle Boot', 'Chelsea Boot', 'Knee-High Boot', 'Over-the-Knee', 'Combat Boot', 'Hiker Boot', 'Suede Boot', 'Leather Boot', 'Calf Leather', 'Lug Sole', 'Block Heel Boot', 'Stiletto Boot', 'Pointed-Toe Boot', 'Round-Toe Boot', 'Side-Zip Boot', 'Lace-Up Boot', 'Tonal Stitch', 'Contrast Sole', 'Waxed Leather', 'Rubber Sole'],
+  'women/sandals': ['Strappy Sandal', 'Block Heel Sandal', 'Stiletto Sandal', 'Flat Sandal', 'Slide Sandal', 'Mule Sandal', 'Ankle-Wrap Sandal', 'T-Strap Sandal', 'Toe-Ring Sandal', 'Platform Sandal', 'Espadrille Sandal', 'Leather Sandal', 'Suede Sandal', 'Patent Sandal', 'Nappa Sandal', 'Tonal Stitch', 'Contrast Trim', 'Buckle Detail', 'Woven Sandal', 'Minimalist Sandal'],
+
+  // Accessories
+  'accessories/handbags': ['Structured Top-Handle', 'Soft Shoulder', 'Mini Bag', 'Flap Bag', 'Bucket Bag', 'Hobo Bag', 'Satchel', 'Doctor Bag', 'Bowling Bag', 'Clutch Bag', 'Woven Bag', 'Geometric Bag', 'Trapeze Bag', 'Baguette Bag', 'Crescent Bag', 'Box Bag', 'Chain Bag', 'Tote Bag', 'Shopper', 'Crossbody Bag'],
+  'accessories/shoulder-bags': ['Soft Leather', 'Structured Leather', 'Suede Shoulder', 'Nappa Shoulder', 'Chain Strap', 'Wide Strap', 'Adjustable Strap', 'Hobo Bag', 'Baguette Bag', 'Crescent Bag', 'Underarm Bag', 'Shoulder Tote', 'Mini Shoulder', 'Oversized Shoulder', 'Tonal Stitch', 'Contrast Stitch', 'Zip Top', 'Flap Top', 'Magnetic Closure', 'Drawstring'],
+  'accessories/crossbody': ['Classic Leather', 'Mini Crossbody', 'Phone Crossbody', 'Camera Bag', 'Messenger Bag', 'Saddle Bag', 'Belt Bag', 'Waist Bag', 'Chest Bag', 'Mini Bag', 'Chain Crossbody', 'Wide Strap', 'Adjustable Strap', 'Zip Top', 'Flap Top', 'Magnetic Closure', 'Woven Crossbody', 'Suede Crossbody', 'Nappa Crossbody', 'Tonal Stitch'],
+  'accessories/totes': ['Classic Leather', 'Canvas Tote', 'Nylon Tote', 'Shopper Tote', 'East-West Tote', 'North-South Tote', 'Zip Tote', 'Open Tote', 'Magnetic Tote', 'Shoulder Tote', 'Mini Tote', 'Oversized Tote', 'Woven Tote', 'Suede Tote', 'Nappa Tote', 'Tonal Stitch', 'Contrast Stitch', 'Pocket Detail', 'Laptop Tote', 'Beach Tote'],
+  'accessories/wallets': ['Bifold Wallet', 'Trifold Wallet', 'Zip Wallet', 'Card Holder', 'Coin Purse', 'Long Wallet', 'Compact Wallet', 'Slim Wallet', 'Travel Wallet', 'Passport Holder', 'Leather Wallet', 'Nappa Wallet', 'Saffiano Wallet', 'Calf Leather', 'Tonal Stitch', 'Contrast Stitch', 'Embossed Logo', 'Snap Closure', 'Zip Closure', 'Button Closure'],
+  'accessories/belts': ['Classic Leather', 'Woven Leather', 'Suede Belt', 'Nappa Belt', 'Calf Leather', 'Reversible Belt', 'Tonal Stitch', 'Contrast Stitch', 'Gold Buckle', 'Silver Buckle', 'Brass Buckle', 'Square Buckle', 'Round Buckle', 'Plaque Buckle', 'Pin Buckle', 'Auto Buckle', 'Slim Belt', 'Wide Belt', 'Dress Belt', 'Casual Belt'],
+  'accessories/jewellery': ['Gold-Plated Set', 'Sterling Silver Set', 'Stainless Steel Set', 'Pearl Set', 'Crystal Set', 'Minimalist Set', 'Statement Set', 'Layered Set', 'Tonal Set', 'Mixed Metal Set', 'Gift Set', 'Everyday Set', 'Evening Set', 'Vintage Set', 'Art Deco Set', 'Organic Shape Set', 'Geometric Set', 'Chain Set', 'Beaded Set', 'Charm Set'],
+  'accessories/necklaces': ['Fine Chain', 'Pendant Necklace', 'Layered Chain', 'Choker', 'Collar Necklace', 'Lariat', 'Y-Necklace', 'Station Necklace', 'Curb Chain', 'Cable Chain', 'Figaro Chain', 'Box Chain', 'Snake Chain', 'Rope Chain', 'Pearl Necklace', 'Beaded Necklace', 'Charm Necklace', 'Locket', 'Tennis Necklace', 'Bar Necklace'],
+  'accessories/bracelets': ['Chain Bracelet', 'Bangle', 'Cuff', 'Tennis Bracelet', 'Charm Bracelet', 'Beaded Bracelet', 'Leather Bracelet', 'Woven Bracelet', 'ID Bracelet', 'Link Bracelet', 'Snake Chain', 'Box Chain', 'Cable Chain', 'Tonal Stitch', 'Contrast Detail', 'Magnetic Clasp', 'Lobster Clasp', 'Toggle Clasp', 'Slip-On', 'Adjustable'],
+  'accessories/earrings': ['Stud Earrings', 'Hoop Earrings', 'Drop Earrings', 'Dangle Earrings', 'Huggie Hoops', 'Ear Cuff', 'Threader Earrings', 'Chandelier Earrings', 'Cluster Earrings', 'Pearl Studs', 'Diamond Studs', 'Gemstone Studs', 'Geometric Studs', 'Star Studs', 'Moon Studs', 'Initial Studs', 'Tonal Studs', 'Mini Hoops', 'Chunky Hoops', 'Statement Hoops'],
+  'accessories/rings': ['Signet Ring', 'Stacking Ring', 'Statement Ring', 'Band Ring', 'Midi Ring', 'Cocktail Ring', 'Pearl Ring', 'Gemstone Ring', 'Birthstone Ring', 'Initial Ring', 'Charm Ring', 'Tonal Ring', 'Mixed Metal Ring', 'Geometric Ring', 'Organic Ring', 'Chain Ring', 'Cuff Ring', 'Double Ring', 'Triple Ring', 'Adjustable Ring'],
+  'accessories/watches': ['Dress Watch', 'Dive Watch', 'Chronograph', 'Automatic Watch', 'Quartz Watch', 'Field Watch', 'Pilot Watch', 'Skeleton Watch', 'Moonphase', 'GMT Watch', 'Steel Bracelet', 'Leather Strap', 'Mesh Strap', 'NATO Strap', 'Gold-Tone Case', 'Silver Case', 'Black Dial', 'White Dial', 'Blue Dial', 'Green Dial'],
+  'accessories/sunglasses': ['Aviator', 'Wayfarer', 'Round Frame', 'Cat-Eye', 'Square Frame', 'Oval Frame', 'Geometric Frame', 'Shield Frame', 'Wrap Frame', 'Browline', 'Clubmaster', 'Oversized', 'Mini Frame', 'Titanium Frame', 'Acetate Frame', 'Metal Frame', 'Polarized Lens', 'Gradient Lens', 'Mirrored Lens', 'Tinted Lens'],
+  'accessories/scarves': ['Silk Scarf', 'Wool Scarf', 'Cashmere Scarf', 'Modal Scarf', 'Linen Scarf', 'Cotton Scarf', 'Printed Scarf', 'Striped Scarf', 'Check Scarf', 'Tonal Scarf', 'Fringed Scarf', 'Oversized Scarf', 'Square Scarf', 'Rectangle Scarf', 'Neckerchief', 'Bandana', 'Infinity Scarf', 'Blanket Scarf', 'Lightweight Scarf', 'Heavyweight Scarf'],
+  'accessories/hats': ['Wool Fedora', 'Felt Fedora', 'Straw Hat', 'Panama Hat', 'Bucket Hat', 'Baseball Cap', 'Trucker Cap', 'Beanie', 'Beret', 'Flat Cap', 'Newsboy Cap', 'Cricket Cap', 'Visor', 'Sun Hat', 'Cloche Hat', 'Boater Hat', 'Trilby', 'Pork Pie Hat', 'Cowboy Hat', 'Ski Hat'],
+  'accessories/backpacks': ['Classic Leather', 'Nylon Backpack', 'Canvas Backpack', 'Technical Fabric', 'Minimalist Backpack', 'City Backpack', 'Daypack', 'Laptop Backpack', 'Travel Backpack', 'Hiking Backpack', 'Roll-Top', 'Zip-Top', 'Drawstring', 'Flap Closure', 'Padded Straps', 'Adjustable Straps', 'Tonal Stitch', 'Contrast Detail', 'Pocket Detail', 'Water-Resistant'],
+  'accessories/travel': ['Weekender Bag', 'Duffel Bag', 'Holdall', 'Travel Tote', 'Carry-On', 'Garment Bag', 'Shoe Bag', 'Toiletry Bag', 'Packing Cube', 'Luggage Tag', 'Passport Holder', 'Travel Wallet', 'Neck Pillow', 'Eye Mask', 'Tech Organizer', 'Cable Organizer', 'Jewelry Case', 'Watch Roll', 'Travel Umbrella', 'Luggage Strap'],
+  'accessories/fashion-acc': ['Silk Pocket Square', 'Wool Pocket Square', 'Lapel Pin', 'Tie Clip', 'Cufflinks', 'Tie Bar', 'Money Clip', 'Card Holder', 'Key Ring', 'Bag Charm', 'Scarf Ring', 'Brooch', 'Hair Clip', 'Hair Tie', 'Headband', 'Gloves', 'Socks', 'Tights', 'Suspenders', 'Shoelaces']
 };
 
 /* ---------- Product Generator ---------- */
@@ -974,9 +916,103 @@ const DESC_TPL = [
   "Un capo che nasce dal dialogo tra artigianato e ricerca materica. {mat} selezionato, costruzione pulita, dettagli funzionali e un'eleganza che non ha bisogno di spiegazioni."
 ];
 
+const CATALOG = {
+  men: {
+    label: 'Uomo', title: 'Men', subtitle: 'Sartorialità italiana contemporanea',
+    groups: [
+      { label: 'Clothing', subs: [
+        { slug: 'tshirts', label: 'T-Shirts', img: 'tshirt', sz: 'xxl', mat: ['Cotton','Pima','Organic','Supima','Jersey'] },
+        { slug: 'polo', label: 'Polo Shirts', img: 'polo', sz: 'xxl', mat: ['Piqué','Cotton','Mercerized','Jersey','Knit'] },
+        { slug: 'casual-shirts', label: 'Casual Shirts', img: 'shirt', sz: 'xxl', mat: ['Oxford','Chambray','Cotton','Linen-Blend','Flannel'] },
+        { slug: 'formal-shirts', label: 'Formal Shirts', img: 'shirt', sz: 'num', mat: ['Poplin','Twill','Herringbone','Cotton','Egyptian Cotton'] },
+        { slug: 'linen-shirts', label: 'Linen Shirts', img: 'linen', sz: 'xxl', mat: ['Linen','Irish Linen','Linen-Blend','Washed Linen','Slub Linen'] },
+        { slug: 'jeans', label: 'Jeans', img: 'jeans', sz: 'xxl', mat: ['Denim','Selvedge','Stretch-Denim','Japanese Denim','Rigid Denim'] },
+        { slug: 'casual-trousers', label: 'Casual Trousers', img: 'trousers', sz: 'num', mat: ['Cotton','Twill','Chino','Stretch Cotton','Garment-Dyed Cotton'] },
+        { slug: 'formal-trousers', label: 'Formal Trousers', img: 'trousers', sz: 'num', mat: ['Wool','Wool-Blend','Gabardine','Flannel','Twill'] },
+        { slug: 'chinos', label: 'Chinos', img: 'chinos', sz: 'num', mat: ['Cotton','Twill','Stretch','Garment-Dyed Cotton'] },
+        { slug: 'shorts', label: 'Shorts', img: 'shorts', sz: 'xxl', mat: ['Cotton','Linen','Twill','Seersucker'] },
+        { slug: 'jackets', label: 'Jackets', img: 'jacket', sz: 'xxl', mat: ['Cotton','Nylon','Wool-Blend','Suede','Technical Fabric'] },
+        { slug: 'blazers', label: 'Blazers', img: 'blazer', sz: 'num', mat: ['Wool','Linen','Cotton','Silk-Blend'] },
+        { slug: 'sweaters', label: 'Sweaters', img: 'sweater', sz: 'xxl', mat: ['Wool','Merino','Cashmere-Blend','Lambswool','Cotton'] },
+        { slug: 'hoodies', label: 'Hoodies & Sweatshirts', img: 'hoodie', sz: 'xxl', mat: ['Cotton','Fleece','French Terry','Loopback Cotton'] },
+        { slug: 'knitwear', label: 'Knitwear', img: 'knit', sz: 'xxl', mat: ['Merino','Cashmere','Wool','Cashmere-Blend','Alpaca'] },
+        { slug: 'coats', label: 'Coats', img: 'coat', sz: 'xxl', mat: ['Wool','Cashmere-Blend','Recycled Wool','Wool-Cashmere','Twill'] }
+      ]},
+      { label: 'Footwear', subs: [
+        { slug: 'sneakers', label: 'Sneakers', img: 'sneaker', sz: 'shoeM', mat: ['Leather','Suede','Canvas','Nappa','Mesh'] },
+        { slug: 'formal-shoes', label: 'Formal Shoes', img: 'formal-shoe', sz: 'shoeM', mat: ['Leather','Patent-Leather','Suede','Calf Leather'] },
+        { slug: 'loafers', label: 'Loafers', img: 'loafer', sz: 'shoeM', mat: ['Leather','Suede','Nappa','Calf Leather'] },
+        { slug: 'boots', label: 'Boots', img: 'boot', sz: 'shoeM', mat: ['Leather','Suede','Calf Leather','Waxed Leather'] }
+      ]}
+    ]
+  },
+  women: {
+    label: 'Donna', title: 'Women', subtitle: 'Eleganza italiana senza tempo',
+    groups: [
+      { label: 'Clothing', subs: [
+        { slug: 'dresses', label: 'Dresses', img: 'dress', sz: 'xl', mat: ['Silk','Viscose','Cotton','Satin','Crepe'] },
+        { slug: 'tops', label: 'Tops', img: 'top', sz: 'xl', mat: ['Cotton','Silk','Viscose','Jersey','Satin'] },
+        { slug: 'tshirts', label: 'T-Shirts', img: 'tshirt', sz: 'xl', mat: ['Cotton','Pima','Organic','Supima','Jersey'] },
+        { slug: 'blouses', label: 'Blouses', img: 'blouse', sz: 'xl', mat: ['Silk','Satin','Viscose','Chiffon','Crepe'] },
+        { slug: 'shirts', label: 'Shirts', img: 'shirtw', sz: 'xl', mat: ['Cotton','Poplin','Linen','Silk-Blend','Oxford'] },
+        { slug: 'jeans', label: 'Jeans', img: 'jeansw', sz: 'xl', mat: ['Denim','Stretch-Denim','Selvedge','Rigid Denim'] },
+        { slug: 'trousers', label: 'Trousers', img: 'trousersw', sz: 'xl', mat: ['Cotton','Wool','Viscose','Crepe','Twill'] },
+        { slug: 'skirts', label: 'Skirts', img: 'skirt', sz: 'xl', mat: ['Viscose','Cotton','Satin','Crepe','Linen'] },
+        { slug: 'shorts', label: 'Shorts', img: 'shortsw', sz: 'xl', mat: ['Cotton','Linen','Denim','Twill'] },
+        { slug: 'blazers', label: 'Blazers', img: 'blazerw', sz: 'xl', mat: ['Wool','Linen','Cotton','Crepe','Wool-Blend'] },
+        { slug: 'jackets', label: 'Jackets', img: 'jacketw', sz: 'xl', mat: ['Leather','Cotton','Nylon','Suede','Trench Cotton'] },
+        { slug: 'coats', label: 'Coats', img: 'coatw', sz: 'xl', mat: ['Wool','Cashmere-Blend','Trench Cotton','Wool-Blend'] },
+        { slug: 'sweaters', label: 'Sweaters', img: 'sweaterw', sz: 'xl', mat: ['Wool','Merino','Cashmere','Cotton','Lambswool'] },
+        { slug: 'knitwear', label: 'Knitwear', img: 'knitw', sz: 'xl', mat: ['Merino','Cashmere','Wool','Alpaca','Cotton'] },
+        { slug: 'cardigans', label: 'Cardigans', img: 'cardigan', sz: 'xl', mat: ['Wool','Cotton','Merino','Cashmere-Blend'] },
+        { slug: 'hoodies', label: 'Hoodies & Sweatshirts', img: 'hoodiew', sz: 'xl', mat: ['Cotton','Fleece','French Terry','Loopback Cotton'] },
+        { slug: 'jumpsuits', label: 'Jumpsuits', img: 'jumpsuit', sz: 'xl', mat: ['Viscose','Cotton','Satin','Crepe','Linen'] },
+        { slug: 'two-piece', label: 'Two-Piece Sets', img: 'twopiece', sz: 'xl', mat: ['Cotton','Linen','Viscose','Crepe','Twill'] }
+      ]},
+      { label: 'Footwear', subs: [
+        { slug: 'sneakers-w', label: 'Sneakers', img: 'sneakerw', sz: 'shoeW', mat: ['Leather','Canvas','Suede','Nappa'] },
+        { slug: 'heels', label: 'Heels', img: 'heels', sz: 'shoeW', mat: ['Leather','Satin','Patent','Suede'] },
+        { slug: 'flats', label: 'Flats', img: 'flats', sz: 'shoeW', mat: ['Leather','Suede','Nappa','Patent'] },
+        { slug: 'boots-w', label: 'Boots', img: 'bootw', sz: 'shoeW', mat: ['Leather','Suede','Calf Leather'] },
+        { slug: 'sandals', label: 'Sandals', img: 'sandals', sz: 'shoeW', mat: ['Leather','Suede','Nappa','Patent'] }
+      ]}
+    ]
+  },
+  accessories: {
+    label: 'Accessori', title: 'Accessories', subtitle: 'Dettagli che definiscono lo stile',
+    groups: [
+      { label: 'Bags', subs: [
+        { slug: 'handbags', label: 'Handbags', img: 'handbag', sz: 'one', mat: ['Leather','Suede','Nappa','Calf Leather','Patent'] },
+        { slug: 'shoulder-bags', label: 'Shoulder Bags', img: 'shoulder-bag', sz: 'one', mat: ['Leather','Suede','Nappa','Calf Leather'] },
+        { slug: 'crossbody', label: 'Crossbody Bags', img: 'crossbody', sz: 'one', mat: ['Leather','Nappa','Suede','Calf Leather'] },
+        { slug: 'totes', label: 'Totes', img: 'tote', sz: 'one', mat: ['Leather','Canvas','Nylon','Nappa'] }
+      ]},
+      { label: 'Small Leather Goods', subs: [
+        { slug: 'wallets', label: 'Wallets', img: 'wallet', sz: 'one', mat: ['Leather','Nappa','Saffiano','Calf Leather'] },
+        { slug: 'belts', label: 'Belts', img: 'belt', sz: 'one', mat: ['Leather','Suede','Calf Leather','Nappa'] }
+      ]},
+      { label: 'Jewellery & Watches', subs: [
+        { slug: 'jewellery', label: 'Jewellery', img: 'jewellery', sz: 'one', mat: ['Gold-Tone','Sterling-Silver','Stainless-Steel','Plated'] },
+        { slug: 'necklaces', label: 'Necklaces', img: 'necklace', sz: 'one', mat: ['Gold-Tone','Silver','Plated','Sterling-Silver'] },
+        { slug: 'bracelets', label: 'Bracelets', img: 'bracelet', sz: 'one', mat: ['Gold-Tone','Silver','Leather','Stainless-Steel'] },
+        { slug: 'earrings', label: 'Earrings', img: 'earrings', sz: 'one', mat: ['Gold-Tone','Silver','Pearl','Plated'] },
+        { slug: 'rings', label: 'Rings', img: 'ring', sz: 'rings', mat: ['Gold-Tone','Silver','Steel','Plated'] },
+        { slug: 'watches', label: 'Watches', img: 'watch', sz: 'one', mat: ['Steel','Leather','Gold-Tone','Titanium'] }
+      ]},
+      { label: 'Other', subs: [
+        { slug: 'sunglasses', label: 'Sunglasses', img: 'sunglasses', sz: 'one', mat: ['Acetate','Metal','Titanium','Bio-Acetate'] },
+        { slug: 'scarves', label: 'Scarves', img: 'scarf', sz: 'one', mat: ['Silk','Wool','Cashmere','Modal'] },
+        { slug: 'hats', label: 'Hats & Caps', img: 'hat', sz: 'one', mat: ['Wool','Cotton','Straw','Felt'] },
+        { slug: 'backpacks', label: 'Backpacks', img: 'backpack', sz: 'one', mat: ['Leather','Nylon','Canvas','Technical Fabric'] },
+        { slug: 'travel', label: 'Travel Bags', img: 'travel', sz: 'one', mat: ['Leather','Nylon','Canvas','Technical Fabric'] },
+        { slug: 'fashion-acc', label: 'Fashion Accessories', img: 'fashion-acc', sz: 'one', mat: ['Leather','Metal','Mixed','Silk'] }
+      ]}
+    ]
+  }
+};
+
 function buildProducts() {
   const products = [];
-  let globalId = 1;
   const groups = [
     ['men', CATALOG.men],
     ['women', CATALOG.women],
@@ -987,56 +1023,60 @@ function buildProducts() {
     for (const group of cat.groups) {
       for (const sub of group.subs) {
         const seed = hash(gender + sub.slug);
-        const rand = rng(seed);
-        const imgPool = (IMG_BANK[sub.img] || IMG_BANK.tshirt).map(U);
+        const rand = () => {
+          seed = (seed * 9301 + 49297) % 233280;
+          return seed / 233280;
+        };
+        const imgPool = IMAGE_MAP[`${gender}/${sub.slug}`] || IMAGE_MAP['men/tshirts'];
         const colorPool = sub.slug.match(/jewel|necklace|bracelet|earring|ring|watch/) ? COLOR_POOLS.jewel
           : sub.slug.match(/sneaker|loafer|boot|heel|flat|sandals|formal-shoe/) ? COLOR_POOLS.footwear
           : sub.slug.match(/handbag|shoulder|crossbody|tote|wallet|belt|travel|backpack/) ? COLOR_POOLS.bag
           : sub.slug.match(/sunglass|hat|scarf/) ? COLOR_POOLS.neutral
           : COLOR_POOLS.apparel;
 
+        const designNames = DESIGNS[`${gender}/${sub.slug}`] || DESIGNS['men/tshirts'];
+
         for (let i = 0; i < 20; i++) {
           const mat = sub.mat[i % sub.mat.length];
-          const noun = sub.nouns[Math.floor(i / sub.mat.length) % sub.nouns.length];
+          const design = designNames[i];
           const prefix = PREFIX_POOL[(seed + i * 7) % PREFIX_POOL.length];
-          const name = `${prefix} ${mat} ${noun}`;
+          const name = `${prefix} ${mat} ${design}`;
 
-          // Images: 3 distinct-ish images from pool
           const i0 = (seed + i) % imgPool.length;
-          const i1 = (seed + i + 3) % imgPool.length;
-          const i2 = (seed + i + 6) % imgPool.length;
+          const i1 = (seed + i + 2) % imgPool.length;
+          const i2 = (seed + i + 4) % imgPool.length;
           const imgs = [imgPool[i0], imgPool[i1], imgPool[i2]];
 
-          // Price
           const t = i / 19;
-          const price = Math.round((sub.pMin + t * (sub.pMax - sub.pMin)) / 5) * 5;
-          const onSale = rand() < 0.12;
+          const pMin = sub.slug.match(/shoe|coat|jacket|bag|watch/) ? 120 : 45;
+          const pMax = sub.slug.match(/shoe|coat|jacket|bag|watch/) ? 650 : 280;
+          const price = Math.round((pMin + t * (pMax - pMin)) / 5) * 5;
+          
+          const onSale = rand() < 0.15;
           const salePrice = onSale ? Math.round(price * 0.75 / 5) * 5 : null;
-          const isNew = rand() < 0.25;
-          const stock = Math.floor(rand() * 18) + 2;
+          const isNew = rand() < 0.3;
+          const stock = Math.floor(rand() * 15) + 3;
 
-          // Colors
           const nColors = 2 + Math.floor(rand() * 2);
           const colors = [];
           for (let c = 0; c < nColors; c++) {
             colors.push(colorPool[(seed + i + c * 3) % colorPool.length]);
           }
 
-          // Sizes
           const sizes = SIZES[sub.sz].slice();
-
-          // Description
           const descTpl = DESC_TPL[(seed + i) % DESC_TPL.length];
           const desc = descTpl.replace('{mat}', mat);
+
+          const bgThemes = ['bg-studio-1', 'bg-studio-2', 'bg-studio-3', 'bg-studio-dark'];
+          const bgClass = bgThemes[(seed + i) % bgThemes.length];
 
           products.push({
             id: `${gender}-${sub.slug}-${String(i + 1).padStart(2, '0')}`,
             name, cat: gender, catLabel: cat.title, sub: sub.slug, subLabel: sub.label,
             gender, desc, price, salePrice, onSale, isNew, stock,
-            img: imgs[0], img2: imgs[1], imgs,
+            img: imgs[0], img2: imgs[1], imgs, bgClass,
             sizes, colors, imgKey: sub.img
           });
-          globalId++;
         }
       }
     }
@@ -1056,15 +1096,11 @@ const getSub = (cat, slug) => {
   }
   return null;
 };
-const getSubLabel = (cat, slug) => {
-  const s = getSub(cat, slug);
-  return s ? s.label : slug;
-};
 
 /* ---------- Render helpers ---------- */
-function imgTag(src, alt, cls = '') {
-  return `<img src="${src}" alt="${esc(alt)}" class="${cls}" loading="lazy"
-    onerror="this.onerror=null;this.style.display='none';var p=this.parentElement;p.classList.add('img-fallback');p.setAttribute('data-fallback','${esc(alt).split(' ').slice(0,2).join(' ')}')">`;
+function imgTag(src, alt, cls = '', bgClass = 'bg-studio-1') {
+  return `<img src="${src}" alt="${esc(alt)}" class="${cls} ${bgClass}" loading="lazy"
+    onerror="this.onerror=null;this.style.display='none';var p=this.parentElement;p.classList.add('img-fallback');p.setAttribute('data-fallback','${esc(alt).split(' ').slice(0, 3).join(' ')}')">`;
 }
 
 function productCard(p) {
@@ -1078,13 +1114,13 @@ function productCard(p) {
   const inWish = wishlist.has(p.id) ? ' on' : '';
   return `
     <article class="product" data-id="${p.id}" data-cat="${p.cat}">
-      <div class="product-media">
+      <div class="product-media ${p.bgClass}">
         ${badge}
         <button class="wish${inWish}" data-wish="${p.id}" aria-label="Preferiti">
           <svg viewBox="0 0 24 24"><path d="M12 20s-7-4.5-7-9.5A4.5 4.5 0 0 1 12 7a4.5 4.5 0 0 1 7 3.5c0 5-7 9.5-7 9.5z"/></svg>
         </button>
-        ${imgTag(p.img, p.name, 'main')}
-        ${imgTag(p.img2, p.name + ' — dettaglio', 'alt')}
+        ${imgTag(p.img, p.name, 'main', p.bgClass)}
+        ${imgTag(p.img2, p.name + ' — dettaglio', 'alt', p.bgClass)}
         <button class="quick-add" data-quick="${p.id}">Aggiunta rapida</button>
       </div>
       <a href="#/product/${p.id}" data-link class="product-info">
@@ -1165,7 +1201,7 @@ function renderCart() {
       const price = p.salePrice || p.price;
       return `
         <div class="cart-item" style="animation-delay:${i * 60}ms">
-          <div class="cart-item-img">${imgTag(p.img, p.name)}</div>
+          <div class="cart-item-img ${p.bgClass}">${imgTag(p.img, p.name, '', p.bgClass)}</div>
           <div class="cart-item-info">
             <span class="meta">${esc(p.subLabel)}</span>
             <h4>${esc(p.name)}</h4>
@@ -1227,11 +1263,9 @@ function toggleWish(id) {
   else wishlist.add(id);
   saveWish();
   updateBadge('#wishCount', wishlist.size);
-  // Update all wish buttons
   $$('[data-wish]').forEach(btn => {
     btn.classList.toggle('on', wishlist.has(btn.dataset.wish));
   });
-  // Refresh wishlist page if visible
   if (location.hash.startsWith('#/wishlist')) renderRoute();
 }
 
@@ -1247,6 +1281,7 @@ function openQuickView(id) {
 
   $('#qvImg').src = p.img;
   $('#qvImg').alt = p.name;
+  $('#qvImg').className = p.bgClass;
   $('#qvCat').textContent = p.subLabel;
   $('#qvName').textContent = p.name;
   $('#qvPrice').innerHTML = p.salePrice
@@ -1291,10 +1326,8 @@ function renderRoute() {
   const parts = path.split('/').filter(Boolean);
   const app = $('#app');
 
-  // scroll to top on route change
   window.scrollTo({ top: 0, behavior: 'instant' });
 
-  // Update active nav
   $$('#nav a').forEach(a => {
     const nav = a.dataset.nav;
     const match = nav === '/' ? (parts.length === 0)
@@ -1332,18 +1365,10 @@ function renderRoute() {
 function afterRender() {
   initReveal();
   initParallax();
-  // Reattach image fallbacks
+  bindProductEvents(document);
   $$('img').forEach(img => {
     if (!img.dataset.fbBound) {
       img.dataset.fbBound = '1';
-      img.addEventListener('error', function () {
-        this.style.display = 'none';
-        const p = this.parentElement;
-        if (p) {
-          p.classList.add('img-fallback');
-          p.setAttribute('data-fallback', this.alt.split(' ').slice(0, 2).join(' '));
-        }
-      });
     }
   });
 }
@@ -1352,7 +1377,6 @@ function afterRender() {
    PAGE RENDERERS
    ============================================================ */
 
-/* ---------- HOME ---------- */
 function renderHome() {
   const featured = PRODUCTS.filter(p => p.isNew).slice(0, 8);
   const featuredCards = featured.map(productCard).join('');
@@ -1499,7 +1523,6 @@ function renderHome() {
   `;
 }
 
-/* ---------- Newsletter block (reused) ---------- */
 function renderNewsletter() {
   return `
     <section class="newsletter">
@@ -1514,13 +1537,9 @@ function renderNewsletter() {
     </section>`;
 }
 
-/* ---------- Shop Landing (Men/Women/Accessories) ---------- */
 function renderShopLanding(gender) {
   const cat = CATALOG[gender];
-  const subGroups = cat.groups.map(g => ({
-    label: g.label,
-    subs: g.subs
-  }));
+  const subGroups = cat.groups.map(g => ({ label: g.label, subs: g.subs }));
 
   return `
     <div class="page-head">
@@ -1536,7 +1555,7 @@ function renderShopLanding(gender) {
             ${g.subs.map((s, si) => {
               const preview = PRODUCTS.find(p => p.cat === gender && p.sub === s.slug);
               return `<a href="#/${gender}/${s.slug}" data-link class="collection-card" style="aspect-ratio:3/3.5" data-reveal style="--d:${(gi*3+si)*40}ms">
-                ${preview ? imgTag(preview.img, s.label) : ''}
+                ${preview ? imgTag(preview.img, s.label, '', preview.bgClass) : ''}
                 <div class="collection-info" style="padding:1.1rem"><h3 style="font-size:1.15rem">${esc(s.label)}</h3><small>20 prodotti</small></div>
               </a>`;
             }).join('')}
@@ -1547,12 +1566,6 @@ function renderShopLanding(gender) {
     ${renderNewsletter()}
   `;
 }
-
-/* ---------- Category Listing (Filters, Sort, Grid) ---------- */
-const STATE = {
-  filters: { priceMax: 1000, sizes: new Set(), colors: new Set(), newOnly: false, saleOnly: false, inStock: false },
-  sort: 'featured'
-};
 
 function renderCategory(gender, subSlug) {
   const cat = CATALOG[gender];
@@ -1573,7 +1586,7 @@ function renderCategory(gender, subSlug) {
       </div>
       <div class="cat-page">
         <div class="cat-hero" data-reveal>
-          ${preview ? imgTag(preview.img, sub.label) : ''}
+          ${preview ? imgTag(preview.img, sub.label, '', preview.bgClass) : ''}
           <div class="cat-hero-content">
             <span class="eyebrow">Collezione ${esc(cat.title)}</span>
             <h1 class="cat-title">${esc(sub.label)}</h1>
@@ -1616,7 +1629,6 @@ function renderCategory(gender, subSlug) {
   `;
 }
 
-/* ---------- New Arrivals ---------- */
 function renderNewArrivals() {
   const products = PRODUCTS.filter(p => p.isNew);
   return `
@@ -1635,7 +1647,6 @@ function renderNewArrivals() {
   `;
 }
 
-/* ---------- Collections ---------- */
 const COLLECTIONS = {
   'spring-summer': {
     label: 'Spring / Summer', sub: 'La stagione calda',
@@ -1726,7 +1737,6 @@ function renderCollection(slug) {
   `;
 }
 
-/* ---------- Search ---------- */
 function renderSearchResults(q) {
   const term = q.trim().toLowerCase();
   const products = term
@@ -1754,7 +1764,6 @@ function renderSearchResults(q) {
   `;
 }
 
-/* ---------- Wishlist ---------- */
 function renderWishlist() {
   const items = [...wishlist].map(id => getProduct(id)).filter(Boolean);
   return `
@@ -1773,7 +1782,6 @@ function renderWishlist() {
   `;
 }
 
-/* ---------- About ---------- */
 function renderAbout() {
   return `
     <div class="page">
@@ -1800,7 +1808,6 @@ function renderAbout() {
   `;
 }
 
-/* ---------- Contact ---------- */
 function renderContact() {
   return `
     <div class="page">
@@ -1811,7 +1818,7 @@ function renderContact() {
         <p>Ti aspettiamo nel cuore di Monza. Per appuntamenti privati, consulenze o semplicemente per un caffè.</p>
       </div>
       <section class="section" style="padding-top:0">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,4vw,4rem);align-items:start">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,4vw,4rem);align-items:start" class="contact-grid">
           <div>
             <div style="margin-bottom:2rem">
               <span class="eyebrow no-line" style="margin-bottom:.6rem">Indirizzo</span>
@@ -1844,7 +1851,93 @@ function renderContact() {
   `;
 }
 
-/* ---------- 404 ---------- */
+function renderProduct(id) {
+  const p = getProduct(id);
+  if (!p) return renderNotFound();
+
+  const related = PRODUCTS.filter(x => x.cat === p.cat && x.sub === p.sub && x.id !== p.id).slice(0, 4);
+
+  return `
+    <div class="page">
+      <div class="crumbs">
+        <a href="#/" data-link>Home</a><span>/</span>
+        <a href="#/${p.cat}" data-link>${esc(p.catLabel)}</a><span>/</span>
+        <a href="#/${p.cat}/${p.sub}" data-link>${esc(p.subLabel)}</a><span>/</span>
+        <span style="color:var(--ink);opacity:1">${esc(p.name)}</span>
+      </div>
+      <div class="cat-page">
+        <div class="pd">
+          <div class="pd-gallery">
+            <div class="pd-main ${p.bgClass}" id="pdMainImg">${imgTag(p.imgs[0], p.name, '', p.bgClass)}</div>
+            <div class="pd-thumbs">
+              ${p.imgs.map((src, i) => `<button class="pd-thumb ${p.bgClass} ${i === 0 ? ' active' : ''}" data-thumb="${i}">${imgTag(src, p.name + ' ' + (i+1), '', p.bgClass)}</button>`).join('')}
+            </div>
+          </div>
+          <div class="pd-info">
+            <span class="pd-cat">${esc(p.catLabel)} · ${esc(p.subLabel)}</span>
+            <h1 class="pd-title">${esc(p.name)}</h1>
+            <div class="pd-price">
+              ${p.salePrice ? `<span class="old">${fmt(p.price)}</span>${fmt(p.salePrice)}` : fmt(p.price)}
+            </div>
+            <p class="pd-desc">${esc(p.desc)}</p>
+
+            <div class="pd-options">
+              <h5>Colore <span id="pdColorLabel">${esc(p.colors[0])}</span></h5>
+              <div class="color-grid" id="pdColors">
+                ${p.colors.map((c, i) => `<span class="pd-color${i === 0 ? ' active' : ''}" data-color="${esc(c)}" style="background:${COLOR_MAP[c] || '#B0A594'}" title="${esc(c)}"></span>`).join('')}
+              </div>
+            </div>
+
+            <div class="pd-options">
+              <h5>Taglia <span id="pdSizeLabel">Seleziona</span></h5>
+              <div class="size-grid" id="pdSizes">
+                ${p.sizes.map(s => `<button class="size-btn" data-size="${s}">${s}</button>`).join('')}
+              </div>
+            </div>
+
+            <div class="pd-actions">
+              <button class="btn btn-dark btn-full" id="pdAdd">Aggiungi al carrello</button>
+              <div class="pd-actions-row">
+                <button class="btn btn-outline" id="pdBuyNow">Acquista ora</button>
+                <button class="btn btn-outline" id="pdWish">${wishlist.has(p.id) ? '♥ Preferito' : '♡ Preferiti'}</button>
+              </div>
+            </div>
+
+            <div class="pd-meta">
+              <span>✦ Spedizione gratuita sopra € 150</span>
+              <span>✦ ${p.stock > 0 ? `${p.stock} disponibili` : 'Attualmente non disponibile'}</span>
+              <span>✦ Reso gratuito entro 30 giorni</span>
+            </div>
+
+            <div class="pd-accordion">
+              <div class="acc-item">
+                <button class="acc-toggle">Dettagli e composizione <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.4"/></svg></button>
+                <div class="acc-body"><div class="acc-body-inner">Composizione: ${esc(p.subLabel)} in materiale pregiato selezionato. Made in Italy. Cura del capo: lavaggio delicato, non candeggiare, stirare a bassa temperatura.</div></div>
+              </div>
+              <div class="acc-item">
+                <button class="acc-toggle">Spedizioni e resi <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.4"/></svg></button>
+                <div class="acc-body"><div class="acc-body-inner">Spedizione gratuita in Italia sopra € 150. Consegna in 2–4 giorni lavorativi. Resi gratuiti entro 30 giorni dalla ricezione.</div></div>
+              </div>
+              <div class="acc-item">
+                <button class="acc-toggle">Servizio boutique <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.4"/></svg></button>
+                <div class="acc-body"><div class="acc-body-inner">Prenota un appuntamento privato in boutique a Monza per una consulenza personalizzata. Chiama +39 039 000 0000 o scrivi a info@bellini.it.</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        ${related.length ? `
+        <section class="section" style="padding-left:0;padding-right:0;padding-bottom:0">
+          <div class="section-head">
+            <div><span class="eyebrow">Potrebbe piacerti</span><h2 class="section-title" style="font-size:clamp(1.6rem,3vw,2.4rem);margin-top:.8rem">Dalla stessa <em>collezione</em></h2></div>
+          </div>
+          <div class="products-grid">${related.map(productCard).join('')}</div>
+        </section>` : ''}
+      </div>
+    </div>
+  `;
+}
+
 function renderNotFound() {
   return `
     <div class="page">
@@ -1866,7 +1959,6 @@ function wireCategoryPage(gender, subSlug) {
   const grid = $('#catProductsGrid');
   if (!grid) return;
 
-  // Build filter UI
   const products = PRODUCTS.filter(p => p.cat === gender && p.sub === subSlug);
   const priceBounds = [Math.min(...products.map(p => p.salePrice || p.price)), Math.max(...products.map(p => p.salePrice || p.price))];
   STATE.filters.priceMax = priceBounds[1];
@@ -1921,7 +2013,6 @@ function wireCategoryPage(gender, subSlug) {
     </div>
   `;
 
-  // Toggle groups
   $$('[data-ftoggle]', content).forEach(t => {
     t.onclick = () => {
       t.classList.toggle('closed');
@@ -1929,7 +2020,6 @@ function wireCategoryPage(gender, subSlug) {
     };
   });
 
-  // Wire filter events
   let currentFilters = { ...STATE.filters, sizes: new Set(), colors: new Set() };
   let currentSort = 'featured';
 
@@ -2002,114 +2092,21 @@ function wireCategoryPage(gender, subSlug) {
   apply();
 }
 
-/* ============================================================
-   PRODUCT DETAIL PAGE
-   ============================================================ */
-function renderProduct(id) {
-  const p = getProduct(id);
-  if (!p) return renderNotFound();
-
-  const displayPrice = p.salePrice || p.price;
-  const related = PRODUCTS.filter(x => x.cat === p.cat && x.sub === p.sub && x.id !== p.id).slice(0, 4);
-
-  return `
-    <div class="page">
-      <div class="crumbs">
-        <a href="#/" data-link>Home</a><span>/</span>
-        <a href="#/${p.cat}" data-link>${esc(p.catLabel)}</a><span>/</span>
-        <a href="#/${p.cat}/${p.sub}" data-link>${esc(p.subLabel)}</a><span>/</span>
-        <span style="color:var(--ink);opacity:1">${esc(p.name)}</span>
-      </div>
-      <div class="cat-page">
-        <div class="pd">
-          <div class="pd-gallery">
-            <div class="pd-main" id="pdMainImg">${imgTag(p.imgs[0], p.name)}</div>
-            <div class="pd-thumbs">
-              ${p.imgs.map((src, i) => `<button class="pd-thumb${i === 0 ? ' active' : ''}" data-thumb="${i}">${imgTag(src, p.name + ' ' + (i+1))}</button>`).join('')}
-            </div>
-          </div>
-          <div class="pd-info">
-            <span class="pd-cat">${esc(p.catLabel)} · ${esc(p.subLabel)}</span>
-            <h1 class="pd-title">${esc(p.name)}</h1>
-            <div class="pd-price">
-              ${p.salePrice ? `<span class="old">${fmt(p.price)}</span>${fmt(p.salePrice)}` : fmt(p.price)}
-            </div>
-            <p class="pd-desc">${esc(p.desc)}</p>
-
-            <div class="pd-options">
-              <h5>Colore <span id="pdColorLabel">${esc(p.colors[0])}</span></h5>
-              <div class="color-grid" id="pdColors">
-                ${p.colors.map((c, i) => `<span class="pd-color${i === 0 ? ' active' : ''}" data-color="${esc(c)}" style="background:${COLOR_MAP[c] || '#B0A594'}" title="${esc(c)}"></span>`).join('')}
-              </div>
-            </div>
-
-            <div class="pd-options">
-              <h5>Taglia <span id="pdSizeLabel">Seleziona</span></h5>
-              <div class="size-grid" id="pdSizes">
-                ${p.sizes.map(s => `<button class="size-btn" data-size="${s}">${s}</button>`).join('')}
-              </div>
-            </div>
-
-            <div class="pd-actions">
-              <button class="btn btn-dark btn-full" id="pdAdd">Aggiungi al carrello</button>
-              <div class="pd-actions-row">
-                <button class="btn btn-outline" id="pdBuyNow">Acquista ora</button>
-                <button class="btn btn-outline" id="pdWish">${wishlist.has(p.id) ? '♥ Preferito' : '♡ Preferiti'}</button>
-              </div>
-            </div>
-
-            <div class="pd-meta">
-              <span>✦ Spedizione gratuita sopra € 150</span>
-              <span>✦ ${p.stock > 0 ? `${p.stock} disponibili` : 'Attualmente non disponibile'}</span>
-              <span>✦ Reso gratuito entro 30 giorni</span>
-            </div>
-
-            <div class="pd-accordion">
-              <div class="acc-item">
-                <button class="acc-toggle">Dettagli e composizione <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.4"/></svg></button>
-                <div class="acc-body"><div class="acc-body-inner">Composizione: ${esc(p.subLabel)} in materiale pregiato selezionato. Made in Italy. Cura del capo: lavaggio delicato, non candeggiare, stirare a bassa temperatura.</div></div>
-              </div>
-              <div class="acc-item">
-                <button class="acc-toggle">Spedizioni e resi <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.4"/></svg></button>
-                <div class="acc-body"><div class="acc-body-inner">Spedizione gratuita in Italia sopra € 150. Consegna in 2–4 giorni lavorativi. Resi gratuiti entro 30 giorni dalla ricezione.</div></div>
-              </div>
-              <div class="acc-item">
-                <button class="acc-toggle">Servizio boutique <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.4"/></svg></button>
-                <div class="acc-body"><div class="acc-body-inner">Prenota un appuntamento privato in boutique a Monza per una consulenza personalizzata. Chiama +39 039 000 0000 o scrivi a info@bellini.it.</div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        ${related.length ? `
-        <section class="section" style="padding-left:0;padding-right:0;padding-bottom:0">
-          <div class="section-head">
-            <div><span class="eyebrow">Potrebbe piacerti</span><h2 class="section-title" style="font-size:clamp(1.6rem,3vw,2.4rem);margin-top:.8rem">Dalla stessa <em>collezione</em></h2></div>
-          </div>
-          <div class="products-grid">${related.map(productCard).join('')}</div>
-        </section>` : ''}
-      </div>
-    </div>
-  `;
-}
-
 function wireProductPage(id) {
   const p = getProduct(id);
   if (!p) return;
   let selectedSize = p.sizes.length === 1 ? p.sizes[0] : null;
   let selectedColor = p.colors[0];
 
-  // thumbs
   $$('[data-thumb]').forEach(th => {
     th.onclick = () => {
       const idx = +th.dataset.thumb;
-      $('#pdMainImg').innerHTML = imgTag(p.imgs[idx], p.name);
+      $('#pdMainImg').innerHTML = imgTag(p.imgs[idx], p.name, '', p.bgClass);
       $$('[data-thumb]').forEach(t => t.classList.remove('active'));
       th.classList.add('active');
     };
   });
 
-  // colors
   $$('#pdColors [data-color]').forEach(c => {
     c.onclick = () => {
       selectedColor = c.dataset.color;
@@ -2119,7 +2116,6 @@ function wireProductPage(id) {
     };
   });
 
-  // sizes
   $$('#pdSizes [data-size]').forEach(b => {
     if (b.dataset.size === selectedSize) b.classList.add('active');
     b.onclick = () => {
@@ -2142,7 +2138,6 @@ function wireProductPage(id) {
     $('#pdWish').textContent = wishlist.has(p.id) ? '♥ Preferito' : '♡ Preferiti';
   };
 
-  // accordion
   $$('.acc-toggle').forEach(t => {
     t.onclick = () => t.parentElement.classList.toggle('open');
   });
@@ -2370,22 +2365,16 @@ function initLookbook() {
   });
 }
 
-/* ---------- Hash-link interception (for smooth SPA nav) ---------- */
 function initLinkInterceptor() {
   document.addEventListener('click', e => {
     const link = e.target.closest('a[href^="#/"]');
-    if (link) {
-      // allow browser to change hash; router handles
-      return;
-    }
+    if (link) return;
   });
 }
 
-/* ---------- After-route hook ---------- */
 const originalRenderRoute = renderRoute;
 renderRoute = function () {
   originalRenderRoute.call(this);
-  // Page-specific wiring
   const parts = parseHash().path.split('/').filter(Boolean);
   bindProductEvents(document);
   if (parts[0] === 'men' || parts[0] === 'women' || parts[0] === 'accessories') {
@@ -2397,7 +2386,6 @@ renderRoute = function () {
   initLookbook();
 };
 
-/* ---------- Boot ---------- */
 document.addEventListener('DOMContentLoaded', () => {
   initLoader();
   initCursor();
@@ -2408,7 +2396,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initSearch();
   initLinkInterceptor();
 
-  // initial state
   renderCart();
   updateBadge('#wishCount', wishlist.size);
 
@@ -2416,7 +2403,6 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('hashchange', renderRoute);
 });
 
-/* Expose for debugging */
 window.BELLINI = { PRODUCTS, CATALOG, cart, wishlist };
 </script>
 </body>
