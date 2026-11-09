@@ -1,0 +1,2423 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BELLINI — Stile Senza Tempo | Boutique Italiana · Monza</title>
+<meta name="description" content="BELLINI — Boutique di moda italiana premium a Monza. Capi senza tempo per donna e uomo, selezionati con cura dal 1987.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================
+   BELLINI — DESIGN SYSTEM (UNCHANGED)
+   ============================================ */
+:root{
+  --cream:#F5F1E9;--cream-2:#EDE7DB;--bone:#E3DCCD;
+  --ink:#15120F;--ink-2:#2A2521;--muted:#837A6E;
+  --line:rgba(21,18,15,.13);--line-light:rgba(245,241,233,.18);
+  --accent:#7C2B26;--gold:#B08D57;
+  --ease:cubic-bezier(.16,1,.3,1);--ease-soft:cubic-bezier(.4,0,.2,1);
+  --pad:clamp(1.15rem,4vw,4.5rem);--header-h:80px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Jost',system-ui,sans-serif;background:var(--cream);color:var(--ink);font-weight:300;line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body.lock{overflow:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;border:none;background:none;cursor:pointer;color:inherit}
+input,select{font-family:inherit}
+::selection{background:var(--ink);color:var(--cream)}
+::-webkit-scrollbar{width:9px}
+::-webkit-scrollbar-track{background:var(--cream-2)}
+::-webkit-scrollbar-thumb{background:#c2b9a9;border-radius:9px}
+::-webkit-scrollbar-thumb:hover{background:var(--gold)}
+.serif{font-family:'Cormorant Garamond',Georgia,serif;font-weight:400}
+.eyebrow{font-size:.65rem;letter-spacing:.32em;text-transform:uppercase;font-weight:400;color:var(--muted);display:inline-flex;align-items:center;gap:.9rem}
+.eyebrow::before{content:'';width:36px;height:1px;background:currentColor;opacity:.55}
+.eyebrow.center::after{content:'';width:36px;height:1px;background:currentColor;opacity:.55}
+.eyebrow.no-line::before{display:none}
+.grain{position:fixed;inset:0;pointer-events:none;z-index:9990;opacity:.04;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+[data-reveal]{opacity:0;transform:translateY(30px);transition:opacity 1.1s var(--ease),transform 1.1s var(--ease);transition-delay:var(--d,0ms)}
+[data-reveal].in{opacity:1;transform:none}
+
+/* Loader */
+.loader{position:fixed;inset:0;z-index:10000;background:var(--cream);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.6rem;transition:transform 1.1s var(--ease),opacity .5s ease .8s}
+.loader.done{transform:translateY(-101%);opacity:0;pointer-events:none}
+.loader-mark{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,4vw,2.4rem);letter-spacing:.55em;text-indent:.55em;font-weight:400;display:flex;overflow:hidden}
+.loader-mark span{display:inline-block;transform:translateY(110%);animation:lRise 1s var(--ease) forwards}
+@keyframes lRise{to{transform:translateY(0)}}
+.loader-sub{font-size:.58rem;letter-spacing:.42em;text-transform:uppercase;color:var(--muted);opacity:0;animation:fadeIn .8s ease .7s forwards}
+@keyframes fadeIn{to{opacity:1}}
+.loader-bar{width:170px;height:1px;background:var(--line);position:relative;overflow:hidden}
+.loader-bar::after{content:'';position:absolute;inset:0;background:var(--ink);transform-origin:left;transform:scaleX(0);animation:lBar 1.6s var(--ease-soft) .25s forwards}
+@keyframes lBar{to{transform:scaleX(1)}}
+
+/* Cursor */
+.cursor-dot,.cursor-ring{position:fixed;top:0;left:0;pointer-events:none;z-index:9999;border-radius:50%;transform:translate(-50%,-50%);will-change:transform;opacity:0}
+.cursor-dot{width:5px;height:5px;background:var(--ink);transition:opacity .3s}
+.cursor-ring{width:34px;height:34px;border:1px solid rgba(21,18,15,.35);transition:width .35s var(--ease),height .35s var(--ease),background .35s,border-color .35s,opacity .3s}
+body.cursor-on .cursor-dot,body.cursor-on .cursor-ring{opacity:1}
+.cursor-ring.hover{width:62px;height:62px;background:rgba(21,18,15,.05);border-color:rgba(21,18,15,.6)}
+@media (hover:none),(pointer:coarse){.cursor-dot,.cursor-ring{display:none}}
+
+/* Announce */
+.announce{background:var(--ink);color:var(--cream);height:36px;display:grid;place-items:center;overflow:hidden;position:relative;z-index:60}
+.announce-track{position:relative;height:100%;width:100%;display:grid;place-items:center}
+.announce-item{position:absolute;inset:0;display:grid;place-items:center;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;font-weight:300;opacity:0;transform:translateY(100%);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.announce-item.active{opacity:1;transform:translateY(0)}
+.announce-item span{color:var(--gold)}
+
+/* Header */
+.site-header{position:sticky;top:0;z-index:900;background:rgba(245,241,233,0);transition:background .5s var(--ease),box-shadow .5s var(--ease),border-color .5s;border-bottom:1px solid transparent}
+.site-header.stuck{background:rgba(245,241,233,.9);backdrop-filter:blur(18px) saturate(1.2);-webkit-backdrop-filter:blur(18px) saturate(1.2);border-bottom-color:var(--line)}
+.header-inner{max-width:1600px;margin:0 auto;padding:0 var(--pad);height:var(--header-h);display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:1.5rem;transition:height .45s var(--ease)}
+.site-header.stuck .header-inner{height:64px}
+.logo{display:flex;flex-direction:column;line-height:1;gap:.32rem}
+.logo-main{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:1.42rem;letter-spacing:.34em;text-indent:.34em;transition:font-size .45s var(--ease)}
+.site-header.stuck .logo-main{font-size:1.2rem}
+.logo-sub{font-size:.42rem;letter-spacing:.46em;text-indent:.46em;text-transform:uppercase;color:var(--muted);font-weight:400}
+.nav{display:flex;gap:clamp(.9rem,1.8vw,1.8rem);justify-content:center;flex-wrap:wrap}
+.nav a{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;font-weight:400;position:relative;padding:.4rem 0;transition:color .35s;white-space:nowrap}
+.nav a::after{content:'';position:absolute;left:0;bottom:0;height:1px;width:100%;background:var(--ink);transform:scaleX(0);transform-origin:right;transition:transform .55s var(--ease)}
+.nav a:hover::after,.nav a.active::after{transform:scaleX(1);transform-origin:left}
+.nav a.active{color:var(--ink)}
+.header-actions{display:flex;justify-content:flex-end;align-items:center;gap:.4rem}
+.icon-btn{width:38px;height:38px;display:grid;place-items:center;position:relative;transition:opacity .3s,transform .3s var(--ease)}
+.icon-btn:hover{opacity:.6}
+.icon-btn svg{width:17px;height:17px;stroke:var(--ink);stroke-width:1.3;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.cart-count{position:absolute;top:2px;right:0;min-width:16px;height:16px;padding:0 4px;background:var(--accent);color:#fff;border-radius:20px;font-size:.55rem;display:grid;place-items:center;font-weight:500;transform:scale(0);transition:transform .4s var(--ease)}
+.cart-count.show{transform:scale(1)}
+.cart-count.pop{animation:pop .45s var(--ease)}
+@keyframes pop{0%{transform:scale(1)}45%{transform:scale(1.45)}100%{transform:scale(1)}}
+.burger{display:none;flex-direction:column;gap:5px;width:34px;height:34px;justify-content:center;align-items:center}
+.burger span{display:block;width:20px;height:1px;background:var(--ink);transition:transform .45s var(--ease),opacity .3s}
+
+/* Mobile menu */
+.mobile-menu{position:fixed;inset:0;z-index:950;background:var(--cream);display:flex;flex-direction:column;justify-content:center;padding:6rem var(--pad) 3rem;clip-path:circle(0% at calc(100% - 40px) 40px);transition:clip-path .9s var(--ease);pointer-events:none;overflow-y:auto}
+.mobile-menu.open{clip-path:circle(160% at calc(100% - 40px) 40px);pointer-events:auto}
+.mobile-menu nav{display:flex;flex-direction:column;gap:.2rem}
+.mobile-menu nav a{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,7vw,2.6rem);line-height:1.25;border-bottom:1px solid var(--line);padding:.55rem 0;display:flex;justify-content:space-between;align-items:baseline;opacity:0;transform:translateY(20px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.mobile-menu.open nav a{opacity:1;transform:none}
+.mobile-menu nav a span{font-family:'Jost',sans-serif;font-size:.6rem;letter-spacing:.25em;color:var(--muted)}
+.mobile-menu nav a:nth-child(1){transition-delay:.15s}
+.mobile-menu nav a:nth-child(2){transition-delay:.2s}
+.mobile-menu nav a:nth-child(3){transition-delay:.25s}
+.mobile-menu nav a:nth-child(4){transition-delay:.3s}
+.mobile-menu nav a:nth-child(5){transition-delay:.35s}
+.mobile-menu nav a:nth-child(6){transition-delay:.4s}
+.mobile-menu nav a:nth-child(7){transition-delay:.45s}
+.mobile-menu nav a:nth-child(8){transition-delay:.5s}
+.mobile-foot{margin-top:2.5rem;font-size:.66rem;letter-spacing:.18em;color:var(--muted);text-transform:uppercase}
+.mobile-foot a{display:block;margin-top:.5rem;color:var(--ink)}
+
+/* Buttons */
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:.7rem;padding:1.05rem 2.2rem;font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;font-weight:400;overflow:hidden;isolation:isolate;transition:color .5s var(--ease),border-color .5s var(--ease);border:1px solid transparent}
+.btn::before{content:'';position:absolute;inset:0;z-index:-1;transform:translateY(101%);transition:transform .6s var(--ease)}
+.btn:hover::before{transform:translateY(0)}
+.btn-light{background:var(--cream);color:var(--ink);border-color:var(--cream)}
+.btn-light::before{background:var(--ink)}
+.btn-light:hover{color:var(--cream);border-color:var(--ink)}
+.btn-ghost{border-color:rgba(245,241,233,.4);color:var(--cream)}
+.btn-ghost::before{background:var(--cream)}
+.btn-ghost:hover{color:var(--ink);border-color:var(--cream)}
+.btn-dark{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+.btn-dark::before{background:var(--accent)}
+.btn-dark:hover{color:#fff;border-color:var(--accent)}
+.btn-outline{border-color:var(--line);color:var(--ink)}
+.btn-outline::before{background:var(--ink)}
+.btn-outline:hover{color:var(--cream);border-color:var(--ink)}
+.btn-full{width:100%}
+.btn .arrow{transition:transform .5s var(--ease)}
+.btn:hover .arrow{transform:translateX(5px)}
+.btn.sm{padding:.8rem 1.5rem;font-size:.6rem}
+
+/* Hero */
+.hero{position:relative;min-height:calc(100svh - 36px);display:flex;align-items:flex-end;overflow:hidden;margin-top:calc(-1 * var(--header-h));padding-bottom:clamp(2.5rem,6vh,5rem)}
+.hero-media{position:absolute;inset:0;overflow:hidden}
+.hero-media img{width:100%;height:100%;object-fit:cover;object-position:center 30%;animation:heroZoom 2.6s var(--ease) forwards;filter:saturate(.92) contrast(1.02)}
+@keyframes heroZoom{from{transform:scale(1.14)}to{transform:scale(1)}}
+.hero-veil{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,8,6,.82) 0%,rgba(10,8,6,.35) 42%,rgba(10,8,6,.05) 72%,rgba(10,8,6,.35) 100%),linear-gradient(to right,rgba(10,8,6,.6),transparent 65%)}
+.hero-content{position:relative;z-index:2;max-width:1600px;margin:0 auto;width:100%;padding:0 var(--pad);color:var(--cream)}
+.hero-eyebrow{color:rgba(245,241,233,.72);margin-bottom:clamp(1.2rem,3vw,2.2rem);opacity:0;animation:fadeUp 1s var(--ease) .5s forwards}
+.hero-eyebrow::before{background:var(--gold);opacity:1}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.hero-title{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(3rem,10.5vw,9.5rem);line-height:.86;letter-spacing:-.015em;text-transform:uppercase;margin-bottom:clamp(1.4rem,3vw,2.4rem)}
+.hero-title .line{display:block;overflow:hidden;padding-bottom:.06em}
+.hero-title .line > span{display:inline-block;transform:translateY(112%);animation:heroRise 1.35s var(--ease) forwards}
+.hero-title .line:nth-child(1) > span{animation-delay:.15s}
+.hero-title .line:nth-child(2) > span{animation-delay:.32s}
+@keyframes heroRise{to{transform:translateY(0)}}
+.hero-title em{font-style:italic;text-transform:none;font-weight:300;color:var(--gold);font-size:.92em}
+.hero-title .small{font-size:.62em;letter-spacing:.02em}
+.hero-lead{max-width:44ch;color:rgba(245,241,233,.8);font-size:clamp(.86rem,1.1vw,.98rem);line-height:1.85;font-weight:300;opacity:0;animation:fadeUp 1s var(--ease) .95s forwards;margin-bottom:clamp(1.8rem,3.5vw,2.8rem)}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap;align-items:center;opacity:0;animation:fadeUp 1s var(--ease) 1.15s forwards}
+.hero-side{position:absolute;right:var(--pad);bottom:clamp(2.5rem,6vh,5rem);z-index:2;writing-mode:vertical-rl;font-size:.56rem;letter-spacing:.36em;text-transform:uppercase;color:rgba(245,241,233,.55);display:flex;align-items:center;gap:1rem;opacity:0;animation:fadeIn 1s ease 1.6s forwards}
+.hero-side::after{content:'';width:1px;height:52px;background:rgba(245,241,233,.35)}
+.hero-scroll{position:absolute;left:var(--pad);bottom:1.6rem;z-index:2;display:flex;align-items:center;gap:.8rem;font-size:.56rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(245,241,233,.6);opacity:0;animation:fadeIn 1s ease 1.8s forwards}
+.hero-scroll i{display:block;width:1px;height:34px;background:rgba(245,241,233,.4);position:relative;overflow:hidden}
+.hero-scroll i::after{content:'';position:absolute;top:0;left:0;width:100%;height:50%;background:var(--cream);animation:scrollLine 2s var(--ease-soft) infinite}
+@keyframes scrollLine{0%{transform:translateY(-100%)}60%,100%{transform:translateY(200%)}}
+
+/* Marquee */
+.marquee{background:var(--ink);color:var(--cream);overflow:hidden;padding:1.05rem 0;border-top:1px solid rgba(245,241,233,.08)}
+.marquee-track{display:flex;width:max-content;animation:marquee 42s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+@keyframes marquee{to{transform:translateX(-50%)}}
+.marquee-set{display:flex;align-items:center;flex-shrink:0}
+.marquee-set span{font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;padding:0 1.8rem;font-weight:300;white-space:nowrap}
+.marquee-set i{color:var(--gold);font-size:.5rem;font-style:normal}
+
+/* Section */
+.section{max-width:1600px;margin:0 auto;padding:clamp(4.5rem,10vw,9rem) var(--pad)}
+.section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap;margin-bottom:clamp(2.2rem,4.5vw,4rem)}
+.section-title{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(2rem,4.6vw,3.9rem);line-height:1.02;letter-spacing:-.01em;margin-top:1rem}
+.section-title em{font-style:italic;color:var(--accent)}
+.link-arrow{font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;display:inline-flex;align-items:center;gap:.7rem;padding-bottom:.35rem;border-bottom:1px solid var(--line);transition:border-color .4s,gap .4s var(--ease)}
+.link-arrow:hover{border-color:var(--ink);gap:1.2rem}
+
+/* Maison */
+.maison{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,6vw,6rem);align-items:center;max-width:1600px;margin:0 auto;padding:clamp(4.5rem,10vw,9rem) var(--pad)}
+.maison-visual{position:relative}
+.maison-visual .parallax-wrap{aspect-ratio:4/5;overflow:hidden;background:var(--bone)}
+.parallax-wrap{overflow:hidden;position:relative}
+.parallax-wrap img{width:100%;height:118%;object-fit:cover;position:absolute;top:-9%;left:0;will-change:transform;filter:saturate(.95)}
+.maison-badge{position:absolute;right:-1px;bottom:-1px;background:var(--cream);padding:1.4rem 1.8rem;text-align:center;border:1px solid var(--line);border-right:none;border-bottom:none}
+.maison-badge strong{display:block;font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:400;line-height:1;color:var(--accent)}
+.maison-badge small{font-size:.5rem;letter-spacing:.26em;text-transform:uppercase;color:var(--muted);display:block;margin-top:.5rem}
+.maison-copy p{color:var(--ink-2);font-size:.95rem;line-height:1.95;margin-top:1.4rem;max-width:48ch}
+.maison-copy p.lead{font-family:'Cormorant Garamond',serif;font-size:clamp(1.15rem,1.7vw,1.42rem);line-height:1.6;color:var(--ink);font-style:italic}
+.signature{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.5rem;margin-top:2rem;color:var(--accent)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.6rem;padding-top:2rem;border-top:1px solid var(--line)}
+.stats strong{display:block;font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,2.4vw,2rem);font-weight:400;line-height:1}
+.stats span{font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);display:block;margin-top:.55rem}
+
+/* Collections cards */
+.collections-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(.8rem,1.6vw,1.6rem)}
+.collection-card{position:relative;overflow:hidden;aspect-ratio:3/4.1;background:var(--bone);display:block}
+.collection-card img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease),filter 1s;filter:saturate(.9)}
+.collection-card:hover img{transform:scale(1.07);filter:saturate(1.05)}
+.collection-card::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(10,8,6,.72),rgba(10,8,6,.05) 55%,transparent)}
+.collection-info{position:absolute;left:0;bottom:0;padding:clamp(1.3rem,2.6vw,2.4rem);z-index:2;color:var(--cream);width:100%}
+.collection-info h3{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(1.5rem,2.6vw,2.3rem);line-height:1;letter-spacing:.02em}
+.collection-info small{font-size:.56rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(245,241,233,.65);display:block;margin-top:.7rem}
+.collection-cta{display:flex;align-items:center;gap:.7rem;margin-top:1.3rem;font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;opacity:0;transform:translateY(12px);transition:opacity .55s var(--ease),transform .55s var(--ease)}
+.collection-card:hover .collection-cta{opacity:1;transform:none}
+
+/* Products */
+.products-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(1rem,2.4vw,2.4rem) clamp(.8rem,1.6vw,1.6rem)}
+.product{position:relative;animation:prodIn .7s var(--ease) both}
+@keyframes prodIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.product.hide{display:none}
+.product-media{position:relative;aspect-ratio:3/4;overflow:hidden;background:var(--bone);display:block}
+.product-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .8s var(--ease),transform 1.3s var(--ease);filter:saturate(.93)}
+.product-media img.alt{opacity:0}
+.product:hover .product-media img{transform:scale(1.05)}
+.product:hover .product-media img.alt{opacity:1}
+.product:hover .product-media img.main{opacity:0}
+.product-badge{position:absolute;top:.85rem;left:.85rem;z-index:3;background:var(--cream);color:var(--ink);font-size:.5rem;letter-spacing:.22em;text-transform:uppercase;padding:.42rem .7rem;font-weight:400}
+.product-badge.sale{background:var(--accent);color:#fff}
+.product-badge.new{background:var(--ink);color:var(--cream)}
+.wish{position:absolute;top:.7rem;right:.7rem;z-index:3;width:34px;height:34px;display:grid;place-items:center;background:rgba(245,241,233,.85);border-radius:50%;opacity:0;transform:translateY(-6px);transition:opacity .4s var(--ease),transform .4s var(--ease),background .3s}
+.product:hover .wish{opacity:1;transform:none}
+.wish:hover{background:var(--cream)}
+.wish svg{width:15px;height:15px;stroke:var(--ink);fill:none;stroke-width:1.4;transition:fill .3s,stroke .3s}
+.wish.on svg{fill:var(--accent);stroke:var(--accent)}
+.quick-add{position:absolute;left:.7rem;right:.7rem;bottom:.7rem;z-index:3;background:rgba(245,241,233,.96);backdrop-filter:blur(8px);padding:.9rem;font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;transform:translateY(120%);opacity:0;transition:transform .5s var(--ease),opacity .4s,background .3s,color .3s}
+.product:hover .quick-add{transform:none;opacity:1}
+.quick-add:hover{background:var(--ink);color:var(--cream)}
+.product-info{padding-top:1rem;display:flex;flex-direction:column;gap:.28rem}
+.product-cat{font-size:.54rem;letter-spacing:.26em;text-transform:uppercase;color:var(--muted)}
+.product-name{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:500;line-height:1.25;letter-spacing:.005em}
+.product-price{font-size:.82rem;letter-spacing:.05em;color:var(--ink-2);margin-top:.15rem}
+.product-price .old{color:var(--muted);text-decoration:line-through;margin-right:.5rem;font-size:.78rem}
+
+/* Image fallback */
+.img-fallback{background:linear-gradient(135deg,#E3DCCD 0%,#CFC5B2 100%)!important;position:relative}
+.img-fallback::after{content:attr(data-fallback);position:absolute;inset:0;display:grid;place-items:center;font-family:'Cormorant Garamond',serif;font-size:.8rem;letter-spacing:.15em;color:rgba(21,18,15,.35);text-align:center;padding:1rem;text-transform:uppercase}
+
+/* Editorial */
+.editorial{position:relative;min-height:78vh;display:grid;place-items:center;overflow:hidden;text-align:center;color:var(--cream);padding:clamp(5rem,12vw,9rem) var(--pad)}
+.editorial-bg{position:absolute;inset:0;overflow:hidden}
+.editorial-bg img{width:100%;height:130%;object-fit:cover;position:absolute;top:-15%;left:0;will-change:transform;filter:saturate(.85) brightness(.75)}
+.editorial::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,8,6,.55),rgba(10,8,6,.25),rgba(10,8,6,.65))}
+.editorial-inner{position:relative;z-index:2;max-width:900px}
+.editorial-inner .eyebrow{color:rgba(245,241,233,.65);justify-content:center}
+.editorial-inner .eyebrow::after{content:'';width:36px;height:1px;background:currentColor;opacity:.55}
+.quote{font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic;font-size:clamp(1.7rem,4.6vw,3.6rem);line-height:1.24;margin:1.8rem 0 2rem;letter-spacing:-.01em}
+.quote-attr{font-size:.6rem;letter-spacing:.34em;text-transform:uppercase;color:rgba(245,241,233,.6)}
+
+/* Lookbook */
+.lookbook{padding:clamp(4.5rem,10vw,8rem) 0}
+.lookbook-head{max-width:1600px;margin:0 auto clamp(2rem,4vw,3.4rem);padding:0 var(--pad);display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap}
+.lookbook-scroll{display:flex;gap:clamp(.8rem,1.6vw,1.6rem);overflow-x:auto;padding:0 var(--pad) 1.6rem;scroll-snap-type:x mandatory;scrollbar-width:none;cursor:grab}
+.lookbook-scroll::-webkit-scrollbar{display:none}
+.lookbook-scroll.dragging{cursor:grabbing;scroll-snap-type:none}
+.look-item{flex:0 0 clamp(230px,26vw,360px);aspect-ratio:3/4.2;overflow:hidden;scroll-snap-align:start;position:relative;background:var(--bone)}
+.look-item img{width:100%;height:100%;object-fit:cover;transition:transform 1.3s var(--ease);filter:saturate(.92)}
+.look-item:hover img{transform:scale(1.06)}
+.look-item figcaption{position:absolute;left:0;bottom:0;padding:1.2rem 1.4rem;color:var(--cream);font-size:.56rem;letter-spacing:.28em;text-transform:uppercase;background:linear-gradient(to top,rgba(10,8,6,.7),transparent);width:100%}
+
+/* Testimonials */
+.testimonials{background:var(--cream-2)}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2.4vw,2.2rem)}
+.testi{background:var(--cream);padding:clamp(1.8rem,3.4vw,2.8rem);border:1px solid rgba(21,18,15,.07);transition:transform .6s var(--ease),box-shadow .6s var(--ease)}
+.testi:hover{transform:translateY(-6px);box-shadow:0 24px 50px -30px rgba(21,18,15,.35)}
+.stars{display:flex;gap:.3rem;color:var(--gold);font-size:.75rem;letter-spacing:.15em}
+.testi p{font-family:'Cormorant Garamond',serif;font-size:1.22rem;line-height:1.6;font-style:italic;margin:1.2rem 0 1.6rem;color:var(--ink)}
+.testi-author{display:flex;align-items:center;gap:.8rem;border-top:1px solid var(--line);padding-top:1.2rem}
+.avatar{width:38px;height:38px;border-radius:50%;background:var(--bone);display:grid;place-items:center;font-family:'Cormorant Garamond',serif;font-size:.9rem;color:var(--ink-2);flex-shrink:0}
+.testi-author strong{display:block;font-size:.72rem;letter-spacing:.1em;font-weight:500}
+.testi-author small{display:block;font-size:.58rem;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;margin-top:.2rem}
+
+/* Newsletter */
+.newsletter{background:var(--ink);color:var(--cream);text-align:center;padding:clamp(4rem,9vw,7.5rem) var(--pad);position:relative;overflow:hidden}
+.newsletter::before{content:'';position:absolute;left:50%;top:-40%;width:900px;height:900px;transform:translateX(-50%);pointer-events:none;background:radial-gradient(circle,rgba(176,141,87,.16),transparent 62%)}
+.newsletter .eyebrow{color:rgba(245,241,233,.55);justify-content:center}
+.newsletter .eyebrow::after{content:'';width:36px;height:1px;background:currentColor;opacity:.55}
+.newsletter h2{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(1.9rem,4.4vw,3.5rem);line-height:1.08;margin:1.4rem auto 1rem;max-width:16ch;letter-spacing:-.01em;position:relative;z-index:1}
+.newsletter h2 em{font-style:italic;color:var(--gold)}
+.newsletter p{color:rgba(245,241,233,.62);font-size:.86rem;max-width:46ch;margin:0 auto 2.4rem;line-height:1.85;position:relative;z-index:1}
+.news-form{display:flex;max-width:520px;margin:0 auto;position:relative;z-index:1;border-bottom:1px solid rgba(245,241,233,.35);transition:border-color .4s}
+.news-form:focus-within{border-color:var(--gold)}
+.news-form input{flex:1;background:none;border:none;outline:none;color:var(--cream);padding:1.1rem .2rem;font-size:.8rem;letter-spacing:.1em;font-weight:300}
+.news-form input::placeholder{color:rgba(245,241,233,.4);letter-spacing:.16em;font-size:.72rem;text-transform:uppercase}
+.news-form button{padding:1.1rem .4rem 1.1rem 1.6rem;font-size:.63rem;letter-spacing:.26em;text-transform:uppercase;color:var(--cream);display:flex;align-items:center;gap:.6rem;transition:color .35s,gap .4s var(--ease)}
+.news-form button:hover{color:var(--gold);gap:1rem}
+.news-note{font-size:.56rem;letter-spacing:.18em;color:rgba(245,241,233,.35);margin-top:1.6rem;text-transform:uppercase;position:relative;z-index:1}
+
+/* Footer */
+.site-footer{background:var(--cream);border-top:1px solid var(--line)}
+.footer-main{max-width:1600px;margin:0 auto;padding:clamp(3.5rem,7vw,6rem) var(--pad) 3rem;display:grid;grid-template-columns:1.6fr 1fr 1fr 1.3fr;gap:clamp(2rem,4vw,4rem)}
+.footer-brand .logo-main{font-size:1.6rem}
+.footer-brand p{color:var(--muted);font-size:.82rem;line-height:1.9;margin-top:1.3rem;max-width:34ch}
+.footer-social{display:flex;gap:.6rem;margin-top:1.8rem}
+.footer-social a{width:38px;height:38px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;transition:background .4s,border-color .4s,color .4s}
+.footer-social a:hover{background:var(--ink);border-color:var(--ink);color:var(--cream)}
+.footer-social svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.4}
+.footer-col h4{font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;font-weight:500;margin-bottom:1.4rem;color:var(--ink)}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.7rem}
+.footer-col a{font-size:.82rem;color:var(--muted);transition:color .3s,padding-left .35s var(--ease);display:inline-block}
+.footer-col a:hover{color:var(--ink);padding-left:5px}
+.footer-contact li{font-size:.82rem;color:var(--muted);line-height:1.85;list-style:none}
+.footer-contact strong{color:var(--ink);font-weight:400;display:block;margin-bottom:.15rem}
+.footer-contact li + li{margin-top:1rem}
+.footer-bottom{border-top:1px solid var(--line);max-width:1600px;margin:0 auto;padding:1.6rem var(--pad);display:flex;justify-content:space-between;align-items:center;gap:1.5rem;flex-wrap:wrap;font-size:.62rem;letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
+.footer-bottom .pay{display:flex;gap:1rem;align-items:center}
+.footer-bottom .pay span{opacity:.6;letter-spacing:.1em;font-size:.58rem}
+
+/* Overlay + Cart */
+.overlay{position:fixed;inset:0;background:rgba(10,8,6,.5);backdrop-filter:blur(3px);z-index:960;opacity:0;pointer-events:none;transition:opacity .6s var(--ease)}
+.overlay.show{opacity:1;pointer-events:auto}
+.cart-drawer{position:fixed;top:0;right:0;bottom:0;width:min(440px,100%);background:var(--cream);z-index:970;display:flex;flex-direction:column;transform:translateX(101%);transition:transform .75s var(--ease);box-shadow:-30px 0 80px -40px rgba(0,0,0,.5)}
+.cart-drawer.open{transform:none}
+.cart-head{display:flex;justify-content:space-between;align-items:center;padding:1.6rem;border-bottom:1px solid var(--line);flex-shrink:0}
+.cart-head h3{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:500;letter-spacing:.06em;display:flex;align-items:center;gap:.6rem}
+.cart-head h3 span{font-family:'Jost',sans-serif;font-size:.62rem;letter-spacing:.2em;color:var(--muted)}
+.close-btn{width:36px;height:36px;display:grid;place-items:center;transition:transform .5s var(--ease),opacity .3s}
+.close-btn:hover{transform:rotate(90deg);opacity:.6}
+.close-btn svg{width:16px;height:16px;stroke:var(--ink);stroke-width:1.4;fill:none;stroke-linecap:round}
+.cart-body{flex:1;overflow-y:auto;padding:1.2rem 1.6rem}
+.cart-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;text-align:center;gap:1.2rem;color:var(--muted)}
+.cart-empty svg{width:42px;height:42px;stroke:var(--muted);fill:none;stroke-width:.9;opacity:.5}
+.cart-empty p{font-size:.8rem;letter-spacing:.06em;line-height:1.8}
+.cart-item{display:grid;grid-template-columns:80px 1fr auto;gap:1rem;padding:1.2rem 0;border-bottom:1px solid var(--line);animation:ciIn .5s var(--ease) both}
+@keyframes ciIn{from{opacity:0;transform:translateX(14px)}to{opacity:1;transform:none}}
+.cart-item-img{width:80px;height:104px;overflow:hidden;background:var(--bone)}
+.cart-item-img img{width:100%;height:100%;object-fit:cover}
+.cart-item-info{display:flex;flex-direction:column;gap:.3rem;min-width:0}
+.cart-item-info h4{font-family:'Cormorant Garamond',serif;font-size:1.02rem;font-weight:500;line-height:1.3}
+.cart-item-info .meta{font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.cart-item-info .price{font-size:.82rem;margin-top:.3rem}
+.qty{display:inline-flex;align-items:center;border:1px solid var(--line);width:fit-content;margin-top:.6rem}
+.qty button{width:26px;height:26px;display:grid;place-items:center;font-size:.85rem;color:var(--muted);transition:color .3s,background .3s}
+.qty button:hover{color:var(--ink);background:var(--cream-2)}
+.qty span{width:26px;text-align:center;font-size:.75rem}
+.remove{align-self:flex-start;font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid transparent;padding-bottom:2px;transition:color .3s,border-color .3s}
+.remove:hover{color:var(--accent);border-color:var(--accent)}
+.cart-foot{padding:1.4rem 1.6rem 1.6rem;border-top:1px solid var(--line);flex-shrink:0;background:var(--cream)}
+.cart-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.6rem;font-size:.78rem;color:var(--ink-2)}
+.cart-row.total{font-family:'Cormorant Garamond',serif;font-size:1.35rem;margin:1rem 0 1.3rem;padding-top:1rem;border-top:1px solid var(--line);color:var(--ink)}
+.cart-ship{font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);text-align:center;margin-top:1rem}
+
+/* Quick View */
+.quickview{position:fixed;inset:0;z-index:980;display:grid;place-items:center;padding:var(--pad);opacity:0;pointer-events:none;transition:opacity .5s var(--ease)}
+.quickview.show{opacity:1;pointer-events:auto}
+.qv-panel{background:var(--cream);width:min(940px,100%);max-height:88vh;overflow:auto;display:grid;grid-template-columns:1fr 1fr;transform:translateY(30px) scale(.98);transition:transform .65s var(--ease);position:relative}
+.quickview.show .qv-panel{transform:none}
+.qv-img{background:var(--bone);min-height:340px;position:relative;overflow:hidden}
+.qv-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.qv-body{padding:clamp(1.6rem,3.4vw,3rem);display:flex;flex-direction:column}
+.qv-close{position:absolute;top:1rem;right:1rem;z-index:3;width:36px;height:36px;display:grid;place-items:center;background:rgba(245,241,233,.9);border-radius:50%;transition:transform .5s var(--ease)}
+.qv-close:hover{transform:rotate(90deg)}
+.qv-close svg{width:15px;height:15px;stroke:var(--ink);stroke-width:1.5;fill:none}
+.qv-body h3{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(1.6rem,3vw,2.2rem);line-height:1.1;margin:.6rem 0 .5rem}
+.qv-price{font-size:1.05rem;letter-spacing:.04em;color:var(--ink-2);margin-bottom:1.3rem}
+.qv-desc{font-size:.86rem;line-height:1.9;color:var(--muted);margin-bottom:1.6rem}
+.qv-label{font-size:.56rem;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:.7rem;display:block}
+.qv-sizes{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.6rem}
+.size-btn{min-width:44px;height:42px;padding:0 .8rem;border:1px solid var(--line);font-size:.7rem;letter-spacing:.08em;transition:all .35s var(--ease)}
+.size-btn:hover{border-color:var(--ink)}
+.size-btn.active{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+.qv-meta{display:flex;flex-direction:column;gap:.5rem;margin-top:1.6rem;padding-top:1.3rem;border-top:1px solid var(--line);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+
+/* Toast */
+.toast{position:fixed;left:50%;bottom:2rem;z-index:995;background:var(--ink);color:var(--cream);padding:1rem 1.8rem;font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;transform:translate(-50%,140%);transition:transform .6s var(--ease);display:flex;align-items:center;gap:.8rem;white-space:nowrap;box-shadow:0 20px 40px -20px rgba(0,0,0,.6)}
+.toast.show{transform:translate(-50%,0)}
+.toast i{width:5px;height:5px;border-radius:50%;background:var(--gold);display:block;flex-shrink:0}
+
+/* ============================================
+   NEW — ROUTER PAGES
+   ============================================ */
+.page{min-height:60vh;animation:pageIn .7s var(--ease)}
+@keyframes pageIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.crumbs{display:flex;gap:.5rem;flex-wrap:wrap;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);padding:calc(var(--header-h) * .5) var(--pad) 0;max-width:1600px;margin:0 auto}
+.crumbs a:hover{color:var(--ink)}
+.crumbs span{opacity:.4}
+
+/* Category page */
+.cat-page{max-width:1600px;margin:0 auto;padding:1.5rem var(--pad) clamp(4rem,8vw,7rem)}
+.cat-hero{position:relative;overflow:hidden;background:var(--bone);min-height:clamp(180px,26vw,300px);display:flex;align-items:flex-end;padding:clamp(1.6rem,3vw,2.6rem);margin-bottom:1.5rem}
+.cat-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.6) saturate(.9)}
+.cat-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(10,8,6,.6),transparent 70%)}
+.cat-hero-content{position:relative;z-index:2;color:var(--cream)}
+.cat-hero-content .eyebrow{color:rgba(245,241,233,.6)}
+.cat-hero-content .eyebrow::before{background:var(--gold);opacity:1}
+.cat-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4.4vw,3.4rem);font-weight:400;line-height:1;margin-top:.6rem;letter-spacing:-.005em}
+.cat-count{font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(245,241,233,.6);margin-top:.8rem}
+
+/* Sub pills */
+.sub-pills{display:flex;gap:.4rem;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:1rem;margin-bottom:1.8rem}
+.sub-pill{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;padding:.55rem .95rem;border:1px solid var(--line);color:var(--muted);transition:all .35s var(--ease);white-space:nowrap}
+.sub-pill:hover{color:var(--ink);border-color:var(--ink)}
+.sub-pill.active{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+
+/* Category layout */
+.cat-layout{display:grid;grid-template-columns:230px 1fr;gap:clamp(1.5rem,3vw,2.8rem);align-items:start}
+@media (max-width:960px){.cat-layout{grid-template-columns:1fr}}
+
+/* Filter panel */
+.filters-panel{border:1px solid var(--line);padding:1.4rem;background:rgba(245,241,233,.4)}
+.filters-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;padding-bottom:.8rem;border-bottom:1px solid var(--line)}
+.filters-head h4{font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;font-weight:500}
+.filters-clear{font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid transparent}
+.filters-clear:hover{color:var(--ink);border-color:var(--ink)}
+.filter-group{padding:1rem 0;border-bottom:1px solid var(--line)}
+.filter-group:last-child{border-bottom:none;padding-bottom:0}
+.filter-group h5{font-size:.56rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ink);margin-bottom:.8rem;font-weight:500}
+.filter-toggle{display:flex;justify-content:space-between;align-items:center;width:100%;cursor:pointer}
+.filter-toggle svg{width:10px;height:10px;stroke:var(--ink);transition:transform .4s var(--ease)}
+.filter-toggle.closed svg{transform:rotate(-90deg)}
+.filter-body{display:flex;flex-direction:column;gap:.45rem;max-height:260px;overflow-y:auto;padding-right:.2rem}
+.filter-body.closed{display:none}
+.filter-check{display:flex;align-items:center;gap:.6rem;font-size:.72rem;color:var(--ink-2);cursor:pointer;padding:.2rem 0}
+.filter-check input{appearance:none;-webkit-appearance:none;width:14px;height:14px;border:1px solid var(--line);background:var(--cream);cursor:pointer;position:relative;flex-shrink:0;transition:all .25s}
+.filter-check input:checked{background:var(--ink);border-color:var(--ink)}
+.filter-check input:checked::after{content:'';position:absolute;left:3px;top:1px;width:6px;height:9px;border:solid var(--cream);border-width:0 1.5px 1.5px 0;transform:rotate(45deg)}
+.filter-check .count{color:var(--muted);font-size:.62rem;margin-left:auto}
+
+/* Price range */
+.price-range{display:flex;gap:.6rem;align-items:center;margin-top:.4rem}
+.price-range input{flex:1;background:transparent;border:1px solid var(--line);padding:.5rem;font-size:.72rem;color:var(--ink);outline:none;text-align:center}
+.price-range input:focus{border-color:var(--ink)}
+.price-range span{color:var(--muted);font-size:.6rem}
+
+/* Color swatches */
+.color-filter{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.3rem}
+.color-chip{width:26px;height:26px;border-radius:50%;border:1px solid var(--line);cursor:pointer;position:relative;transition:transform .3s var(--ease)}
+.color-chip:hover{transform:scale(1.15)}
+.color-chip.active::after{content:'';position:absolute;inset:-3px;border:1px solid var(--ink);border-radius:50%}
+
+/* Sort bar */
+.sort-bar{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:1.6rem;padding-bottom:1rem;border-bottom:1px solid var(--line)}
+.sort-info{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.sort-info strong{color:var(--ink);font-weight:500}
+.sort-controls{display:flex;gap:.8rem;align-items:center;flex-wrap:wrap}
+.sort-select{background:transparent;border:1px solid var(--line);padding:.6rem 1rem;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);cursor:pointer;outline:none;transition:border-color .3s}
+.sort-select:hover,.sort-select:focus{border-color:var(--ink)}
+.mobile-filter-btn{display:none}
+@media (max-width:960px){
+  .mobile-filter-btn{display:inline-flex;align-items:center;gap:.5rem}
+  .filters-panel{display:none;position:fixed;inset:0;z-index:960;overflow-y:auto;background:var(--cream);padding:1.4rem;border:none;max-width:340px;margin-left:auto}
+  .filters-panel.open{display:block}
+}
+
+/* Product detail */
+.pd{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(2rem,5vw,5rem);align-items:start}
+@media (max-width:900px){.pd{grid-template-columns:1fr}}
+.pd-gallery{position:sticky;top:100px}
+.pd-main{aspect-ratio:3/4;background:var(--bone);overflow:hidden;position:relative}
+.pd-main img{width:100%;height:100%;object-fit:cover;transition:opacity .4s}
+.pd-thumbs{display:flex;gap:.5rem;margin-top:.7rem;flex-wrap:wrap}
+.pd-thumb{width:70px;height:88px;background:var(--bone);overflow:hidden;border:1px solid transparent;cursor:pointer;transition:border-color .3s,opacity .3s}
+.pd-thumb.active{border-color:var(--ink)}
+.pd-thumb img{width:100%;height:100%;object-fit:cover}
+.pd-thumb:hover{opacity:.75}
+.pd-info{padding-top:.6rem}
+.pd-cat{font-size:.58rem;letter-spacing:.26em;text-transform:uppercase;color:var(--muted)}
+.pd-title{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(1.9rem,3.6vw,2.8rem);line-height:1.1;margin:.5rem 0 .8rem;letter-spacing:-.005em}
+.pd-price{font-size:1.25rem;letter-spacing:.04em;margin-bottom:1.5rem;display:flex;gap:.8rem;align-items:baseline}
+.pd-price .old{color:var(--muted);text-decoration:line-through;font-size:1rem}
+.pd-desc{font-size:.92rem;line-height:1.9;color:var(--ink-2);margin-bottom:2rem;max-width:52ch}
+.pd-options{margin-bottom:1.6rem}
+.pd-options h5{font-size:.58rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ink);margin-bottom:.7rem;font-weight:500;display:flex;justify-content:space-between}
+.pd-options h5 span{color:var(--muted);font-weight:400;text-transform:none;letter-spacing:.1em;font-size:.62rem}
+.size-grid{display:flex;flex-wrap:wrap;gap:.5rem}
+.color-grid{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.pd-color{width:32px;height:32px;border-radius:50%;border:1px solid var(--line);cursor:pointer;position:relative;transition:transform .3s var(--ease)}
+.pd-color:hover{transform:scale(1.1)}
+.pd-color.active::after{content:'';position:absolute;inset:-4px;border:1px solid var(--ink);border-radius:50%}
+.pd-actions{display:flex;flex-direction:column;gap:.7rem;margin-bottom:1.6rem}
+.pd-actions-row{display:flex;gap:.7rem}
+.pd-actions-row .btn{flex:1}
+.pd-meta{padding-top:1.4rem;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:.6rem;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.pd-meta span{display:flex;align-items:center;gap:.6rem}
+.pd-accordion{margin-top:2rem;border-top:1px solid var(--line)}
+.acc-item{border-bottom:1px solid var(--line)}
+.acc-toggle{width:100%;display:flex;justify-content:space-between;align-items:center;padding:1.1rem 0;font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;font-weight:500;text-align:left}
+.acc-toggle svg{width:12px;height:12px;stroke:var(--ink);transition:transform .4s var(--ease)}
+.acc-item.open .acc-toggle svg{transform:rotate(45deg)}
+.acc-body{max-height:0;overflow:hidden;transition:max-height .5s var(--ease)}
+.acc-item.open .acc-body{max-height:400px}
+.acc-body-inner{padding:0 0 1.4rem;font-size:.85rem;line-height:1.9;color:var(--muted);max-width:52ch}
+
+/* Empty state */
+.empty{text-align:center;padding:clamp(3rem,8vw,6rem) 1rem;color:var(--muted)}
+.empty h3{font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,3vw,2.2rem);font-weight:400;color:var(--ink);margin-bottom:.8rem}
+.empty p{font-size:.85rem;margin-bottom:1.6rem}
+
+/* Search overlay */
+.search-overlay{position:fixed;inset:0;z-index:965;background:rgba(245,241,233,.98);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);display:flex;flex-direction:column;padding:clamp(3rem,8vw,6rem) var(--pad);opacity:0;pointer-events:none;transition:opacity .5s var(--ease)}
+.search-overlay.show{opacity:1;pointer-events:auto}
+.search-close{align-self:flex-end;font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;padding:.6rem 1rem;border:1px solid var(--line);margin-bottom:2rem}
+.search-form{width:100%;max-width:800px;margin:0 auto;border-bottom:1px solid var(--ink);display:flex;align-items:center;gap:1rem;padding-bottom:1rem}
+.search-form svg{width:20px;height:20px;stroke:var(--ink);fill:none;stroke-width:1.4}
+.search-form input{flex:1;background:none;border:none;outline:none;font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3.4vw,2.6rem);color:var(--ink);padding:.3rem 0;letter-spacing:-.005em}
+.search-form input::placeholder{color:rgba(21,18,15,.25);font-style:italic}
+.search-hint{max-width:800px;margin:1.5rem auto 0;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.search-hint span{color:var(--ink);cursor:pointer;border-bottom:1px solid var(--line);margin-right:.8rem;padding-bottom:1px}
+.search-hint span:hover{border-color:var(--ink)}
+
+/* Wishlist page */
+.wish-page{max-width:1600px;margin:0 auto;padding:clamp(2rem,4vw,3rem) var(--pad) clamp(4rem,8vw,7rem)}
+
+/* Collections landing */
+.collections-landing{max-width:1600px;margin:0 auto;padding:clamp(2rem,4vw,3rem) var(--pad) clamp(4rem,8vw,7rem)}
+.collections-grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(1rem,2vw,2rem)}
+@media (max-width:720px){.collections-grid-2{grid-template-columns:1fr}}
+.collection-tile{position:relative;overflow:hidden;aspect-ratio:16/10;background:var(--bone);display:block}
+.collection-tile img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease);filter:brightness(.7) saturate(.9)}
+.collection-tile:hover img{transform:scale(1.06)}
+.collection-tile-info{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(1.4rem,2.6vw,2.4rem);color:var(--cream);z-index:2}
+.collection-tile-info h3{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3vw,2.6rem);font-weight:400;line-height:1.05}
+.collection-tile-info p{font-size:.82rem;color:rgba(245,241,233,.75);margin-top:.6rem;max-width:38ch;line-height:1.7}
+.collection-tile-info .collection-cta{opacity:1;transform:none;margin-top:1.2rem}
+
+/* Page heading */
+.page-head{max-width:1600px;margin:0 auto;padding:clamp(2.5rem,5vw,4rem) var(--pad) clamp(1.5rem,3vw,2rem)}
+.page-head .eyebrow{margin-bottom:.8rem}
+.page-head h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,5vw,4.2rem);font-weight:400;line-height:1.02;letter-spacing:-.01em}
+.page-head h1 em{font-style:italic;color:var(--accent)}
+.page-head p{margin-top:1rem;color:var(--muted);max-width:60ch;line-height:1.85;font-size:.92rem}
+
+/* Responsive */
+@media (max-width:1180px){.products-grid{grid-template-columns:repeat(3,1fr)}.footer-main{grid-template-columns:1fr 1fr;gap:2.6rem}}
+@media (max-width:980px){
+  .nav{display:none}.burger{display:flex}
+  .header-inner{grid-template-columns:auto 1fr auto;gap:.6rem}
+  .maison{grid-template-columns:1fr;gap:2.5rem}
+  .maison-visual .parallax-wrap{aspect-ratio:4/3.4}
+  .collections-grid{grid-template-columns:1fr 1fr}
+  .collection-card:last-child{grid-column:span 2;aspect-ratio:16/9}
+  .testi-grid{grid-template-columns:1fr}
+  .quickview .qv-panel{grid-template-columns:1fr}
+  .qv-img{min-height:280px;max-height:300px}
+  .editorial{min-height:60vh}
+  .cat-layout{grid-template-columns:1fr}
+  .pd-gallery{position:static}
+}
+@media (max-width:680px){
+  :root{--header-h:64px}
+  .products-grid{grid-template-columns:repeat(2,1fr)}
+  .collections-grid{grid-template-columns:1fr}
+  .collection-card:last-child{grid-column:auto;aspect-ratio:3/4.1}
+  .stats{grid-template-columns:1fr 1fr;gap:1.4rem}
+  .footer-main{grid-template-columns:1fr;gap:2.4rem}
+  .cart-item{grid-template-columns:66px 1fr;gap:.8rem}
+  .cart-item-img{width:66px;height:88px}
+  .remove{grid-column:2;justify-self:start;margin-top:-.4rem}
+  .hero-side{display:none}
+  .look-item{flex:0 0 72vw}
+  .footer-bottom{justify-content:center;text-align:center}
+  .quick-add{transform:none;opacity:1;position:static;margin-top:.6rem;background:transparent;border:1px solid var(--line);padding:.75rem}
+  .product:hover .product-media img{transform:none}
+  .product:hover .product-media img.alt{opacity:0}
+  .product:hover .product-media img.main{opacity:1}
+  .wish{opacity:1;transform:none}
+  .pd-actions-row{flex-direction:column}
+  .sub-pills{overflow-x:auto;flex-wrap:nowrap;padding-bottom:1rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  [data-reveal]{opacity:1;transform:none}
+  .hero-title .line > span{transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- PRELOADER -->
+<div class="loader" id="loader">
+  <div class="loader-mark" id="loaderMark"></div>
+  <div class="loader-sub">Stile Senza Tempo</div>
+  <div class="loader-bar"></div>
+</div>
+
+<div class="grain"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- ANNOUNCE -->
+<div class="announce">
+  <div class="announce-track" id="announceTrack">
+    <div class="announce-item active">Spedizione gratuita in Italia sopra <span>€ 150</span></div>
+    <div class="announce-item">Nuova Collezione Autunno / Inverno <span>— Online Ora</span></div>
+    <div class="announce-item">Resi gratuiti entro <span>30 giorni</span> · Boutique di Monza</div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="site-header" id="header">
+  <div class="header-inner">
+    <a href="#/" class="logo" data-link aria-label="Bellini home">
+      <span class="logo-main">BELLINI</span>
+      <span class="logo-sub">Monza · Italia</span>
+    </a>
+    <nav class="nav" id="nav">
+      <a href="#/" data-link data-nav="/">Home</a>
+      <a href="#/men" data-link data-nav="/men">Men</a>
+      <a href="#/women" data-link data-nav="/women">Women</a>
+      <a href="#/accessories" data-link data-nav="/accessories">Accessories</a>
+      <a href="#/new" data-link data-nav="/new">New Arrivals</a>
+      <a href="#/collections" data-link data-nav="/collections">Collections</a>
+      <a href="#/about" data-link data-nav="/about">About</a>
+      <a href="#/contact" data-link data-nav="/contact">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn" id="searchBtn" aria-label="Cerca">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+      </button>
+      <a href="#/wishlist" class="icon-btn" data-link aria-label="Preferiti">
+        <svg viewBox="0 0 24 24"><path d="M12 20s-7-4.5-7-9.5A4.5 4.5 0 0 1 12 7a4.5 4.5 0 0 1 7 3.5c0 5-7 9.5-7 9.5z"/></svg>
+        <span class="cart-count" id="wishCount">0</span>
+      </a>
+      <button class="icon-btn" id="cartBtn" aria-label="Carrello">
+        <svg viewBox="0 0 24 24"><path d="M6 8h12l-1.2 12H7.2L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <button class="burger" id="burger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <nav>
+    <a href="#/" data-link data-close>Home <span>01</span></a>
+    <a href="#/men" data-link data-close>Men <span>02</span></a>
+    <a href="#/women" data-link data-close>Women <span>03</span></a>
+    <a href="#/accessories" data-link data-close>Accessories <span>04</span></a>
+    <a href="#/new" data-link data-close>New Arrivals <span>05</span></a>
+    <a href="#/collections" data-link data-close>Collections <span>06</span></a>
+    <a href="#/about" data-link data-close>About <span>07</span></a>
+    <a href="#/contact" data-link data-close>Contact <span>08</span></a>
+  </nav>
+  <div class="mobile-foot">
+    Via Carlo Alberto 18, Monza
+    <a href="mailto:info@bellini.it">info@bellini.it</a>
+  </div>
+</div>
+
+<!-- APP (router renders pages) -->
+<main id="app"></main>
+
+<!-- FOOTER -->
+<footer class="site-footer" id="contact">
+  <div class="footer-main">
+    <div class="footer-brand">
+      <a href="#/" data-link class="logo">
+        <span class="logo-main">BELLINI</span>
+        <span class="logo-sub">Stile Senza Tempo</span>
+      </a>
+      <p>Boutique di moda italiana premium. Capi selezionati per donna e uomo, nel cuore di Monza, dal 1987.</p>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M15 3h-2.5A4.5 4.5 0 0 0 8 7.5V10H5.5v3H8v8h3v-8h3l.5-3H11V7.5a1.5 1.5 0 0 1 1.5-1.5H15V3z"/></svg></a>
+        <a href="#" aria-label="Pinterest"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 21l2-7M12 8c-1.6 0-2.7 1.1-2.7 2.6 0 .9.4 1.6.9 2"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Boutique</h4>
+      <ul>
+        <li><a href="#/women" data-link>Women</a></li>
+        <li><a href="#/men" data-link>Men</a></li>
+        <li><a href="#/accessories" data-link>Accessories</a></li>
+        <li><a href="#/new" data-link>New Arrivals</a></li>
+        <li><a href="#/collections" data-link>Collections</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Servizi</h4>
+      <ul>
+        <li><a href="#/contact" data-link>Contatti</a></li>
+        <li><a href="#/wishlist" data-link>Wishlist</a></li>
+        <li><a href="#/about" data-link>La Maison</a></li>
+        <li><a href="#/contact" data-link>Spedizioni &amp; Resi</a></li>
+        <li><a href="#/contact" data-link>FAQ</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contatti</h4>
+      <ul class="footer-contact">
+        <li><strong>Boutique</strong>Via Carlo Alberto 18<br>20900 Monza (MB), Italia</li>
+        <li><strong>Telefono</strong><a href="tel:+390390000000">+39 039 000 0000</a></li>
+        <li><strong>Email</strong><a href="mailto:info@bellini.it">info@bellini.it</a></li>
+        <li><strong>Orari</strong>Mar – Sab · 10:00 – 19:30<br>Lun · 15:30 – 19:30</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Bellini S.r.l. — P.IVA 00000000000 — Monza, Italia</span>
+    <div class="pay"><span>Visa</span><span>Mastercard</span><span>Amex</span><span>PayPal</span><span>Klarna</span></div>
+  </div>
+</footer>
+
+<!-- OVERLAY + CART -->
+<div class="overlay" id="overlay"></div>
+
+<aside class="cart-drawer" id="cartDrawer" aria-label="Carrello">
+  <div class="cart-head">
+    <h3>Carrello <span id="cartHeadCount">(0)</span></h3>
+    <button class="close-btn" id="closeCart" aria-label="Chiudi">
+      <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <div class="cart-body" id="cartBody"></div>
+  <div class="cart-foot" id="cartFoot" style="display:none">
+    <div class="cart-row"><span>Subtotale</span><span id="cartSubtotal">€ 0</span></div>
+    <div class="cart-row"><span>Spedizione</span><span id="cartShip">Gratuita</span></div>
+    <div class="cart-row total"><span>Totale</span><span id="cartTotal">€ 0</span></div>
+    <button class="btn btn-dark btn-full" id="checkoutBtn">Procedi all'acquisto <span class="arrow">→</span></button>
+    <div class="cart-ship">Resi gratuiti entro 30 giorni · Boutique di Monza</div>
+  </div>
+</aside>
+
+<!-- QUICK VIEW -->
+<div class="quickview" id="quickview">
+  <div class="qv-panel">
+    <button class="qv-close" id="qvClose" aria-label="Chiudi"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <div class="qv-img"><img id="qvImg" src="" alt=""></div>
+    <div class="qv-body">
+      <span class="eyebrow no-line" id="qvCat">Donna</span>
+      <h3 id="qvName">—</h3>
+      <div class="qv-price" id="qvPrice">€ 0</div>
+      <p class="qv-desc" id="qvDesc"></p>
+      <span class="qv-label">Seleziona la taglia</span>
+      <div class="qv-sizes" id="qvSizes"></div>
+      <button class="btn btn-dark btn-full" id="qvAdd">Aggiungi al carrello</button>
+      <a href="#" id="qvDetails" class="link-arrow" style="margin-top:1.2rem;align-self:flex-start">Vedi tutti i dettagli <span>→</span></a>
+      <div class="qv-meta">
+        <span>✦ Spedizione gratuita sopra € 150</span>
+        <span>✦ Made in Italy · Selezione Bellini</span>
+        <span>✦ Reso gratuito entro 30 giorni</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SEARCH OVERLAY -->
+<div class="search-overlay" id="searchOverlay">
+  <button class="search-close" id="searchClose">Chiudi ✕</button>
+  <form class="search-form" id="searchForm">
+    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+    <input type="text" id="searchInput" placeholder="Cerca nella collezione…" autocomplete="off">
+  </form>
+  <div class="search-hint">
+    <span data-search-q="Cappotto">Cappotto</span>
+    <span data-search-q="Abito">Abito</span>
+    <span data-search-q="Sneakers">Sneakers</span>
+    <span data-search-q="Borsa">Borsa</span>
+    <span data-search-q="Camicia">Camicia</span>
+    <span data-search-q="Orologio">Orologio</span>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"><i></i><span id="toastMsg">Aggiunto al carrello</span></div>
+
+<script>
+/* ============================================================
+   BELLINI — APPLICATION CORE
+   ============================================================ */
+
+/* ---------- Utilities ---------- */
+const $ = (s, ctx = document) => ctx.querySelector(s);
+const $$ = (s, ctx = document) => [...ctx.querySelectorAll(s)];
+const fmt = n => '€ ' + Math.round(n).toLocaleString('it-IT');
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const rng = seed => { let s = seed; return () => { s = (s * 9301 + 49297) % 233280; return s / 233280; }; };
+const hash = str => { let h = 0; for (let i = 0; i < str.length; i++) h = (h * 31 + str.charCodeAt(i)) | 0; return Math.abs(h); };
+
+/* ---------- localStorage State ---------- */
+const LS = { cart: 'bellini_cart_v3', wish: 'bellini_wish_v3' };
+let cart = JSON.parse(localStorage.getItem(LS.cart) || '[]');
+let wishlist = new Set(JSON.parse(localStorage.getItem(LS.wish) || '[]'));
+const saveCart = () => localStorage.setItem(LS.cart, JSON.stringify(cart));
+const saveWish = () => localStorage.setItem(LS.wish, JSON.stringify([...wishlist]));
+
+/* ---------- Image Bank (curated Unsplash IDs per category) ---------- */
+const U = id => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=900&q=80`;
+const IMG_BANK = {
+  tshirt: ['1521572163474-6864f9cf17ab','1503341504253-dff4815485f1','1583743814966-8936f5b7be1a','1620799140408-edc6dcb6d633','1527719327859-c6ce80353573','1576566588028-4147f3842f27'],
+  polo: ['1620012253295-c15cc3e65df4','1586790170083-2f9ceadc732d','1618354691373-d851c5c3a990','1598033129183-c4f50c736f10'],
+  shirt: ['1596755094514-f87e34085b2c','1598033129183-c4f50c736f10','1602810318383-e386cc2a3ccf','1594938298603-c8148c4dae35','1596755094514-f87e34085b2c'],
+  linen: ['1564859228273-274232fdb910','1594938298603-c8148c4dae35','1596755094514-f87e34085b2c'],
+  jeans: ['1608234808654-2a8875faa7fd','1542272604-787c3835535d','1541099649105-f69ad21f3246','1608234808654-2a8875faa7fd'],
+  trousers: ['1473966968600-fa801b869a1a','1594633312681-425c7b97ccd1','1624378439575-d8705ad7ae80'],
+  chinos: ['1473966968600-fa801b869a1a','1594633312681-425c7b97ccd1'],
+  shorts: ['1591195853828-11db59a44f6b','1564859228273-274232fdb910','1591195853828-11db59a44f6b'],
+  jacket: ['1551028719-00167b16eac5','1591047139829-d91aecb6caea','1544022613-e87ca75a784a'],
+  blazer: ['1507679799987-c73779587ccf','1617137968427-85924c800a22','1591047139829-d91aecb6caea','1507679799987-c73779587ccf'],
+  sweater: ['1434389677669-e08b4cac3105','1576566588028-4147f3842f27','1620799140408-edc6dcb6d633'],
+  hoodie: ['1611911813383-67769b37a149','1556821840-3a63f95609a7','1611911813383-67769b37a149'],
+  knit: ['1434389677669-e08b4cac3105','1620799140408-edc6dcb6d633','1576566588028-4147f3842f27'],
+  coat: ['1576871337622-98d48d1cf531','1539533113208-f6df8cc8b543','1591047139829-d91aecb6caea','1496747611176-843222e1e57c'],
+  sneaker: ['1542291026-7eec264c27ff','1600185365483-26d7a4cc7519','1595950653106-6c9ebd614d3a','1560769629-975ec94e6a86','1549298916-b41d501d3772'],
+  'formal-shoe': ['1549298916-b41d501d3772','1614252235316-8c857d38b5f4','1549298916-b41d501d3772'],
+  loafer: ['1560343090-f0409e92791a','1549298916-b41d501d3772','1560343090-f0409e92791a'],
+  boot: ['1608256246200-53e635b5b65f','1542843806-3c1f172e55a2','1608256246200-53e635b5b65f'],
+  dress: ['1490481651871-ab68de25d43d','1539008835657-9e8e9680c956','1595777457583-95e059d581b8','1564257631407-4deb1f99d992','1496747611176-843222e1e57c'],
+  top: ['1564257631407-4deb1f99d992','1503341504253-dff4815485f1','1564257631407-4deb1f99d992'],
+  blouse: ['1596755094514-f87e34085b2c','1598033129183-c4f50c736f10','1487222477894-8943e31ef7b2'],
+  shirtw: ['1596755094514-f87e34085b2c','1487222477894-8943e31ef7b2','1598033129183-c4f50c736f10'],
+  jeansw: ['1541099649105-f69ad21f3246','1608234808654-2a8875faa7fd','1542272604-787c3835535d'],
+  trousersw: ['1473966968600-fa801b869a1a','1594633312681-425c7b97ccd1','1624378439575-d8705ad7ae80'],
+  skirt: ['1572804013309-59a88b7e92f1','1583496661160-fb5886a0aaaa','1572804013309-59a88b7e92f1'],
+  shortsw: ['1591195853828-11db59a44f6b','1564859228273-274232fdb910'],
+  blazerw: ['1591047139829-d91aecb6caea','1507679799987-c73779587ccf','1617137968427-85924c800a22'],
+  jacketw: ['1551028719-00167b16eac5','1544022613-e87ca75a784a','1551028719-00167b16eac5'],
+  coatw: ['1539533113208-f6df8cc8b543','1576871337622-98d48d1cf531','1496747611176-843222e1e57c'],
+  sweaterw: ['1434389677669-e08b4cac3105','1576566588028-4147f3842f27','1434389677669-e08b4cac3105'],
+  knitw: ['1434389677669-e08b4cac3105','1620799140408-edc6dcb6d633'],
+  cardigan: ['1434389677669-e08b4cac3105','1576566588028-4147f3842f27','1434389677669-e08b4cac3105'],
+  hoodiew: ['1611911813383-67769b37a149','1556821840-3a63f95609a7'],
+  jumpsuit: ['1496747611176-843222e1e57c','1490481651871-ab68de25d43d','1496747611176-843222e1e57c'],
+  twopiece: ['1496747611176-843222e1e57c','1487222477894-8943e31ef7b2','1490481651871-ab68de25d43d'],
+  sneakerw: ['1560769629-975ec94e6a86','1595950653106-6c9ebd614d3a','1542291026-7eec264c27ff'],
+  heels: ['1509551388413-e18d0ac5d495','1543163521-1bf539c55dd2','1509551388413-e18d0ac5d495'],
+  flats: ['1560343090-f0409e92791a','1549298916-b41d501d3772','1560343090-f0409e92791a'],
+  bootw: ['1608256246200-53e635b5b65f','1542843806-3c1f172e55a2','1608256246200-53e635b5b65f'],
+  sandals: ['1603487742131-4160ec999306','1562273576092-6d03036c3531','1603487742131-4160ec999306'],
+  handbag: ['1584917865442-de89df76afd3','1548036328-c9fa89d128fa','1591561954557-26941169b49e','1566150905458-1bf1fc113f0d'],
+  'shoulder-bag': ['1584917865442-de89df76afd3','1548036328-c9fa89d128fa','1591561954557-26941169b49e'],
+  crossbody: ['1591561954557-26941169b49e','1566150905458-1bf1fc113f0d','1591561954557-26941169b49e'],
+  wallet: ['1627123424574-724758594e93','1553062407-98eeb64c6a62','1627123424574-724758594e93'],
+  belt: ['1624222247344-550fb60583dc','1553062407-98eeb64c6a62','1624222247344-550fb60583dc'],
+  sunglasses: ['1533867617858-e7b97e060509','1511499767150-a48a237f0083','1533867617858-e7b97e060509'],
+  watch: ['1523170335258-f5ed11844a49','1524805444758-089113d48a6d','1434056886845-dac89ffe9b56','1523170335258-f5ed11844a49'],
+  jewellery: ['1599643478518-a784e5dc4c8f','1515562141207-7a88fb7ce338','1599643478518-a784e5dc4c8f'],
+  necklace: ['1611652022419-a9419f74343d','1599643478518-a784e5dc4c8f','1611652022419-a9419f74343d'],
+  bracelet: ['1611652022419-a9419f74343d','1599643478518-a784e5dc4c8f','1611652022419-a9419f74343d'],
+  earrings: ['1535632066927-ab7c9ab60908','1599643478518-a784e5dc4c8f','1535632066927-ab7c9ab60908'],
+  ring: ['1599643478518-a784e5dc4c8f','1605100804763-247f67b3557e','1599643478518-a784e5dc4c8f'],
+  scarf: ['1522312346375-d1a52e2b99b3','1601924994987-69e26d50dc26','1522312346375-d1a52e2b99b3'],
+  hat: ['1521369909029-2afed882baee','1584917865442-de89df76afd3','1521369909029-2afed882baee'],
+  backpack: ['1553062407-98eeb64c6a62','1622560480605-d83c853bc5c3','1553062407-98eeb64c6a62'],
+  travel: ['1553062407-98eeb64c6a62','1584917865442-de89df76afd3','1553062407-98eeb64c6a62'],
+  tote: ['1591561954557-26941169b49e','1548036328-c9fa89d128fa','1591561954557-26941169b49e'],
+  'fashion-acc': ['1522312346375-d1a52e2b99b3','1521369909029-2afed882baee','1522312346375-d1a52e2b99b3']
+};
+
+/* ---------- Color & Size Pools ---------- */
+const COLOR_MAP = {
+  'Nero':'#15120F','Bianco':'#FAFAF7','Avorio':'#EFE8D8','Cammello':'#C4A47A','Grigio':'#8A8A8A',
+  'Blu Navy':'#1B2A44','Verde Oliva':'#5B6244','Bordeaux':'#5A1F2A','Beige':'#D8C9AE','Marrone':'#5C3D2E',
+  'Rosso':'#8E2E2E','Blu':'#2B4A7C','Rosa':'#E3BFB9','Giallo':'#D9B94F','Verde':'#3E6B4F',
+  'Argento':'#C0C0C0','Oro':'#C9A24A','Cuoio':'#A06B3C','Panna':'#F0E8D2','Senape':'#C99A3F',
+  'Lilla':'#B8A6C9','Verde Salvia':'#A6B39A','Terracotta':'#B85C3C','Ghiaccio':'#E2E6E8'
+};
+const COLOR_POOLS = {
+  apparel: ['Nero','Bianco','Avorio','Cammello','Grigio','Blu Navy','Verde Oliva','Bordeaux','Beige','Marrone'],
+  footwear: ['Nero','Marrone','Cuoio','Bianco','Blu Navy','Cammello','Grigio','Bordeaux'],
+  bag: ['Nero','Marrone','Cuoio','Cammello','Bordeaux','Beige','Blu Navy','Avorio'],
+  jewel: ['Oro','Argento','Nero','Rosa','Bianco'],
+  neutral: ['Nero','Bianco','Avorio','Grigio','Beige','Cammello','Blu Navy']
+};
+const SIZES = {
+  xxl: ['XS','S','M','L','XL','XXL'],
+  xl: ['XS','S','M','L','XL'],
+  num: ['46','48','50','52','54'],
+  shoeM: ['39','40','41','42','43','44','45'],
+  shoeW: ['35','36','37','38','39','40','41'],
+  one: ['Taglia unica'],
+  rings: ['10','12','14','16','18','20']
+};
+
+/* ---------- Catalog Definition ---------- */
+const S = (slug,label,img,pMin,pMax,sz,mat,nouns) => ({slug,label,img,pMin,pMax,sz,mat,nouns});
+
+const CATALOG = {
+  men: {
+    label: 'Uomo', title: 'Men', subtitle: 'Sartorialità italiana contemporanea',
+    groups: [
+      { label: 'Clothing', subs: [
+        S('tshirts','T-Shirts','tshirt',35,95,'xxl',['Cotton','Pima','Organic','Supima','Jersey'],['T-Shirt','Tee','Crew Neck','Polo Neck']),
+        S('polo','Polo Shirts','polo',55,135,'xxl',['Piqué','Cotton','Mercerized','Jersey','Knit'],['Polo','Polo Shirt','Piqué Polo','Knit Polo']),
+        S('casual-shirts','Casual Shirts','shirt',65,150,'xxl',['Oxford','Chambray','Cotton','Linen-Blend','Flannel'],['Shirt','Casual Shirt','Overshirt']),
+        S('formal-shirts','Formal Shirts','shirt',85,180,'num',['Poplin','Twill','Herringbone','Cotton','Egyptian Cotton'],['Dress Shirt','Formal Shirt','Poplin Shirt']),
+        S('linen-shirts','Linen Shirts','linen',75,165,'xxl',['Linen','Irish Linen','Linen-Blend','Washed Linen','Slub Linen'],['Linen Shirt','Summer Shirt','Camp Shirt']),
+        S('jeans','Jeans','jeans',95,220,'xxl',['Denim','Selvedge','Stretch-Denim','Japanese Denim','Rigid Denim'],['Jeans','5-Pocket','Straight Jeans']),
+        S('casual-trousers','Casual Trousers','trousers',85,195,'num',['Cotton','Twill','Chino','Stretch Cotton','Garment-Dyed Cotton'],['Trousers','Pants','Casual Trousers']),
+        S('formal-trousers','Formal Trousers','trousers',110,240,'num',['Wool','Wool-Blend','Gabardine','Flannel','Twill'],['Dress Trousers','Tailored Trousers','Suit Trousers']),
+        S('chinos','Chinos','chinos',75,175,'num',['Cotton','Twill','Stretch','Garment-Dyed Cotton'],['Chinos','Chino Pants','Slim Chinos']),
+        S('shorts','Shorts','shorts',55,130,'xxl',['Cotton','Linen','Twill','Seersucker'],['Shorts','Bermuda','Chino Shorts']),
+        S('jackets','Jackets','jacket',180,450,'xxl',['Cotton','Nylon','Wool-Blend','Suede','Technical Fabric'],['Jacket','Harrington','Bomber']),
+        S('blazers','Blazers','blazer',250,600,'num',['Wool','Linen','Cotton','Silk-Blend'],['Blazer','Sport Jacket','Unstructured Blazer']),
+        S('sweaters','Sweaters','sweater',120,320,'xxl',['Wool','Merino','Cashmere-Blend','Lambswool','Cotton'],['Sweater','Crewneck Sweater','V-Neck Sweater']),
+        S('hoodies','Hoodies & Sweatshirts','hoodie',75,180,'xxl',['Cotton','Fleece','French Terry','Loopback Cotton'],['Hoodie','Sweatshirt','Hooded Sweatshirt']),
+        S('knitwear','Knitwear','knit',140,380,'xxl',['Merino','Cashmere','Wool','Cashmere-Blend','Alpaca'],['Knit','Knitwear','Pullover']),
+        S('coats','Coats','coat',320,850,'xxl',['Wool','Cashmere-Blend','Recycled Wool','Wool-Cashmere','Twill'],['Coat','Overcoat','Trench Coat'])
+      ]},
+      { label: 'Footwear', subs: [
+        S('sneakers','Sneakers','sneaker',120,320,'shoeM',['Leather','Suede','Canvas','Nappa','Mesh'],['Sneaker','Low-Top','Trainer']),
+        S('formal-shoes','Formal Shoes','formal-shoe',180,450,'shoeM',['Leather','Patent-Leather','Suede','Calf Leather'],['Oxford','Derby','Brogue']),
+        S('loafers','Loafers','loafer',150,380,'shoeM',['Leather','Suede','Nappa','Calf Leather'],['Loafer','Penny Loafer','Moccasin']),
+        S('boots','Boots','boot',180,450,'shoeM',['Leather','Suede','Calf Leather','Waxed Leather'],['Boot','Chelsea Boot','Ankle Boot'])
+      ]}
+    ]
+  },
+  women: {
+    label: 'Donna', title: 'Women', subtitle: 'Eleganza italiana senza tempo',
+    groups: [
+      { label: 'Clothing', subs: [
+        S('dresses','Dresses','dress',95,350,'xl',['Silk','Viscose','Cotton','Satin','Crepe'],['Dress','Midi Dress','Maxi Dress']),
+        S('tops','Tops','top',55,165,'xl',['Cotton','Silk','Viscose','Jersey','Satin'],['Top','Blouse Top','Knit Top']),
+        S('tshirts','T-Shirts','tshirt',35,95,'xl',['Cotton','Pima','Organic','Supima','Jersey'],['T-Shirt','Tee','Crop Tee']),
+        S('blouses','Blouses','blouse',75,195,'xl',['Silk','Satin','Viscose','Chiffon','Crepe'],['Blouse','Silk Blouse','Sheer Blouse']),
+        S('shirts','Shirts','shirtw',65,175,'xl',['Cotton','Poplin','Linen','Silk-Blend','Oxford'],['Shirt','Oversized Shirt','Button-Up']),
+        S('jeans','Jeans','jeansw',85,210,'xl',['Denim','Stretch-Denim','Selvedge','Rigid Denim'],['Jeans','Skinny Jeans','Straight Jeans']),
+        S('trousers','Trousers','trousersw',85,210,'xl',['Cotton','Wool','Viscose','Crepe','Twill'],['Trousers','Pants','Wide-Leg Trousers']),
+        S('skirts','Skirts','skirt',75,195,'xl',['Viscose','Cotton','Satin','Crepe','Linen'],['Skirt','Midi Skirt','Pleated Skirt']),
+        S('shorts','Shorts','shortsw',55,140,'xl',['Cotton','Linen','Denim','Twill'],['Shorts','Denim Shorts','High-Waist Shorts']),
+        S('blazers','Blazers','blazerw',180,450,'xl',['Wool','Linen','Cotton','Crepe','Wool-Blend'],['Blazer','Tailored Blazer','Boyfriend Blazer']),
+        S('jackets','Jackets','jacketw',150,380,'xl',['Leather','Cotton','Nylon','Suede','Trench Cotton'],['Jacket','Biker Jacket','Trench']),
+        S('coats','Coats','coatw',250,680,'xl',['Wool','Cashmere-Blend','Trench Cotton','Wool-Blend'],['Coat','Wool Coat','Trench Coat']),
+        S('sweaters','Sweaters','sweaterw',95,280,'xl',['Wool','Merino','Cashmere','Cotton','Lambswool'],['Sweater','Pullover','Crewneck']),
+        S('knitwear','Knitwear','knitw',110,320,'xl',['Merino','Cashmere','Wool','Alpaca','Cotton'],['Knit','Knitwear','Pullover']),
+        S('cardigans','Cardigans','cardigan',85,240,'xl',['Wool','Cotton','Merino','Cashmere-Blend'],['Cardigan','Button Cardigan','Long Cardigan']),
+        S('hoodies','Hoodies & Sweatshirts','hoodiew',65,165,'xl',['Cotton','Fleece','French Terry','Loopback Cotton'],['Hoodie','Sweatshirt','Cropped Hoodie']),
+        S('jumpsuits','Jumpsuits','jumpsuit',120,320,'xl',['Viscose','Cotton','Satin','Crepe','Linen'],['Jumpsuit','Playsuit','Wide-Leg Jumpsuit']),
+        S('two-piece','Two-Piece Sets','twopiece',130,340,'xl',['Cotton','Linen','Viscose','Crepe','Twill'],['Set','Co-ord Set','Two-Piece Set'])
+      ]},
+      { label: 'Footwear', subs: [
+        S('sneakers-w','Sneakers','sneakerw',95,260,'shoeW',['Leather','Canvas','Suede','Nappa'],['Sneaker','Trainer','Low-Top']),
+        S('heels','Heels','heels',120,380,'shoeW',['Leather','Satin','Patent','Suede'],['Heel','Pump','Stiletto']),
+        S('flats','Flats','flats',95,280,'shoeW',['Leather','Suede','Nappa','Patent'],['Flat','Ballerina','Loafer']),
+        S('boots-w','Boots','bootw',150,450,'shoeW',['Leather','Suede','Calf Leather'],['Boot','Ankle Boot','Knee Boot']),
+        S('sandals','Sandals','sandals',85,280,'shoeW',['Leather','Suede','Nappa','Patent'],['Sandal','Heeled Sandal','Flat Sandal'])
+      ]}
+    ]
+  },
+  accessories: {
+    label: 'Accessori', title: 'Accessories', subtitle: 'Dettagli che definiscono lo stile',
+    groups: [
+      { label: 'Bags', subs: [
+        S('handbags','Handbags','handbag',180,650,'one',['Leather','Suede','Nappa','Calf Leather','Patent'],['Handbag','Top-Handle Bag','Satchel']),
+        S('shoulder-bags','Shoulder Bags','shoulder-bag',150,550,'one',['Leather','Suede','Nappa','Calf Leather'],['Shoulder Bag','Hobo','Baguette']),
+        S('crossbody','Crossbody Bags','crossbody',120,450,'one',['Leather','Nappa','Suede','Calf Leather'],['Crossbody','Messenger','Crossbody Bag']),
+        S('totes','Totes','tote',120,450,'one',['Leather','Canvas','Nylon','Nappa'],['Tote','Shopper','Tote Bag'])
+      ]},
+      { label: 'Small Leather Goods', subs: [
+        S('wallets','Wallets','wallet',65,220,'one',['Leather','Nappa','Saffiano','Calf Leather'],['Wallet','Bifold','Zip Wallet']),
+        S('belts','Belts','belt',55,195,'one',['Leather','Suede','Calf Leather','Nappa'],['Belt','Leather Belt','Woven Belt'])
+      ]},
+      { label: 'Jewellery & Watches', subs: [
+        S('jewellery','Jewellery','jewellery',65,450,'one',['Gold-Tone','Sterling-Silver','Stainless-Steel','Plated'],['Jewellery Set','Piece','Collection']),
+        S('necklaces','Necklaces','necklace',55,380,'one',['Gold-Tone','Silver','Plated','Sterling-Silver'],['Necklace','Chain','Pendant']),
+        S('bracelets','Bracelets','bracelet',45,320,'one',['Gold-Tone','Silver','Leather','Stainless-Steel'],['Bracelet','Bangle','Cuff']),
+        S('earrings','Earrings','earrings',35,280,'one',['Gold-Tone','Silver','Pearl','Plated'],['Earrings','Studs','Hoops']),
+        S('rings','Rings','ring',45,350,'rings',['Gold-Tone','Silver','Steel','Plated'],['Ring','Signet','Stacking Ring']),
+        S('watches','Watches','watch',180,950,'one',['Steel','Leather','Gold-Tone','Titanium'],['Watch','Automatic Watch','Dress Watch'])
+      ]},
+      { label: 'Other', subs: [
+        S('sunglasses','Sunglasses','sunglasses',95,320,'one',['Acetate','Metal','Titanium','Bio-Acetate'],['Sunglasses','Eyewear','Shades']),
+        S('scarves','Scarves','scarf',45,180,'one',['Silk','Wool','Cashmere','Modal'],['Scarf','Silk Scarf','Wool Scarf']),
+        S('hats','Hats & Caps','hat',35,150,'one',['Wool','Cotton','Straw','Felt'],['Hat','Cap','Bucket Hat']),
+        S('backpacks','Backpacks','backpack',95,320,'one',['Leather','Nylon','Canvas','Technical Fabric'],['Backpack','Daypack','City Backpack']),
+        S('travel','Travel Bags','travel',180,650,'one',['Leather','Nylon','Canvas','Technical Fabric'],['Travel Bag','Weekender','Duffel']),
+        S('fashion-acc','Fashion Accessories','fashion-acc',45,250,'one',['Leather','Metal','Mixed','Silk'],['Accessory','Piece','Charm'])
+      ]}
+    ]
+  }
+};
+
+/* ---------- Product Generator ---------- */
+const PREFIX_POOL = ['Milano','Roma','Firenze','Venezia','Torino','Bologna','Napoli','Verona','Genova','Palermo','Monza','Como','Siena','Parma','Bari','Lecce','Bellini','Primo','Sublime','Distinto','Elegante','Signorile','Raffinato','Contemporaneo','Classico'];
+const DESC_TPL = [
+  "Realizzato in {mat} di prima qualità, questo capo rappresenta l'essenza dello stile italiano contemporaneo. Linea pulita, dettagli sartoriali e una vestibilità studiata per durare nel tempo.",
+  "Un pezzo senza tempo, pensato per chi cerca eleganza discreta. Tessuto {mat}, finiture curate a mano e una silhouette che accompagna il corpo con naturalezza.",
+  "Dal cuore della tradizione tessile italiana, una proposta che unisce comfort e raffinatezza. {mat} selezionato, costruzione precisa, dettagli che parlano da soli.",
+  "La sintesi perfetta tra heritage e modernità: {mat} pregiato, proporzioni equilibrate e una palette pensata per comporre guardaroba essenziali.",
+  "Un capo che nasce dal dialogo tra artigianato e ricerca materica. {mat} selezionato, costruzione pulita, dettagli funzionali e un'eleganza che non ha bisogno di spiegazioni."
+];
+
+function buildProducts() {
+  const products = [];
+  let globalId = 1;
+  const groups = [
+    ['men', CATALOG.men],
+    ['women', CATALOG.women],
+    ['accessories', CATALOG.accessories]
+  ];
+
+  for (const [gender, cat] of groups) {
+    for (const group of cat.groups) {
+      for (const sub of group.subs) {
+        const seed = hash(gender + sub.slug);
+        const rand = rng(seed);
+        const imgPool = (IMG_BANK[sub.img] || IMG_BANK.tshirt).map(U);
+        const colorPool = sub.slug.match(/jewel|necklace|bracelet|earring|ring|watch/) ? COLOR_POOLS.jewel
+          : sub.slug.match(/sneaker|loafer|boot|heel|flat|sandals|formal-shoe/) ? COLOR_POOLS.footwear
+          : sub.slug.match(/handbag|shoulder|crossbody|tote|wallet|belt|travel|backpack/) ? COLOR_POOLS.bag
+          : sub.slug.match(/sunglass|hat|scarf/) ? COLOR_POOLS.neutral
+          : COLOR_POOLS.apparel;
+
+        for (let i = 0; i < 20; i++) {
+          const mat = sub.mat[i % sub.mat.length];
+          const noun = sub.nouns[Math.floor(i / sub.mat.length) % sub.nouns.length];
+          const prefix = PREFIX_POOL[(seed + i * 7) % PREFIX_POOL.length];
+          const name = `${prefix} ${mat} ${noun}`;
+
+          // Images: 3 distinct-ish images from pool
+          const i0 = (seed + i) % imgPool.length;
+          const i1 = (seed + i + 3) % imgPool.length;
+          const i2 = (seed + i + 6) % imgPool.length;
+          const imgs = [imgPool[i0], imgPool[i1], imgPool[i2]];
+
+          // Price
+          const t = i / 19;
+          const price = Math.round((sub.pMin + t * (sub.pMax - sub.pMin)) / 5) * 5;
+          const onSale = rand() < 0.12;
+          const salePrice = onSale ? Math.round(price * 0.75 / 5) * 5 : null;
+          const isNew = rand() < 0.25;
+          const stock = Math.floor(rand() * 18) + 2;
+
+          // Colors
+          const nColors = 2 + Math.floor(rand() * 2);
+          const colors = [];
+          for (let c = 0; c < nColors; c++) {
+            colors.push(colorPool[(seed + i + c * 3) % colorPool.length]);
+          }
+
+          // Sizes
+          const sizes = SIZES[sub.sz].slice();
+
+          // Description
+          const descTpl = DESC_TPL[(seed + i) % DESC_TPL.length];
+          const desc = descTpl.replace('{mat}', mat);
+
+          products.push({
+            id: `${gender}-${sub.slug}-${String(i + 1).padStart(2, '0')}`,
+            name, cat: gender, catLabel: cat.title, sub: sub.slug, subLabel: sub.label,
+            gender, desc, price, salePrice, onSale, isNew, stock,
+            img: imgs[0], img2: imgs[1], imgs,
+            sizes, colors, imgKey: sub.img
+          });
+          globalId++;
+        }
+      }
+    }
+  }
+  return products;
+}
+
+const PRODUCTS = buildProducts();
+const PRODUCT_BY_ID = Object.fromEntries(PRODUCTS.map(p => [p.id, p]));
+const getProduct = id => PRODUCT_BY_ID[id];
+const getSub = (cat, slug) => {
+  const c = CATALOG[cat];
+  if (!c) return null;
+  for (const g of c.groups) {
+    const found = g.subs.find(s => s.slug === slug);
+    if (found) return found;
+  }
+  return null;
+};
+const getSubLabel = (cat, slug) => {
+  const s = getSub(cat, slug);
+  return s ? s.label : slug;
+};
+
+/* ---------- Render helpers ---------- */
+function imgTag(src, alt, cls = '') {
+  return `<img src="${src}" alt="${esc(alt)}" class="${cls}" loading="lazy"
+    onerror="this.onerror=null;this.style.display='none';var p=this.parentElement;p.classList.add('img-fallback');p.setAttribute('data-fallback','${esc(alt).split(' ').slice(0,2).join(' ')}')">`;
+}
+
+function productCard(p) {
+  const displayPrice = p.salePrice || p.price;
+  const priceHTML = p.salePrice
+    ? `<span class="old">${fmt(p.price)}</span>${fmt(p.salePrice)}`
+    : fmt(p.price);
+  const badge = p.onSale ? `<span class="product-badge sale">Saldi</span>`
+    : p.isNew ? `<span class="product-badge new">Nuovo</span>`
+    : '';
+  const inWish = wishlist.has(p.id) ? ' on' : '';
+  return `
+    <article class="product" data-id="${p.id}" data-cat="${p.cat}">
+      <div class="product-media">
+        ${badge}
+        <button class="wish${inWish}" data-wish="${p.id}" aria-label="Preferiti">
+          <svg viewBox="0 0 24 24"><path d="M12 20s-7-4.5-7-9.5A4.5 4.5 0 0 1 12 7a4.5 4.5 0 0 1 7 3.5c0 5-7 9.5-7 9.5z"/></svg>
+        </button>
+        ${imgTag(p.img, p.name, 'main')}
+        ${imgTag(p.img2, p.name + ' — dettaglio', 'alt')}
+        <button class="quick-add" data-quick="${p.id}">Aggiunta rapida</button>
+      </div>
+      <a href="#/product/${p.id}" data-link class="product-info">
+        <span class="product-cat">${esc(p.subLabel)}</span>
+        <h3 class="product-name">${esc(p.name)}</h3>
+        <div class="product-price">${priceHTML}</div>
+      </a>
+    </article>`;
+}
+
+/* ---------- Toast ---------- */
+let toastTimer;
+function toast(msg) {
+  const el = $('#toast');
+  $('#toastMsg').textContent = msg;
+  el.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove('show'), 2600);
+}
+
+/* ---------- Cart ---------- */
+let cartOpen = false;
+
+function addToCart(id, size, color) {
+  const p = getProduct(id);
+  if (!p) return;
+  const existing = cart.find(i => i.id === id && i.size === size && i.color === color);
+  if (existing) existing.qty += 1;
+  else cart.push({ id, size, color, qty: 1 });
+  saveCart();
+  renderCart();
+  bumpBadge();
+  toast(`${p.name} · ${size} aggiunto`);
+}
+
+function removeFromCart(index) {
+  cart.splice(index, 1);
+  saveCart();
+  renderCart();
+}
+
+function changeQty(index, delta) {
+  cart[index].qty += delta;
+  if (cart[index].qty <= 0) cart.splice(index, 1);
+  saveCart();
+  renderCart();
+}
+
+function cartTotals() {
+  let sub = 0;
+  for (const item of cart) {
+    const p = getProduct(item.id);
+    if (!p) continue;
+    sub += (p.salePrice || p.price) * item.qty;
+  }
+  const ship = sub === 0 ? 0 : (sub >= 150 ? 0 : 9);
+  return { sub, ship, total: sub + ship };
+}
+
+function renderCart() {
+  const body = $('#cartBody');
+  const foot = $('#cartFoot');
+  const count = cart.reduce((s, i) => s + i.qty, 0);
+  $('#cartHeadCount').textContent = `(${count})`;
+
+  if (!cart.length) {
+    body.innerHTML = `
+      <div class="cart-empty">
+        <svg viewBox="0 0 24 24"><path d="M6 8h12l-1.2 12H7.2L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+        <p>Il tuo carrello è vuoto.<br>Scopri la nuova collezione.</p>
+        <a href="#/new" data-link class="btn btn-outline" onclick="closeCart()">Scopri i capi</a>
+      </div>`;
+    foot.style.display = 'none';
+  } else {
+    body.innerHTML = cart.map((item, i) => {
+      const p = getProduct(item.id);
+      if (!p) return '';
+      const price = p.salePrice || p.price;
+      return `
+        <div class="cart-item" style="animation-delay:${i * 60}ms">
+          <div class="cart-item-img">${imgTag(p.img, p.name)}</div>
+          <div class="cart-item-info">
+            <span class="meta">${esc(p.subLabel)}</span>
+            <h4>${esc(p.name)}</h4>
+            <span class="meta">Taglia ${item.size}${item.color ? ' · ' + item.color : ''}</span>
+            <div class="price">${fmt(price)}</div>
+            <div class="qty">
+              <button data-minus="${i}" aria-label="Riduci">−</button>
+              <span>${item.qty}</span>
+              <button data-plus="${i}" aria-label="Aumenta">+</button>
+            </div>
+          </div>
+          <button class="remove" data-remove="${i}">Rimuovi</button>
+        </div>`;
+    }).join('');
+
+    const t = cartTotals();
+    $('#cartSubtotal').textContent = fmt(t.sub);
+    $('#cartShip').textContent = t.ship === 0 ? 'Gratuita' : fmt(t.ship);
+    $('#cartTotal').textContent = fmt(t.total);
+    foot.style.display = 'block';
+
+    $$('[data-plus]', body).forEach(b => b.onclick = () => changeQty(+b.dataset.plus, 1));
+    $$('[data-minus]', body).forEach(b => b.onclick = () => changeQty(+b.dataset.minus, -1));
+    $$('[data-remove]', body).forEach(b => b.onclick = () => removeFromCart(+b.dataset.remove));
+  }
+
+  updateBadge('#cartCount', count);
+}
+
+function updateBadge(sel, count) {
+  const el = $(sel);
+  el.textContent = count;
+  el.classList.toggle('show', count > 0);
+}
+
+function bumpBadge() {
+  const el = $('#cartCount');
+  el.classList.remove('pop');
+  void el.offsetWidth;
+  el.classList.add('pop');
+}
+
+function openCart() {
+  cartOpen = true;
+  $('#cartDrawer').classList.add('open');
+  $('#overlay').classList.add('show');
+  document.body.classList.add('lock');
+}
+function closeCart() {
+  cartOpen = false;
+  $('#cartDrawer').classList.remove('open');
+  $('#overlay').classList.remove('show');
+  document.body.classList.remove('lock');
+}
+
+/* ---------- Wishlist ---------- */
+function toggleWish(id) {
+  if (wishlist.has(id)) wishlist.delete(id);
+  else wishlist.add(id);
+  saveWish();
+  updateBadge('#wishCount', wishlist.size);
+  // Update all wish buttons
+  $$('[data-wish]').forEach(btn => {
+    btn.classList.toggle('on', wishlist.has(btn.dataset.wish));
+  });
+  // Refresh wishlist page if visible
+  if (location.hash.startsWith('#/wishlist')) renderRoute();
+}
+
+/* ---------- Quick View ---------- */
+let qvProduct = null, qvSize = null, qvColor = null;
+
+function openQuickView(id) {
+  const p = getProduct(id);
+  if (!p) return;
+  qvProduct = p;
+  qvSize = p.sizes.length === 1 ? p.sizes[0] : null;
+  qvColor = p.colors[0];
+
+  $('#qvImg').src = p.img;
+  $('#qvImg').alt = p.name;
+  $('#qvCat').textContent = p.subLabel;
+  $('#qvName').textContent = p.name;
+  $('#qvPrice').innerHTML = p.salePrice
+    ? `<span class="old" style="color:var(--muted);text-decoration:line-through;font-size:.85rem;margin-right:.5rem">${fmt(p.price)}</span>${fmt(p.salePrice)}`
+    : fmt(p.price);
+  $('#qvDesc').textContent = p.desc;
+  $('#qvDetails').href = `#/product/${p.id}`;
+  $('#qvDetails').dataset.link = '';
+
+  const sizesEl = $('#qvSizes');
+  sizesEl.innerHTML = '';
+  p.sizes.forEach(s => {
+    const b = document.createElement('button');
+    b.className = 'size-btn' + (qvSize === s ? ' active' : '');
+    b.textContent = s;
+    b.onclick = () => {
+      qvSize = s;
+      $$('.size-btn', sizesEl).forEach(x => x.classList.remove('active'));
+      b.classList.add('active');
+    };
+    sizesEl.appendChild(b);
+  });
+
+  $('#quickview').classList.add('show');
+  document.body.classList.add('lock');
+}
+
+function closeQuickView() {
+  $('#quickview').classList.remove('show');
+  if (!cartOpen) document.body.classList.remove('lock');
+}
+
+/* ---------- Router ---------- */
+function parseHash() {
+  const raw = location.hash.replace(/^#/, '') || '/';
+  const [path, query] = raw.split('?');
+  return { path, params: new URLSearchParams(query || '') };
+}
+
+function renderRoute() {
+  const { path, params } = parseHash();
+  const parts = path.split('/').filter(Boolean);
+  const app = $('#app');
+
+  // scroll to top on route change
+  window.scrollTo({ top: 0, behavior: 'instant' });
+
+  // Update active nav
+  $$('#nav a').forEach(a => {
+    const nav = a.dataset.nav;
+    const match = nav === '/' ? (parts.length === 0)
+      : nav === '/men' ? parts[0] === 'men'
+      : nav === '/women' ? parts[0] === 'women'
+      : nav === '/accessories' ? parts[0] === 'accessories'
+      : nav === '/new' ? parts[0] === 'new'
+      : nav === '/collections' ? (parts[0] === 'collections' || parts[0] === 'collection')
+      : nav === '/about' ? parts[0] === 'about'
+      : nav === '/contact' ? parts[0] === 'contact'
+      : false;
+    a.classList.toggle('active', match);
+  });
+
+  if (parts.length === 0) { app.innerHTML = renderHome(); afterRender(); return; }
+  const root = parts[0];
+  if (root === 'men' || root === 'women' || root === 'accessories') {
+    if (parts[1]) { app.innerHTML = renderCategory(root, parts[1]); }
+    else { app.innerHTML = renderShopLanding(root); }
+    afterRender(); return;
+  }
+  if (root === 'product' && parts[1]) { app.innerHTML = renderProduct(parts[1]); afterRender(); return; }
+  if (root === 'new') { app.innerHTML = renderNewArrivals(); afterRender(); return; }
+  if (root === 'collections') { app.innerHTML = renderCollections(); afterRender(); return; }
+  if (root === 'collection' && parts[1]) { app.innerHTML = renderCollection(parts[1]); afterRender(); return; }
+  if (root === 'search') { app.innerHTML = renderSearchResults(params.get('q') || ''); afterRender(); return; }
+  if (root === 'wishlist') { app.innerHTML = renderWishlist(); afterRender(); return; }
+  if (root === 'about') { app.innerHTML = renderAbout(); afterRender(); return; }
+  if (root === 'contact') { app.innerHTML = renderContact(); afterRender(); return; }
+
+  app.innerHTML = renderHome();
+  afterRender();
+}
+
+function afterRender() {
+  initReveal();
+  initParallax();
+  // Reattach image fallbacks
+  $$('img').forEach(img => {
+    if (!img.dataset.fbBound) {
+      img.dataset.fbBound = '1';
+      img.addEventListener('error', function () {
+        this.style.display = 'none';
+        const p = this.parentElement;
+        if (p) {
+          p.classList.add('img-fallback');
+          p.setAttribute('data-fallback', this.alt.split(' ').slice(0, 2).join(' '));
+        }
+      });
+    }
+  });
+}
+
+/* ============================================================
+   PAGE RENDERERS
+   ============================================================ */
+
+/* ---------- HOME ---------- */
+function renderHome() {
+  const featured = PRODUCTS.filter(p => p.isNew).slice(0, 8);
+  const featuredCards = featured.map(productCard).join('');
+
+  return `
+    <section class="hero page">
+      <div class="hero-media">
+        ${imgTag('https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=2200&auto=format&fit=crop', 'Modella con capospalla elegante — collezione Bellini')}
+      </div>
+      <div class="hero-veil"></div>
+      <div class="hero-content">
+        <span class="eyebrow hero-eyebrow">Monza · Italia — Dal 1987</span>
+        <h1 class="hero-title">
+          <span class="line"><span>Stile</span></span>
+          <span class="line"><span><em>Senza</em> <span class="small">Tempo</span></span></span>
+        </h1>
+        <p class="hero-lead">Sartoria contemporanea, tessuti pregiati e dettagli che non conoscono stagione. Una selezione curata di capi italiani per donna e uomo, nel cuore di Monza.</p>
+        <div class="hero-cta">
+          <a href="#/new" data-link class="btn btn-light">Scopri la Collezione <span class="arrow">→</span></a>
+          <a href="#/about" data-link class="btn btn-ghost">La Nostra Storia</a>
+        </div>
+      </div>
+      <div class="hero-side">Nuova Collezione · A/W 25</div>
+      <div class="hero-scroll"><i></i> Scorri</div>
+    </section>
+
+    <div class="marquee">
+      <div class="marquee-track">
+        <div class="marquee-set">
+          <span>Artigianato Italiano</span><i>◆</i><span>Nuove Collezioni</span><i>◆</i>
+          <span>Made in Italy</span><i>◆</i><span>Boutique di Monza</span><i>◆</i>
+          <span>Stile Senza Tempo</span><i>◆</i><span>Selezione Curata</span><i>◆</i>
+        </div>
+        <div class="marquee-set">
+          <span>Artigianato Italiano</span><i>◆</i><span>Nuove Collezioni</span><i>◆</i>
+          <span>Made in Italy</span><i>◆</i><span>Boutique di Monza</span><i>◆</i>
+          <span>Stile Senza Tempo</span><i>◆</i><span>Selezione Curata</span><i>◆</i>
+        </div>
+      </div>
+    </div>
+
+    <section class="maison" id="maison">
+      <div class="maison-visual" data-reveal>
+        <div class="parallax-wrap">
+          ${imgTag('https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?q=80&w=1400&auto=format&fit=crop', 'Interno della boutique Bellini a Monza')}
+        </div>
+        <div class="maison-badge"><strong>38</strong><small>Anni di stile</small></div>
+      </div>
+      <div class="maison-copy">
+        <span class="eyebrow" data-reveal>La Maison</span>
+        <h2 class="section-title" data-reveal style="--d:80ms">L'arte del <em>vestire</em><br>italiano</h2>
+        <p class="lead" data-reveal style="--d:160ms">«Non vendiamo abiti. Custodiamo il tempo che ognuno merita di indossare.»</p>
+        <p data-reveal style="--d:220ms">Dal 1987, BELLINI seleziona con cura i migliori capi del panorama italiano ed europeo. Ogni tessuto viene scelto a mano, ogni cucitura verificata, ogni dettaglio pensato per durare oltre la stagione.</p>
+        <p data-reveal style="--d:280ms">Crediamo in uno stile che non insegue le tendenze, ma le accompagna — con discrezione, carattere e quella misura tutta italiana che rende ogni capo unico.</p>
+        <div class="signature" data-reveal style="--d:320ms">— Famiglia Bellini</div>
+        <div class="stats" data-reveal style="--d:380ms">
+          <div><strong>38</strong><span>Anni di attività</span></div>
+          <div><strong>120+</strong><span>Marchi selezionati</span></div>
+          <div><strong>2.4k</strong><span>Clienti fedeli</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow" data-reveal>Le Collezioni</span>
+          <h2 class="section-title" data-reveal style="--d:80ms">Scegli il tuo <em>mondo</em></h2>
+        </div>
+        <a href="#/collections" data-link class="link-arrow" data-reveal style="--d:160ms">Vedi tutto <span>→</span></a>
+      </div>
+      <div class="collections-grid">
+        <a href="#/women" data-link class="collection-card" data-reveal>
+          ${imgTag('https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=1200&auto=format&fit=crop', 'Collezione Donna')}
+          <div class="collection-info"><small>Collezione 01</small><h3>Donna</h3><div class="collection-cta">Esplora <span>→</span></div></div>
+        </a>
+        <a href="#/men" data-link class="collection-card" data-reveal style="--d:100ms">
+          ${imgTag('https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=1200&auto=format&fit=crop', 'Collezione Uomo')}
+          <div class="collection-info"><small>Collezione 02</small><h3>Uomo</h3><div class="collection-cta">Esplora <span>→</span></div></div>
+        </a>
+        <a href="#/accessories" data-link class="collection-card" data-reveal style="--d:200ms">
+          ${imgTag('https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=1200&auto=format&fit=crop', 'Collezione Accessori')}
+          <div class="collection-info"><small>Collezione 03</small><h3>Accessori</h3><div class="collection-cta">Esplora <span>→</span></div></div>
+        </a>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow" data-reveal>Selezione</span>
+          <h2 class="section-title" data-reveal style="--d:80ms">Nuovi <em>Arrivi</em></h2>
+        </div>
+        <a href="#/new" data-link class="link-arrow" data-reveal style="--d:160ms">Tutti i nuovi arrivi <span>→</span></a>
+      </div>
+      <div class="products-grid">${featuredCards}</div>
+    </section>
+
+    <section class="editorial">
+      <div class="editorial-bg">
+        ${imgTag('https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=2000&auto=format&fit=crop', 'Campagna editoriale Bellini')}
+      </div>
+      <div class="editorial-inner">
+        <span class="eyebrow" data-reveal>Il Manifesto</span>
+        <blockquote class="quote" data-reveal style="--d:100ms">«La vera eleganza non si nota.<br>Si ricorda.»</blockquote>
+        <div class="quote-attr" data-reveal style="--d:200ms">Bellini — Stile Senza Tempo</div>
+      </div>
+    </section>
+
+    <section class="lookbook">
+      <div class="lookbook-head">
+        <div>
+          <span class="eyebrow" data-reveal>Lookbook A/W 25</span>
+          <h2 class="section-title" data-reveal style="--d:80ms">Momenti <em>Bellini</em></h2>
+        </div>
+        <span style="font-size:.6rem;letter-spacing:.26em;text-transform:uppercase;color:var(--muted)" data-reveal>Trascina per esplorare →</span>
+      </div>
+      <div class="lookbook-scroll" id="lookbook">
+        <figure class="look-item" data-reveal>${imgTag('https://images.unsplash.com/photo-1485462537746-965f33f7f6a7?q=80&w=900&auto=format&fit=crop', 'Look 01')}<figcaption>Look 01 — Cammello</figcaption></figure>
+        <figure class="look-item" data-reveal style="--d:80ms">${imgTag('https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=900&auto=format&fit=crop', 'Look 02')}<figcaption>Look 02 — Avorio</figcaption></figure>
+        <figure class="look-item" data-reveal style="--d:160ms">${imgTag('https://images.unsplash.com/photo-1617137968427-85924c800a22?q=80&w=900&auto=format&fit=crop', 'Look 03')}<figcaption>Look 03 — Notte</figcaption></figure>
+        <figure class="look-item" data-reveal style="--d:240ms">${imgTag('https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?q=80&w=900&auto=format&fit=crop', 'Look 04')}<figcaption>Look 04 — Terra</figcaption></figure>
+        <figure class="look-item" data-reveal style="--d:320ms">${imgTag('https://images.unsplash.com/photo-1445205170230-053b83016050?q=80&w=900&auto=format&fit=crop', 'Look 05')}<figcaption>Look 05 — Seta</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="testimonials">
+      <div class="section" style="padding-top:clamp(4rem,8vw,7rem);padding-bottom:clamp(4rem,8vw,7rem)">
+        <div class="section-head" style="justify-content:center;text-align:center">
+          <div style="margin:0 auto">
+            <span class="eyebrow center" data-reveal style="justify-content:center">Dicono di noi</span>
+            <h2 class="section-title" data-reveal style="--d:80ms">Voci dalla <em>boutique</em></h2>
+          </div>
+        </div>
+        <div class="testi-grid">
+          <article class="testi" data-reveal><div class="stars">★★★★★</div><p>«Un luogo dove il tempo sembra fermarsi. Ho trovato il cappotto che cercavo da anni — e un'accoglienza che non dimenticherò.»</p><div class="testi-author"><div class="avatar">MC</div><div><strong>Marta C.</strong><small>Milano</small></div></div></article>
+          <article class="testi" data-reveal style="--d:100ms"><div class="stars">★★★★★</div><p>«Qualità dei tessuti eccezionale e consulenza davvero personale. BELLINI è la mia boutique di riferimento da oltre dieci anni.»</p><div class="testi-author"><div class="avatar">LR</div><div><strong>Lorenzo R.</strong><small>Monza</small></div></div></article>
+          <article class="testi" data-reveal style="--d:200ms"><div class="stars">★★★★★</div><p>«Elegante senza essere ostentato. Ogni capo racconta una storia italiana fatta di mani, tessuti e pazienza. Consigliatissimo.»</p><div class="testi-author"><div class="avatar">SB</div><div><strong>Silvia B.</strong><small>Como</small></div></div></article>
+        </div>
+      </div>
+    </section>
+
+    ${renderNewsletter()}
+  `;
+}
+
+/* ---------- Newsletter block (reused) ---------- */
+function renderNewsletter() {
+  return `
+    <section class="newsletter">
+      <span class="eyebrow center" data-reveal>Newsletter</span>
+      <h2 data-reveal style="--d:80ms">Entra nel mondo <em>Bellini</em></h2>
+      <p data-reveal style="--d:140ms">Anteprime delle collezioni, inviti agli eventi in boutique e storie di artigianato italiano. Una lettera al mese, scritta con cura.</p>
+      <form class="news-form" id="newsForm" data-reveal style="--d:200ms">
+        <input type="email" placeholder="Il tuo indirizzo email" required aria-label="Email">
+        <button type="submit">Iscriviti <span class="arrow">→</span></button>
+      </form>
+      <div class="news-note" data-reveal style="--d:260ms">Nessuno spam. Solo stile.</div>
+    </section>`;
+}
+
+/* ---------- Shop Landing (Men/Women/Accessories) ---------- */
+function renderShopLanding(gender) {
+  const cat = CATALOG[gender];
+  const subGroups = cat.groups.map(g => ({
+    label: g.label,
+    subs: g.subs
+  }));
+
+  return `
+    <div class="page-head">
+      <span class="eyebrow">Collezione ${esc(cat.title)}</span>
+      <h1>${esc(cat.title)}</h1>
+      <p>${esc(cat.subtitle)} — ${subGroups.reduce((n, g) => n + g.subs.length, 0)} categorie, ${PRODUCTS.filter(p => p.cat === gender).length} prodotti selezionati.</p>
+    </div>
+    <section class="collections-landing" style="padding-top:0">
+      ${subGroups.map((g, gi) => `
+        <div style="margin-bottom:3rem">
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:500;letter-spacing:.02em;margin-bottom:1.2rem;padding-bottom:.6rem;border-bottom:1px solid var(--line)">${esc(g.label)}</h3>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:.6rem">
+            ${g.subs.map((s, si) => {
+              const preview = PRODUCTS.find(p => p.cat === gender && p.sub === s.slug);
+              return `<a href="#/${gender}/${s.slug}" data-link class="collection-card" style="aspect-ratio:3/3.5" data-reveal style="--d:${(gi*3+si)*40}ms">
+                ${preview ? imgTag(preview.img, s.label) : ''}
+                <div class="collection-info" style="padding:1.1rem"><h3 style="font-size:1.15rem">${esc(s.label)}</h3><small>20 prodotti</small></div>
+              </a>`;
+            }).join('')}
+          </div>
+        </div>
+      `).join('')}
+    </section>
+    ${renderNewsletter()}
+  `;
+}
+
+/* ---------- Category Listing (Filters, Sort, Grid) ---------- */
+const STATE = {
+  filters: { priceMax: 1000, sizes: new Set(), colors: new Set(), newOnly: false, saleOnly: false, inStock: false },
+  sort: 'featured'
+};
+
+function renderCategory(gender, subSlug) {
+  const cat = CATALOG[gender];
+  if (!cat) return renderNotFound();
+  const sub = getSub(gender, subSlug);
+  if (!sub) return renderNotFound();
+
+  const allSubs = cat.groups.flatMap(g => g.subs);
+  const products = PRODUCTS.filter(p => p.cat === gender && p.sub === subSlug);
+  const preview = products[0];
+
+  return `
+    <div class="page">
+      <div class="crumbs">
+        <a href="#/" data-link>Home</a><span>/</span>
+        <a href="#/${gender}" data-link>${esc(cat.title)}</a><span>/</span>
+        <span style="color:var(--ink);opacity:1">${esc(sub.label)}</span>
+      </div>
+      <div class="cat-page">
+        <div class="cat-hero" data-reveal>
+          ${preview ? imgTag(preview.img, sub.label) : ''}
+          <div class="cat-hero-content">
+            <span class="eyebrow">Collezione ${esc(cat.title)}</span>
+            <h1 class="cat-title">${esc(sub.label)}</h1>
+            <div class="cat-count">${products.length} prodotti</div>
+          </div>
+        </div>
+
+        <div class="sub-pills" data-reveal>
+          ${allSubs.map(s => `<a href="#/${gender}/${s.slug}" data-link class="sub-pill${s.slug === subSlug ? ' active' : ''}">${esc(s.label)}</a>`).join('')}
+        </div>
+
+        <div class="cat-layout">
+          <aside class="filters-panel" id="filtersPanel">
+            <div class="filters-head">
+              <h4>Filtri</h4>
+              <button class="filters-clear" id="clearFilters">Azzera</button>
+            </div>
+            <div id="filtersContent"></div>
+          </aside>
+
+          <div>
+            <div class="sort-bar">
+              <div class="sort-info"><strong id="productCount">${products.length}</strong> prodotti</div>
+              <div class="sort-controls">
+                <button class="btn btn-outline sm mobile-filter-btn" id="mobileFilterBtn">Filtri</button>
+                <select class="sort-select" id="sortSelect">
+                  <option value="featured">In evidenza</option>
+                  <option value="newest">Più recenti</option>
+                  <option value="price-asc">Prezzo: crescente</option>
+                  <option value="price-desc">Prezzo: decrescente</option>
+                  <option value="name-asc">Alfabetico</option>
+                </select>
+              </div>
+            </div>
+            <div class="products-grid" id="catProductsGrid"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+/* ---------- New Arrivals ---------- */
+function renderNewArrivals() {
+  const products = PRODUCTS.filter(p => p.isNew);
+  return `
+    <div class="page">
+      <div class="crumbs"><a href="#/" data-link>Home</a><span>/</span><span style="color:var(--ink);opacity:1">New Arrivals</span></div>
+      <div class="page-head">
+        <span class="eyebrow">Appena arrivati</span>
+        <h1>New <em>Arrivals</em></h1>
+        <p>Le ultime proposte della maison, appena selezionate dalla boutique. ${products.length} capi disponibili.</p>
+      </div>
+      <section class="collections-landing" style="padding-top:0">
+        <div class="products-grid">${products.slice(0, 40).map(productCard).join('')}</div>
+      </section>
+      ${renderNewsletter()}
+    </div>
+  `;
+}
+
+/* ---------- Collections ---------- */
+const COLLECTIONS = {
+  'spring-summer': {
+    label: 'Spring / Summer', sub: 'La stagione calda',
+    desc: 'Leggerezza, colori naturali, tessuti traspiranti. La collezione primavera/estate di Bellini.',
+    img: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1600&auto=format&fit=crop',
+    filter: p => ['linen','top','dress','shorts','sandals','shortsw','tshirt','shirtw'].includes(p.imgKey)
+  },
+  'autumn-winter': {
+    label: 'Autumn / Winter', sub: 'La stagione fredda',
+    desc: 'Lana, cashmere, cappotti e maglieria. Il calore della tradizione tessile italiana.',
+    img: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1600&auto=format&fit=crop',
+    filter: p => ['coat','coatw','sweater','sweaterw','knit','knitw','boot','bootw','jacket','jacketw','cardigan'].includes(p.imgKey)
+  },
+  'italian-essentials': {
+    label: 'Italian Essentials', sub: 'I fondamentali',
+    desc: 'Capi iconici, senza tempo, che ogni guardaroba italiano dovrebbe avere.',
+    img: 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=1600&auto=format&fit=crop',
+    filter: p => ['tshirt','shirt','trousers','jeans','loafer','formal-shoe','blazer','dress'].includes(p.imgKey)
+  },
+  'everyday-elegance': {
+    label: 'Everyday Elegance', sub: 'Eleganza quotidiana',
+    desc: 'Capi pensati per accompagnare ogni giornata con discreta raffinatezza.',
+    img: 'https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=1600&auto=format&fit=crop',
+    filter: p => ['top','blouse','shirtw','chinos','trousersw','polo','sneaker','sneakerw','sweaterw'].includes(p.imgKey)
+  },
+  'contemporary-classics': {
+    label: 'Contemporary Classics', sub: 'Classici contemporanei',
+    desc: 'Linee pulite, proporzioni moderne, materiali pregiati.',
+    img: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=1600&auto=format&fit=crop',
+    filter: p => ['blazerw','jacket','coat','dress','shirt','formal-shoe','heels','loafer'].includes(p.imgKey)
+  },
+  'premium-accessories': {
+    label: 'Premium Accessories', sub: 'Dettagli che contano',
+    desc: 'Borse, cinture, orologi e gioielli selezionati per completare ogni look.',
+    img: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=1600&auto=format&fit=crop',
+    filter: p => p.cat === 'accessories'
+  }
+};
+
+function renderCollections() {
+  return `
+    <div class="page">
+      <div class="crumbs"><a href="#/" data-link>Home</a><span>/</span><span style="color:var(--ink);opacity:1">Collections</span></div>
+      <div class="page-head">
+        <span class="eyebrow">Le Collezioni</span>
+        <h1>Collezioni <em>Bellini</em></h1>
+        <p>Storie tessili che attraversano le stagioni. Sei proposte curate per raccontare lo stile senza tempo della maison.</p>
+      </div>
+      <section class="collections-landing" style="padding-top:0">
+        <div class="collections-grid-2">
+          ${Object.entries(COLLECTIONS).map(([slug, c]) => `
+            <a href="#/collection/${slug}" data-link class="collection-tile" data-reveal>
+              ${imgTag(c.img, c.label)}
+              <div class="collection-tile-info">
+                <h3>${esc(c.label)}</h3>
+                <p>${esc(c.desc)}</p>
+                <div class="collection-cta">Esplora la collezione <span>→</span></div>
+              </div>
+            </a>
+          `).join('')}
+        </div>
+      </section>
+      ${renderNewsletter()}
+    </div>
+  `;
+}
+
+function renderCollection(slug) {
+  const c = COLLECTIONS[slug];
+  if (!c) return renderNotFound();
+  const products = PRODUCTS.filter(c.filter);
+  return `
+    <div class="page">
+      <div class="crumbs"><a href="#/" data-link>Home</a><span>/</span><a href="#/collections" data-link>Collections</a><span>/</span><span style="color:var(--ink);opacity:1">${esc(c.label)}</span></div>
+      <div class="cat-page">
+        <div class="cat-hero" data-reveal>
+          ${imgTag(c.img, c.label)}
+          <div class="cat-hero-content">
+            <span class="eyebrow">Collezione</span>
+            <h1 class="cat-title">${esc(c.label)}</h1>
+            <div class="cat-count">${products.length} prodotti</div>
+          </div>
+        </div>
+        <div class="products-grid">${products.map(productCard).join('')}</div>
+      </div>
+    </div>
+    ${renderNewsletter()}
+  `;
+}
+
+/* ---------- Search ---------- */
+function renderSearchResults(q) {
+  const term = q.trim().toLowerCase();
+  const products = term
+    ? PRODUCTS.filter(p =>
+        p.name.toLowerCase().includes(term) ||
+        p.subLabel.toLowerCase().includes(term) ||
+        p.catLabel.toLowerCase().includes(term) ||
+        p.desc.toLowerCase().includes(term)
+      ).slice(0, 80)
+    : [];
+
+  return `
+    <div class="page">
+      <div class="page-head">
+        <span class="eyebrow">Ricerca</span>
+        <h1>Risultati per <em>“${esc(q)}”</em></h1>
+        <p>${products.length} prodotti trovati nella collezione Bellini.</p>
+      </div>
+      <section class="collections-landing" style="padding-top:0">
+        ${products.length
+          ? `<div class="products-grid">${products.map(productCard).join('')}</div>`
+          : `<div class="empty"><h3>Nessun risultato</h3><p>Prova con un altro termine — oppure esplora le collezioni.</p><a href="#/collections" data-link class="btn btn-outline">Vedi le collezioni</a></div>`}
+      </section>
+    </div>
+  `;
+}
+
+/* ---------- Wishlist ---------- */
+function renderWishlist() {
+  const items = [...wishlist].map(id => getProduct(id)).filter(Boolean);
+  return `
+    <div class="page">
+      <div class="page-head">
+        <span class="eyebrow">La tua selezione</span>
+        <h1>Lista dei <em>desideri</em></h1>
+        <p>${items.length ? `${items.length} capi tra i tuoi preferiti.` : 'Non hai ancora aggiunto capi alla lista dei desideri.'}</p>
+      </div>
+      <section class="wish-page" style="padding-top:0">
+        ${items.length
+          ? `<div class="products-grid">${items.map(productCard).join('')}</div>`
+          : `<div class="empty"><h3>La tua wishlist è vuota</h3><p>Salva i tuoi capi preferiti per ritrovarli qui.</p><a href="#/new" data-link class="btn btn-outline">Scopri i nuovi arrivi</a></div>`}
+      </section>
+    </div>
+  `;
+}
+
+/* ---------- About ---------- */
+function renderAbout() {
+  return `
+    <div class="page">
+      <div class="crumbs"><a href="#/" data-link>Home</a><span>/</span><span style="color:var(--ink);opacity:1">About</span></div>
+      <div class="page-head">
+        <span class="eyebrow">La Maison</span>
+        <h1>Stile <em>Senza Tempo</em></h1>
+        <p>BELLINI nasce a Monza nel 1987 come boutique di famiglia. Oggi, come allora, selezioniamo capi che parlano di artigianato italiano, misura e discrezione.</p>
+      </div>
+      <section class="maison" style="padding-top:0">
+        <div class="maison-visual" data-reveal>
+          <div class="parallax-wrap">${imgTag('https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?q=80&w=1400&auto=format&fit=crop', 'Interno boutique Bellini')}</div>
+          <div class="maison-badge"><strong>38</strong><small>Anni di stile</small></div>
+        </div>
+        <div class="maison-copy">
+          <p class="lead">«Crediamo che la vera eleganza non si noti. Si ricordi.»</p>
+          <p>Ogni capo che entra in boutique passa attraverso una selezione attenta: tessuti naturali, costruzioni precise, dettagli che durano. Lavoriamo con piccoli laboratori italiani e con maison europee che condividono la nostra idea di misura.</p>
+          <p>Nel nostro spazio di Via Carlo Alberto, a Monza, la moda incontra la quiete della tradizione artigiana. Un luogo dove il tempo sembra fermarsi — e dove ogni cliente trova il proprio stile.</p>
+          <div class="signature">— Famiglia Bellini</div>
+        </div>
+      </section>
+      ${renderNewsletter()}
+    </div>
+  `;
+}
+
+/* ---------- Contact ---------- */
+function renderContact() {
+  return `
+    <div class="page">
+      <div class="crumbs"><a href="#/" data-link>Home</a><span>/</span><span style="color:var(--ink);opacity:1">Contact</span></div>
+      <div class="page-head">
+        <span class="eyebrow">Contatti</span>
+        <h1>Vieni in <em>boutique</em></h1>
+        <p>Ti aspettiamo nel cuore di Monza. Per appuntamenti privati, consulenze o semplicemente per un caffè.</p>
+      </div>
+      <section class="section" style="padding-top:0">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,4vw,4rem);align-items:start">
+          <div>
+            <div style="margin-bottom:2rem">
+              <span class="eyebrow no-line" style="margin-bottom:.6rem">Indirizzo</span>
+              <p style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;line-height:1.3;margin-top:.6rem">Via Carlo Alberto 18<br>20900 Monza (MB)<br>Italia</p>
+            </div>
+            <div style="margin-bottom:2rem">
+              <span class="eyebrow no-line" style="margin-bottom:.6rem">Orari</span>
+              <p style="font-size:.95rem;line-height:2;color:var(--muted);margin-top:.6rem">Martedì – Sabato · 10:00 – 19:30<br>Lunedì · 15:30 – 19:30<br>Domenica · Chiuso</p>
+            </div>
+            <div style="margin-bottom:2rem">
+              <span class="eyebrow no-line" style="margin-bottom:.6rem">Contatti</span>
+              <p style="font-size:.95rem;line-height:2;margin-top:.6rem">
+                <a href="tel:+390390000000" style="border-bottom:1px solid var(--line)">+39 039 000 0000</a><br>
+                <a href="mailto:info@bellini.it" style="border-bottom:1px solid var(--line)">info@bellini.it</a>
+              </p>
+            </div>
+          </div>
+          <form id="contactForm" style="border:1px solid var(--line);padding:clamp(1.4rem,3vw,2.4rem)">
+            <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:500;margin-bottom:1.4rem">Scrivici</h3>
+            <div style="display:flex;flex-direction:column;gap:1rem">
+              <input type="text" placeholder="Nome e cognome" required style="padding:.9rem;border:1px solid var(--line);background:transparent;font-size:.82rem;outline:none">
+              <input type="email" placeholder="Email" required style="padding:.9rem;border:1px solid var(--line);background:transparent;font-size:.82rem;outline:none">
+              <textarea placeholder="Messaggio" rows="5" required style="padding:.9rem;border:1px solid var(--line);background:transparent;font-size:.82rem;outline:none;resize:vertical;font-family:inherit"></textarea>
+              <button type="submit" class="btn btn-dark">Invia messaggio <span class="arrow">→</span></button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </div>
+  `;
+}
+
+/* ---------- 404 ---------- */
+function renderNotFound() {
+  return `
+    <div class="page">
+      <div class="empty" style="min-height:60vh;display:flex;flex-direction:column;justify-content:center">
+        <h3>Pagina non trovata</h3>
+        <p>Il collegamento potrebbe essere stato rimosso o non esiste.</p>
+        <a href="#/" data-link class="btn btn-outline">Torna alla home</a>
+      </div>
+    </div>
+  `;
+}
+
+/* ============================================================
+   CATEGORY PAGE WIRING
+   ============================================================ */
+function wireCategoryPage(gender, subSlug) {
+  const panel = $('#filtersPanel');
+  const content = $('#filtersContent');
+  const grid = $('#catProductsGrid');
+  if (!grid) return;
+
+  // Build filter UI
+  const products = PRODUCTS.filter(p => p.cat === gender && p.sub === subSlug);
+  const priceBounds = [Math.min(...products.map(p => p.salePrice || p.price)), Math.max(...products.map(p => p.salePrice || p.price))];
+  STATE.filters.priceMax = priceBounds[1];
+
+  const sizesInCat = [...new Set(products.flatMap(p => p.sizes))];
+  const colorsInCat = [...new Set(products.flatMap(p => p.colors))];
+
+  content.innerHTML = `
+    <div class="filter-group">
+      <div class="filter-toggle" data-ftoggle>
+        <h5 style="margin:0">Prezzo massimo</h5>
+        <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.4"/></svg>
+      </div>
+      <div class="filter-body">
+        <div class="price-range">
+          <input type="number" id="priceMin" value="${priceBounds[0]}" min="${priceBounds[0]}" max="${priceBounds[1]}">
+          <span>—</span>
+          <input type="number" id="priceMax" value="${priceBounds[1]}" min="${priceBounds[0]}" max="${priceBounds[1]}">
+        </div>
+      </div>
+    </div>
+    <div class="filter-group">
+      <div class="filter-toggle" data-ftoggle>
+        <h5 style="margin:0">Taglia</h5>
+        <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.4"/></svg>
+      </div>
+      <div class="filter-body">
+        ${sizesInCat.map(s => `<label class="filter-check"><input type="checkbox" data-fsize="${s}"> ${s}</label>`).join('')}
+      </div>
+    </div>
+    <div class="filter-group">
+      <div class="filter-toggle" data-ftoggle>
+        <h5 style="margin:0">Colore</h5>
+        <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.4"/></svg>
+      </div>
+      <div class="filter-body">
+        <div class="color-filter">
+          ${colorsInCat.map(c => `<span class="color-chip" data-fcolor="${esc(c)}" style="background:${COLOR_MAP[c] || '#B0A594'}" title="${esc(c)}"></span>`).join('')}
+        </div>
+      </div>
+    </div>
+    <div class="filter-group">
+      <div class="filter-toggle" data-ftoggle>
+        <h5 style="margin:0">Disponibilità</h5>
+        <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.4"/></svg>
+      </div>
+      <div class="filter-body">
+        <label class="filter-check"><input type="checkbox" data-fnew> Solo nuovi arrivi</label>
+        <label class="filter-check"><input type="checkbox" data-fsale> Solo in saldo</label>
+        <label class="filter-check"><input type="checkbox" data-fstock> Disponibile in magazzino</label>
+      </div>
+    </div>
+  `;
+
+  // Toggle groups
+  $$('[data-ftoggle]', content).forEach(t => {
+    t.onclick = () => {
+      t.classList.toggle('closed');
+      t.nextElementSibling.classList.toggle('closed');
+    };
+  });
+
+  // Wire filter events
+  let currentFilters = { ...STATE.filters, sizes: new Set(), colors: new Set() };
+  let currentSort = 'featured';
+
+  const apply = () => {
+    let list = products.slice();
+    list = list.filter(p => {
+      const price = p.salePrice || p.price;
+      if (price < currentFilters.priceMin || price > currentFilters.priceMax) return false;
+      if (currentFilters.sizes.size && !p.sizes.some(s => currentFilters.sizes.has(s))) return false;
+      if (currentFilters.colors.size && !p.colors.some(c => currentFilters.colors.has(c))) return false;
+      if (currentFilters.newOnly && !p.isNew) return false;
+      if (currentFilters.saleOnly && !p.onSale) return false;
+      if (currentFilters.inStock && p.stock <= 0) return false;
+      return true;
+    });
+
+    if (currentSort === 'newest') list.sort((a, b) => b.isNew - a.isNew || (b.salePrice || b.price) - (a.salePrice || a.price));
+    else if (currentSort === 'price-asc') list.sort((a, b) => (a.salePrice || a.price) - (b.salePrice || b.price));
+    else if (currentSort === 'price-desc') list.sort((a, b) => (b.salePrice || b.price) - (a.salePrice || a.price));
+    else if (currentSort === 'name-asc') list.sort((a, b) => a.name.localeCompare(b.name));
+
+    $('#productCount').textContent = list.length;
+    grid.innerHTML = list.length
+      ? list.map((p, i) => {
+          const card = productCard(p);
+          return card.replace('<article class="product"', `<article class="product" style="animation-delay:${i*25}ms"`);
+        }).join('')
+      : `<div class="empty" style="grid-column:1/-1"><h3>Nessun prodotto</h3><p>Prova a modificare i filtri.</p></div>`;
+    bindProductEvents(grid);
+  };
+
+  const priceMin = $('#priceMin', content);
+  const priceMax = $('#priceMax', content);
+  priceMin.oninput = () => { currentFilters.priceMin = +priceMin.value || 0; apply(); };
+  priceMax.oninput = () => { currentFilters.priceMax = +priceMax.value || 9999; apply(); };
+
+  $$('[data-fsize]', content).forEach(cb => {
+    cb.onchange = () => {
+      if (cb.checked) currentFilters.sizes.add(cb.dataset.fsize);
+      else currentFilters.sizes.delete(cb.dataset.fsize);
+      apply();
+    };
+  });
+  $$('[data-fcolor]', content).forEach(chip => {
+    chip.onclick = () => {
+      const c = chip.dataset.fcolor;
+      if (currentFilters.colors.has(c)) { currentFilters.colors.delete(c); chip.classList.remove('active'); }
+      else { currentFilters.colors.add(c); chip.classList.add('active'); }
+      apply();
+    };
+  });
+  $$('[data-fnew]', content).forEach(cb => cb.onchange = () => { currentFilters.newOnly = cb.checked; apply(); });
+  $$('[data-fsale]', content).forEach(cb => cb.onchange = () => { currentFilters.saleOnly = cb.checked; apply(); });
+  $$('[data-fstock]', content).forEach(cb => cb.onchange = () => { currentFilters.inStock = cb.checked; apply(); });
+
+  $('#sortSelect').onchange = e => { currentSort = e.target.value; apply(); };
+
+  $('#clearFilters').onclick = () => {
+    currentFilters = { priceMin: priceBounds[0], priceMax: priceBounds[1], sizes: new Set(), colors: new Set(), newOnly: false, saleOnly: false, inStock: false };
+    priceMin.value = priceBounds[0];
+    priceMax.value = priceBounds[1];
+    $$('[data-fsize]', content).forEach(cb => cb.checked = false);
+    $$('[data-fcolor]', content).forEach(c => c.classList.remove('active'));
+    $$('[data-fnew],[data-fsale],[data-fstock]', content).forEach(cb => cb.checked = false);
+    apply();
+  };
+
+  $('#mobileFilterBtn').onclick = () => panel.classList.toggle('open');
+
+  apply();
+}
+
+/* ============================================================
+   PRODUCT DETAIL PAGE
+   ============================================================ */
+function renderProduct(id) {
+  const p = getProduct(id);
+  if (!p) return renderNotFound();
+
+  const displayPrice = p.salePrice || p.price;
+  const related = PRODUCTS.filter(x => x.cat === p.cat && x.sub === p.sub && x.id !== p.id).slice(0, 4);
+
+  return `
+    <div class="page">
+      <div class="crumbs">
+        <a href="#/" data-link>Home</a><span>/</span>
+        <a href="#/${p.cat}" data-link>${esc(p.catLabel)}</a><span>/</span>
+        <a href="#/${p.cat}/${p.sub}" data-link>${esc(p.subLabel)}</a><span>/</span>
+        <span style="color:var(--ink);opacity:1">${esc(p.name)}</span>
+      </div>
+      <div class="cat-page">
+        <div class="pd">
+          <div class="pd-gallery">
+            <div class="pd-main" id="pdMainImg">${imgTag(p.imgs[0], p.name)}</div>
+            <div class="pd-thumbs">
+              ${p.imgs.map((src, i) => `<button class="pd-thumb${i === 0 ? ' active' : ''}" data-thumb="${i}">${imgTag(src, p.name + ' ' + (i+1))}</button>`).join('')}
+            </div>
+          </div>
+          <div class="pd-info">
+            <span class="pd-cat">${esc(p.catLabel)} · ${esc(p.subLabel)}</span>
+            <h1 class="pd-title">${esc(p.name)}</h1>
+            <div class="pd-price">
+              ${p.salePrice ? `<span class="old">${fmt(p.price)}</span>${fmt(p.salePrice)}` : fmt(p.price)}
+            </div>
+            <p class="pd-desc">${esc(p.desc)}</p>
+
+            <div class="pd-options">
+              <h5>Colore <span id="pdColorLabel">${esc(p.colors[0])}</span></h5>
+              <div class="color-grid" id="pdColors">
+                ${p.colors.map((c, i) => `<span class="pd-color${i === 0 ? ' active' : ''}" data-color="${esc(c)}" style="background:${COLOR_MAP[c] || '#B0A594'}" title="${esc(c)}"></span>`).join('')}
+              </div>
+            </div>
+
+            <div class="pd-options">
+              <h5>Taglia <span id="pdSizeLabel">Seleziona</span></h5>
+              <div class="size-grid" id="pdSizes">
+                ${p.sizes.map(s => `<button class="size-btn" data-size="${s}">${s}</button>`).join('')}
+              </div>
+            </div>
+
+            <div class="pd-actions">
+              <button class="btn btn-dark btn-full" id="pdAdd">Aggiungi al carrello</button>
+              <div class="pd-actions-row">
+                <button class="btn btn-outline" id="pdBuyNow">Acquista ora</button>
+                <button class="btn btn-outline" id="pdWish">${wishlist.has(p.id) ? '♥ Preferito' : '♡ Preferiti'}</button>
+              </div>
+            </div>
+
+            <div class="pd-meta">
+              <span>✦ Spedizione gratuita sopra € 150</span>
+              <span>✦ ${p.stock > 0 ? `${p.stock} disponibili` : 'Attualmente non disponibile'}</span>
+              <span>✦ Reso gratuito entro 30 giorni</span>
+            </div>
+
+            <div class="pd-accordion">
+              <div class="acc-item">
+                <button class="acc-toggle">Dettagli e composizione <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.4"/></svg></button>
+                <div class="acc-body"><div class="acc-body-inner">Composizione: ${esc(p.subLabel)} in materiale pregiato selezionato. Made in Italy. Cura del capo: lavaggio delicato, non candeggiare, stirare a bassa temperatura.</div></div>
+              </div>
+              <div class="acc-item">
+                <button class="acc-toggle">Spedizioni e resi <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.4"/></svg></button>
+                <div class="acc-body"><div class="acc-body-inner">Spedizione gratuita in Italia sopra € 150. Consegna in 2–4 giorni lavorativi. Resi gratuiti entro 30 giorni dalla ricezione.</div></div>
+              </div>
+              <div class="acc-item">
+                <button class="acc-toggle">Servizio boutique <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.4"/></svg></button>
+                <div class="acc-body"><div class="acc-body-inner">Prenota un appuntamento privato in boutique a Monza per una consulenza personalizzata. Chiama +39 039 000 0000 o scrivi a info@bellini.it.</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        ${related.length ? `
+        <section class="section" style="padding-left:0;padding-right:0;padding-bottom:0">
+          <div class="section-head">
+            <div><span class="eyebrow">Potrebbe piacerti</span><h2 class="section-title" style="font-size:clamp(1.6rem,3vw,2.4rem);margin-top:.8rem">Dalla stessa <em>collezione</em></h2></div>
+          </div>
+          <div class="products-grid">${related.map(productCard).join('')}</div>
+        </section>` : ''}
+      </div>
+    </div>
+  `;
+}
+
+function wireProductPage(id) {
+  const p = getProduct(id);
+  if (!p) return;
+  let selectedSize = p.sizes.length === 1 ? p.sizes[0] : null;
+  let selectedColor = p.colors[0];
+
+  // thumbs
+  $$('[data-thumb]').forEach(th => {
+    th.onclick = () => {
+      const idx = +th.dataset.thumb;
+      $('#pdMainImg').innerHTML = imgTag(p.imgs[idx], p.name);
+      $$('[data-thumb]').forEach(t => t.classList.remove('active'));
+      th.classList.add('active');
+    };
+  });
+
+  // colors
+  $$('#pdColors [data-color]').forEach(c => {
+    c.onclick = () => {
+      selectedColor = c.dataset.color;
+      $('#pdColorLabel').textContent = selectedColor;
+      $$('#pdColors [data-color]').forEach(x => x.classList.remove('active'));
+      c.classList.add('active');
+    };
+  });
+
+  // sizes
+  $$('#pdSizes [data-size]').forEach(b => {
+    if (b.dataset.size === selectedSize) b.classList.add('active');
+    b.onclick = () => {
+      selectedSize = b.dataset.size;
+      $('#pdSizeLabel').textContent = selectedSize;
+      $$('#pdSizes [data-size]').forEach(x => x.classList.remove('active'));
+      b.classList.add('active');
+    };
+  });
+  if (selectedSize) $('#pdSizeLabel').textContent = selectedSize;
+
+  const addHandler = () => {
+    if (!selectedSize) { toast('Seleziona una taglia'); return; }
+    addToCart(p.id, selectedSize, selectedColor);
+  };
+  $('#pdAdd').onclick = () => { addHandler(); openCart(); };
+  $('#pdBuyNow').onclick = () => { addHandler(); setTimeout(openCart, 200); };
+  $('#pdWish').onclick = () => {
+    toggleWish(p.id);
+    $('#pdWish').textContent = wishlist.has(p.id) ? '♥ Preferito' : '♡ Preferiti';
+  };
+
+  // accordion
+  $$('.acc-toggle').forEach(t => {
+    t.onclick = () => t.parentElement.classList.toggle('open');
+  });
+}
+
+/* ============================================================
+   GLOBAL EVENT BINDING (delegated)
+   ============================================================ */
+function bindProductEvents(scope = document) {
+  $$('[data-wish]', scope).forEach(btn => {
+    btn.onclick = (e) => { e.preventDefault(); e.stopPropagation(); toggleWish(btn.dataset.wish); };
+  });
+  $$('[data-quick]', scope).forEach(btn => {
+    btn.onclick = (e) => { e.preventDefault(); e.stopPropagation(); openQuickView(btn.dataset.quick); };
+  });
+  $$('.product-media', scope).forEach(media => {
+    media.onclick = (e) => {
+      if (e.target.closest('button')) return;
+      const productEl = media.closest('.product');
+      if (productEl) location.hash = `#/product/${productEl.dataset.id}`;
+    };
+  });
+}
+
+/* ============================================================
+   APP BOOT
+   ============================================================ */
+function initLoader() {
+  const mark = $('#loaderMark');
+  'BELLINI'.split('').forEach((ch, i) => {
+    const s = document.createElement('span');
+    s.textContent = ch;
+    s.style.animationDelay = (0.25 + i * 0.07) + 's';
+    mark.appendChild(s);
+  });
+  const finish = () => setTimeout(() => {
+    $('#loader').classList.add('done');
+    document.body.classList.add('cursor-on');
+    setTimeout(() => { const l = $('#loader'); if (l) l.remove(); }, 1800);
+  }, 1800);
+  if (document.readyState === 'complete') finish();
+  else window.addEventListener('load', finish);
+}
+
+function initCursor() {
+  if (!window.matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+  const dot = $('#cursorDot'), ring = $('#cursorRing');
+  let mx = innerWidth / 2, my = innerHeight / 2, rx = mx, ry = my;
+  window.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    dot.style.transform = `translate(${mx}px,${my}px) translate(-50%,-50%)`;
+  });
+  (function loop() {
+    rx += (mx - rx) * 0.16;
+    ry += (my - ry) * 0.16;
+    ring.style.transform = `translate(${rx}px,${ry}px) translate(-50%,-50%)`;
+    requestAnimationFrame(loop);
+  })();
+  document.addEventListener('mouseover', e => {
+    const t = e.target.closest('a,button,.product-media,.collection-card,.look-item,input,.pd-color');
+    ring.classList.toggle('hover', !!t);
+  });
+}
+
+function initHeader() {
+  const header = $('#header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('stuck', window.scrollY > 60);
+  }, { passive: true });
+}
+
+function initAnnounce() {
+  const items = $$('.announce-item');
+  let i = 0;
+  setInterval(() => {
+    items[i].classList.remove('active');
+    i = (i + 1) % items.length;
+    items[i].classList.add('active');
+  }, 4200);
+}
+
+function initMobileMenu() {
+  const burger = $('#burger');
+  const menu = $('#mobileMenu');
+  let open = false;
+  const toggle = (state) => {
+    open = state ?? !open;
+    menu.classList.toggle('open', open);
+    document.body.classList.toggle('lock', open);
+    const spans = burger.querySelectorAll('span');
+    if (open) {
+      spans[0].style.transform = 'translateY(6px) rotate(45deg)';
+      spans[1].style.opacity = '0';
+      spans[2].style.transform = 'translateY(-6px) rotate(-45deg)';
+    } else {
+      spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+    }
+  };
+  burger.addEventListener('click', () => toggle());
+  $$('[data-close]').forEach(a => a.addEventListener('click', () => toggle(false)));
+}
+
+function initReveal() {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(en => {
+      if (en.isIntersecting) {
+        en.target.classList.add('in');
+        io.unobserve(en.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -6% 0px' });
+  $$('[data-reveal]').forEach(el => io.observe(el));
+}
+
+function initParallax() {
+  const els = $$('[data-parallax]');
+  if (!els.length) return;
+  let ticking = false;
+  const update = () => {
+    const vh = innerHeight;
+    els.forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.bottom < -300 || r.top > vh + 300) return;
+      const speed = parseFloat(el.dataset.parallax) || 0.1;
+      const offset = (r.top + r.height / 2 - vh / 2) * speed;
+      el.style.transform = `translate3d(0, ${offset.toFixed(2)}px, 0)`;
+    });
+    ticking = false;
+  };
+  window.addEventListener('scroll', () => {
+    if (!ticking) { requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  update();
+}
+
+function initCartUI() {
+  $('#cartBtn').onclick = openCart;
+  $('#closeCart').onclick = closeCart;
+  $('#overlay').onclick = () => { closeCart(); closeQuickView(); };
+  $('#checkoutBtn').onclick = () => {
+    toast('Grazie! Procedi al pagamento in boutique.');
+  };
+  $('#qvClose').onclick = closeQuickView;
+  $('#quickview').onclick = (e) => { if (e.target.id === 'quickview') closeQuickView(); };
+  $('#qvAdd').onclick = () => {
+    if (!qvProduct) return;
+    if (!qvSize) { toast('Seleziona una taglia'); return; }
+    addToCart(qvProduct.id, qvSize, qvColor);
+    closeQuickView();
+    setTimeout(openCart, 260);
+  };
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { closeCart(); closeQuickView(); closeSearch(); }
+  });
+}
+
+function initSearch() {
+  const overlay = $('#searchOverlay');
+  const input = $('#searchInput');
+  $('#searchBtn').onclick = () => {
+    overlay.classList.add('show');
+    document.body.classList.add('lock');
+    setTimeout(() => input.focus(), 200);
+  };
+  $('#searchClose').onclick = closeSearch;
+  $('#searchForm').onsubmit = (e) => {
+    e.preventDefault();
+    const q = input.value.trim();
+    if (!q) return;
+    closeSearch();
+    location.hash = `#/search?q=${encodeURIComponent(q)}`;
+  };
+  $$('[data-search-q]').forEach(el => {
+    el.onclick = () => {
+      const q = el.dataset.searchQ;
+      closeSearch();
+      location.hash = `#/search?q=${encodeURIComponent(q)}`;
+    };
+  });
+}
+function closeSearch() {
+  $('#searchOverlay').classList.remove('show');
+  if (!cartOpen) document.body.classList.remove('lock');
+}
+
+function initNewsletterForm() {
+  const form = $('#newsForm');
+  if (!form) return;
+  form.onsubmit = (e) => {
+    e.preventDefault();
+    const inp = form.querySelector('input');
+    if (!inp.value.trim()) return;
+    toast('Benvenuto nel mondo Bellini');
+    inp.value = '';
+  };
+}
+
+function initContactForm() {
+  const form = $('#contactForm');
+  if (!form) return;
+  form.onsubmit = (e) => {
+    e.preventDefault();
+    toast('Messaggio inviato. Ti risponderemo presto.');
+    form.reset();
+  };
+}
+
+function initLookbook() {
+  const el = $('#lookbook');
+  if (!el) return;
+  let down = false, startX = 0, startScroll = 0;
+  el.addEventListener('mousedown', e => {
+    down = true;
+    el.classList.add('dragging');
+    startX = e.pageX - el.offsetLeft;
+    startScroll = el.scrollLeft;
+  });
+  el.addEventListener('mouseleave', () => { down = false; el.classList.remove('dragging'); });
+  el.addEventListener('mouseup', () => { down = false; el.classList.remove('dragging'); });
+  el.addEventListener('mousemove', e => {
+    if (!down) return;
+    e.preventDefault();
+    const x = e.pageX - el.offsetLeft;
+    el.scrollLeft = startScroll - (x - startX) * 1.4;
+  });
+}
+
+/* ---------- Hash-link interception (for smooth SPA nav) ---------- */
+function initLinkInterceptor() {
+  document.addEventListener('click', e => {
+    const link = e.target.closest('a[href^="#/"]');
+    if (link) {
+      // allow browser to change hash; router handles
+      return;
+    }
+  });
+}
+
+/* ---------- After-route hook ---------- */
+const originalRenderRoute = renderRoute;
+renderRoute = function () {
+  originalRenderRoute.call(this);
+  // Page-specific wiring
+  const parts = parseHash().path.split('/').filter(Boolean);
+  bindProductEvents(document);
+  if (parts[0] === 'men' || parts[0] === 'women' || parts[0] === 'accessories') {
+    if (parts[1]) wireCategoryPage(parts[0], parts[1]);
+  }
+  if (parts[0] === 'product' && parts[1]) wireProductPage(parts[1]);
+  initNewsletterForm();
+  initContactForm();
+  initLookbook();
+};
+
+/* ---------- Boot ---------- */
+document.addEventListener('DOMContentLoaded', () => {
+  initLoader();
+  initCursor();
+  initHeader();
+  initAnnounce();
+  initMobileMenu();
+  initCartUI();
+  initSearch();
+  initLinkInterceptor();
+
+  // initial state
+  renderCart();
+  updateBadge('#wishCount', wishlist.size);
+
+  renderRoute();
+  window.addEventListener('hashchange', renderRoute);
+});
+
+/* Expose for debugging */
+window.BELLINI = { PRODUCTS, CATALOG, cart, wishlist };
+</script>
+</body>
+</html>
