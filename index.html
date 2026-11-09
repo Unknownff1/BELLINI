@@ -65,7 +65,7 @@
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(212, 175, 55, 0.1);
             transform: translateY(-4px);
         }
-        /* Custom Scrollbar for smooth luxury feel */
+        /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 6px;
             height: 6px;
@@ -119,14 +119,14 @@
 
             <!-- Desktop Navigation Links -->
             <nav class="hidden lg:flex items-center space-x-8 text-xs font-medium tracking-[0.15em] uppercase">
-                <button onclick="navigateTo('home')" class="hover:text-brand-champagne transition-colors py-2 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-brand-champagne hover:after:w-full after:transition-all">Home</button>
-                <button onclick="navigateToCategory('Men')" class="hover:text-brand-champagne transition-colors py-2 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-brand-champagne hover:after:w-full after:transition-all">Men</button>
-                <button onclick="navigateToCategory('Women')" class="hover:text-brand-champagne transition-colors py-2 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-brand-champagne hover:after:w-full after:transition-all">Women</button>
-                <button onclick="navigateToCategory('Accessories')" class="hover:text-brand-champagne transition-colors py-2 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-brand-champagne hover:after:w-full after:transition-all">Accessories</button>
-                <button onclick="navigateToNewArrivals()" class="hover:text-brand-champagne transition-colors py-2 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-brand-champagne hover:after:w-full after:transition-all">New Arrivals</button>
-                <button onclick="navigateToCollections()" class="hover:text-brand-champagne transition-colors py-2 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-brand-champagne hover:after:w-full after:transition-all">Collections</button>
-                <button onclick="navigateToAbout()" class="hover:text-brand-champagne transition-colors py-2 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-brand-champagne hover:after:w-full after:transition-all">About</button>
-                <button onclick="navigateToContact()" class="hover:text-brand-champagne transition-colors py-2 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-brand-champagne hover:after:w-full after:transition-all">Contact</button>
+                <button onclick="navigateTo('home')" class="hover:text-brand-champagne transition-colors py-2 relative">Home</button>
+                <button onclick="navigateToCategory('Men')" class="hover:text-brand-champagne transition-colors py-2 relative">Men</button>
+                <button onclick="navigateToCategory('Women')" class="hover:text-brand-champagne transition-colors py-2 relative">Women</button>
+                <button onclick="navigateToCategory('Accessories')" class="hover:text-brand-champagne transition-colors py-2 relative">Accessories</button>
+                <button onclick="navigateToNewArrivals()" class="hover:text-brand-champagne transition-colors py-2 relative">New Arrivals</button>
+                <button onclick="navigateToCollections()" class="hover:text-brand-champagne transition-colors py-2 relative">Collections</button>
+                <button onclick="navigateToAbout()" class="hover:text-brand-champagne transition-colors py-2 relative">About</button>
+                <button onclick="navigateToContact()" class="hover:text-brand-champagne transition-colors py-2 relative">Contact</button>
             </nav>
 
             <!-- Action Icons -->
@@ -162,9 +162,9 @@
         </div>
         <div class="flex flex-col space-y-5 pt-8 text-sm font-medium tracking-[0.15em] uppercase">
             <button onclick="toggleMobileMenu(); navigateTo('home')" class="text-left py-2 hover:text-brand-champagne transition-colors">Home</button>
-            <button onclick="toggleMobileMenu(); navigateToCategory('Men')" class="text-left py-2 hover:text-brand-champagne transition-colors">Men (400+ Products)</button>
-            <button onclick="toggleMobileMenu(); navigateToCategory('Women')" class="text-left py-2 hover:text-brand-champagne transition-colors">Women (460+ Products)</button>
-            <button onclick="toggleMobileMenu(); navigateToCategory('Accessories')" class="text-left py-2 hover:text-brand-champagne transition-colors">Accessories (360+ Products)</button>
+            <button onclick="toggleMobileMenu(); navigateToCategory('Men')" class="text-left py-2 hover:text-brand-champagne transition-colors">Men Collection</button>
+            <button onclick="toggleMobileMenu(); navigateToCategory('Women')" class="text-left py-2 hover:text-brand-champagne transition-colors">Women Collection</button>
+            <button onclick="toggleMobileMenu(); navigateToCategory('Accessories')" class="text-left py-2 hover:text-brand-champagne transition-colors">Accessories</button>
             <button onclick="toggleMobileMenu(); navigateToNewArrivals()" class="text-left py-2 hover:text-brand-champagne transition-colors">New Arrivals</button>
             <button onclick="toggleMobileMenu(); navigateToCollections()" class="text-left py-2 hover:text-brand-champagne transition-colors">Collections</button>
             <button onclick="toggleMobileMenu(); navigateToAbout()" class="text-left py-2 hover:text-brand-champagne transition-colors">About Bellini</button>
@@ -235,7 +235,7 @@
                 <button onclick="closeSearchModal()" class="text-brand-ivory text-2xl hover:text-brand-champagne"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <div class="relative mb-8">
-                <input type="text" id="search-input" oninput="handleLiveSearch(this.value)" placeholder="Search 1,220+ luxury Italian designs (e.g. linen shirt, cashmere sweater, silk dress)..." class="w-full bg-brand-surface border border-brand-border text-brand-ivory px-6 py-4 pl-14 rounded-xl focus:outline-none focus:border-brand-champagne text-base">
+                <input type="text" id="search-input" oninput="handleLiveSearch(this.value)" placeholder="Search luxury Italian designs (e.g. dress, blazer, watch, handbag, heels)..." class="w-full bg-brand-surface border border-brand-border text-brand-ivory px-6 py-4 pl-14 rounded-xl focus:outline-none focus:border-brand-champagne text-base">
                 <i class="fa-solid fa-magnifying-glass absolute left-5 top-5 text-brand-muted text-lg"></i>
             </div>
             <div id="search-results-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-h-[60vh] overflow-y-auto pr-2">
@@ -349,7 +349,7 @@
                 <h4 class="text-xs font-bold uppercase tracking-[0.2em] text-brand-ivory mb-4">Boutique & Contact</h4>
                 <ul class="space-y-2 text-xs text-brand-muted tracking-wider">
                     <li>Monza, Italia (Flagship Boutique)</li>
-                    <li>Email: <span class="italic text-brand-ivorg">contact@bellini-milano.it</span></li>
+                    <li>Email: <span class="italic text-brand-ivory">contact@bellini-milano.it</span></li>
                     <li>Client Services: Available Mon-Sat</li>
                     <li><button onclick="navigateToAbout()" class="hover:text-brand-champagne transition-colors">About Our Philosophy</button></li>
                 </ul>
@@ -373,65 +373,218 @@
         </div>
     </footer>
 
-    <!-- JavaScript Application Logic & Master Product Database -->
+    <!-- Programmatic SVG Product Image Generator & Master Product Database -->
     <script>
-        // --- MASTER PRODUCT DATABASE GENERATION (1,220+ Unique Products Across 61 Subcategories) ---
-        
+        // High-definition SVG vector generator for luxury fashion studio assets on pure white backgrounds (#FFFFFF)
+        function createProductSvg(type, primaryColorHex, accentColorHex) {
+            const primary = primaryColorHex || '#1C1C1C';
+            const accent = accentColorHex || '#D4AF37';
+            const white = '#FFFFFF';
+            const strokeColor = '#333333';
+
+            let svgContent = '';
+
+            switch (type) {
+                case 'dress':
+                    svgContent = '<path d="M160 80 L185 130 Q200 135 215 130 L240 80 Q210 70 200 100 Q190 70 160 80 Z" fill="' + accent + '" opacity="0.3"/>' +
+                        '<path d="M170 85 Q200 110 230 85 L260 210 Q280 340 320 520 L80 520 Q120 340 140 210 Z" fill="' + primary + '" stroke="' + strokeColor + '" stroke-width="2"/>' +
+                        '<path d="M170 85 Q200 110 230 85 L215 210 Q200 215 185 210 Z" fill="' + accent + '"/>' +
+                        '<line x1="80" y1="520" x2="320" y2="520" stroke="' + accent + '" stroke-width="6"/>';
+                    break;
+
+                case 'blazer':
+                    svgContent = '<path d="M110 120 L160 100 L240 100 L290 120 L310 280 L270 480 L130 480 L90 280 Z" fill="' + primary + '" stroke="' + strokeColor + '" stroke-width="2"/>' +
+                        '<path d="M160 100 L200 260 L140 240 L160 100 Z" fill="' + white + '" stroke="' + strokeColor + '" stroke-width="2"/>' +
+                        '<path d="M240 100 L200 260 L260 240 L240 100 Z" fill="' + white + '" stroke="' + strokeColor + '" stroke-width="2"/>' +
+                        '<circle cx="200" cy="300" r="6" fill="' + accent + '"/>' +
+                        '<circle cx="200" cy="340" r="6" fill="' + accent + '"/>' +
+                        '<rect x="120" y="360" width="60" height="8" fill="' + accent + '" rx="2"/>' +
+                        '<rect x="220" y="360" width="60" height="8" fill="' + accent + '" rx="2"/>';
+                    break;
+
+                case 'shirt':
+                    svgContent = '<path d="M120 110 L165 95 L235 95 L280 110 L300 260 L265 470 L135 470 L100 260 Z" fill="' + primary + '" stroke="' + strokeColor + '" stroke-width="2"/>' +
+                        '<path d="M165 95 L200 140 L150 145 Z" fill="' + white + '" stroke="' + strokeColor + '" stroke-width="2"/>' +
+                        '<path d="M235 95 L200 140 L250 145 Z" fill="' + white + '" stroke="' + strokeColor + '" stroke-width="2"/>' +
+                        '<line x1="200" y1="140" x2="200" y2="470" stroke="' + accent + '" stroke-width="3"/>' +
+                        '<circle cx="200" cy="180" r="4" fill="' + accent + '"/>' +
+                        '<circle cx="200" cy="230" r="4" fill="' + accent + '"/>' +
+                        '<circle cx="200" cy="280" r="4" fill="' + accent + '"/>' +
+                        '<circle cx="200" cy="330" r="4" fill="' + accent + '"/>';
+                    break;
+
+                case 'trousers':
+                    svgContent = '<path d="M130 100 L270 100 L285 490 L215 490 L200 250 L185 490 L115 490 Z" fill="' + primary + '" stroke="' + strokeColor + '" stroke-width="2"/>' +
+                        '<rect x="130" y="100" width="140" height="25" fill="' + accent + '" opacity="0.8"/>' +
+                        '<line x1="200" y1="125" x2="200" y2="250" stroke="' + strokeColor + '" stroke-width="2"/>';
+                    break;
+
+                case 'sweater':
+                    svgContent = '<path d="M100 140 L160 110 Q200 130 240 110 L300 140 L320 280 L275 460 L125 460 L80 280 Z" fill="' + primary + '" stroke="' + strokeColor + '" stroke-width="2"/>' +
+                        '<path d="M160 110 Q200 130 240 110 Q200 145 160 110 Z" fill="' + accent + '"/>' +
+                        '<rect x="125" y="445" width="150" height="15" fill="' + accent + '"/>';
+                    break;
+
+                case 'shoes':
+                    svgContent = '<path d="M70 320 Q120 250 240 250 Q310 250 340 310 Q350 350 320 370 Q200 380 70 360 Z" fill="' + primary + '" stroke="' + strokeColor + '" stroke-width="2"/>' +
+                        '<path d="M70 340 L340 350 L330 380 L60 370 Z" fill="' + accent + '"/>' +
+                        '<rect x="180" y="270" width="40" height="15" fill="' + accent + '" rx="3"/>';
+                    break;
+
+                case 'heels':
+                    svgContent = '<path d="M100 340 Q180 340 240 240 Q280 180 320 240 L340 310 Q280 350 100 360 Z" fill="' + primary + '" stroke="' + strokeColor + '" stroke-width="2"/>' +
+                        '<rect x="315" y="290" width="12" height="100" fill="' + accent + '" rx="2"/>' +
+                        '<path d="M100 340 Q160 300 240 240" fill="none" stroke="' + accent + '" stroke-width="4"/>';
+                    break;
+
+                case 'handbag':
+                    svgContent = '<path d="M140 220 Q200 100 260 220" fill="none" stroke="' + accent + '" stroke-width="12" stroke-linecap="round"/>' +
+                        '<rect x="100" y="210" width="200" height="180" rx="20" fill="' + primary + '" stroke="' + strokeColor + '" stroke-width="2"/>' +
+                        '<path d="M100 210 Q200 260 300 210 L300 270 Q200 310 100 270 Z" fill="' + accent + '" opacity="0.9"/>' +
+                        '<circle cx="200" cy="285" r="12" fill="' + white + '" stroke="' + strokeColor + '" stroke-width="2"/>';
+                    break;
+
+                case 'watch':
+                    svgContent = '<rect x="175" y="60" width="50" height="380" fill="' + primary + '" rx="8"/>' +
+                        '<circle cx="200" cy="250" r="75" fill="' + accent + '" stroke="' + strokeColor + '" stroke-width="3"/>' +
+                        '<circle cx="200" cy="250" r="62" fill="' + white + '"/>' +
+                        '<line x1="200" y1="250" x2="200" y2="200" stroke="' + primary + '" stroke-width="4" stroke-linecap="round"/>' +
+                        '<line x1="200" y1="250" x2="235" y2="250" stroke="' + primary + '" stroke-width="3" stroke-linecap="round"/>' +
+                        '<circle cx="200" cy="250" r="5" fill="' + accent + '"/>';
+                    break;
+
+                case 'sunglasses':
+                    svgContent = '<path d="M80 230 Q140 200 200 230 Q260 200 320 230" fill="none" stroke="' + accent + '" stroke-width="8"/>' +
+                        '<rect x="90" y="230" width="90" height="65" rx="20" fill="' + primary + '" opacity="0.9"/>' +
+                        '<rect x="220" y="230" width="90" height="65" rx="20" fill="' + primary + '" opacity="0.9"/>' +
+                        '<line x1="60" y1="240" x2="90" y2="240" stroke="' + accent + '" stroke-width="6"/>' +
+                        '<line x1="310" y1="240" x2="340" y2="240" stroke="' + accent + '" stroke-width="6"/>';
+                    break;
+
+                default:
+                    svgContent = '<path d="M120 120 Q200 60 280 120 Q340 260 280 400 Q200 460 120 400 Q60 260 120 120 Z" fill="' + primary + '" stroke="' + strokeColor + '" stroke-width="2"/>' +
+                        '<circle cx="200" cy="260" r="50" fill="' + accent + '" opacity="0.8"/>';
+            }
+
+            const svgStr = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 550" width="100%" height="100%"><rect width="400" height="550" fill="#FFFFFF"/>' + svgContent + '</svg>';
+            return 'data:image/svg+xml;utf8,' + encodeURIComponent(svgStr);
+        }
+
+        // Subcategory Visual Style Mapping
         const subcategoriesConfig = {
             Men: [
-                "T-Shirts", "Polo Shirts", "Casual Shirts", "Formal Shirts", "Linen Shirts",
-                "Jeans", "Casual Trousers", "Formal Trousers", "Chinos", "Shorts",
-                "Jackets", "Blazers", "Sweaters", "Hoodies & Sweatshirts", "Knitwear", "Coats",
-                "Sneakers", "Formal Shoes", "Loafers", "Boots"
+                { name: "T-Shirts", type: "shirt" },
+                { name: "Polo Shirts", type: "shirt" },
+                { name: "Casual Shirts", type: "shirt" },
+                { name: "Formal Shirts", type: "shirt" },
+                { name: "Linen Shirts", type: "shirt" },
+                { name: "Jeans", type: "trousers" },
+                { name: "Casual Trousers", type: "trousers" },
+                { name: "Formal Trousers", type: "trousers" },
+                { name: "Chinos", type: "trousers" },
+                { name: "Shorts", type: "trousers" },
+                { name: "Jackets", type: "blazer" },
+                { name: "Blazers", type: "blazer" },
+                { name: "Sweaters", type: "sweater" },
+                { name: "Hoodies & Sweatshirts", type: "sweater" },
+                { name: "Knitwear", type: "sweater" },
+                { name: "Coats", type: "blazer" },
+                { name: "Sneakers", type: "shoes" },
+                { name: "Formal Shoes", type: "shoes" },
+                { name: "Loafers", type: "shoes" },
+                { name: "Boots", type: "shoes" }
             ],
             Women: [
-                "Dresses", "Tops", "T-Shirts", "Blouses", "Shirts",
-                "Jeans", "Trousers", "Skirts", "Shorts", "Blazers",
-                "Jackets", "Coats", "Sweaters", "Knitwear", "Cardigans",
-                "Hoodies & Sweatshirts", "Jumpsuits", "Two-Piece Sets",
-                "Sneakers", "Heels", "Flats", "Boots", "Sandals"
+                { name: "Dresses", type: "dress" },
+                { name: "Tops", type: "shirt" },
+                { name: "T-Shirts", type: "shirt" },
+                { name: "Blouses", type: "shirt" },
+                { name: "Shirts", type: "shirt" },
+                { name: "Jeans", type: "trousers" },
+                { name: "Trousers", type: "trousers" },
+                { name: "Skirts", type: "dress" },
+                { name: "Shorts", type: "trousers" },
+                { name: "Blazers", type: "blazer" },
+                { name: "Jackets", type: "blazer" },
+                { name: "Coats", type: "blazer" },
+                { name: "Sweaters", type: "sweater" },
+                { name: "Knitwear", type: "sweater" },
+                { name: "Cardigans", type: "sweater" },
+                { name: "Hoodies & Sweatshirts", type: "sweater" },
+                { name: "Jumpsuits", type: "dress" },
+                { name: "Two-Piece Sets", type: "blazer" },
+                { name: "Sneakers", type: "shoes" },
+                { name: "Heels", type: "heels" },
+                { name: "Flats", type: "shoes" },
+                { name: "Boots", type: "heels" },
+                { name: "Sandals", type: "heels" }
             ],
             Accessories: [
-                "Handbags", "Shoulder Bags", "Crossbody Bags", "Wallets", "Belts",
-                "Sunglasses", "Watches", "Jewellery", "Necklaces", "Bracelets",
-                "Earrings", "Rings", "Scarves", "Hats & Caps", "Backpacks",
-                "Travel Bags", "Totes", "Fashion Accessories"
+                { name: "Handbags", type: "handbag" },
+                { name: "Shoulder Bags", type: "handbag" },
+                { name: "Crossbody Bags", type: "handbag" },
+                { name: "Wallets", type: "handbag" },
+                { name: "Belts", type: "handbag" },
+                { name: "Sunglasses", type: "sunglasses" },
+                { name: "Watches", type: "watch" },
+                { name: "Jewellery", type: "watch" },
+                { name: "Necklaces", type: "watch" },
+                { name: "Bracelets", type: "watch" },
+                { name: "Earrings", type: "watch" },
+                { name: "Rings", type: "watch" },
+                { name: "Scarves", type: "handbag" },
+                { name: "Hats & Caps", type: "handbag" },
+                { name: "Backpacks", type: "handbag" },
+                { name: "Travel Bags", type: "handbag" },
+                { name: "Totes", type: "handbag" },
+                { name: "Fashion Accessories", type: "sunglasses" }
             ]
         };
 
-        const materialsList = ["100% Pure Italian Silk", "Fine Merino Wool", "Washed Organic Linen", "Cashmere Blend", "Superfine Cotton Poplin", "Supple Calfskin Leather", "Structured Heavyweight Cotton", "Virgin Wool Tailoring"];
-        const colorsList = ["Nero (Black)", "Avorio (Ivory)", "Champagne", "Grigio Seta (Silk Grey)", "Blu Navy", "Caramel", "Ecru"];
+        const colorPalette = [
+            { name: "Nero", primary: "#141414", accent: "#D4AF37" },
+            { name: "Avorio", primary: "#F4F1EA", accent: "#141414" },
+            { name: "Champagne", primary: "#C5B358", accent: "#FFFFFF" },
+            { name: "Blu Navy", primary: "#0F172A", accent: "#D4AF37" },
+            { name: "Caramel", primary: "#78350F", accent: "#F4F1EA" },
+            { name: "Seta", primary: "#475569", accent: "#CBD5E1" }
+        ];
 
-        // Generate 1,220+ distinct products with pure white (#FFFFFF) background photography simulation
+        const materialsList = ["100% Pure Silk", "Fine Merino Wool", "Washed Organic Linen", "Cashmere Blend", "Superfine Cotton Poplin", "Supple Calfskin Leather", "Structured Heavyweight Cotton", "Virgin Wool Tailoring"];
+
+        // Master product catalog generator
         let masterProducts = [];
         let productIdCounter = 1;
 
         for (const [genderKey, subcats] of Object.entries(subcategoriesConfig)) {
-            subcats.forEach((subcat, subcatIdx) => {
-                for (let i = 1; i <= 20; i++) {
-                    const id = `bellini-${genderKey.toLowerCase()}-${subcat.toLowerCase().replace(/[^a-z]/g, '')}-${i}`;
-                    const price = Math.floor(Math.random() * 350) + 95; // EUR pricing between €95 and €445
-                    const isNew = i <= 4;
-                    const isFeatured = i === 1 || i === 7 || i === 12;
-                    
-                    // Generate pure white background image placeholder using clean SVG/placehold format representing Ghost Mannequin / Isolated Studio
-                    const primaryImg = `https://placehold.co/600x750/FFFFFF/0A0A0A.png?text=BELLINI+${encodeURIComponent(subcat.toUpperCase())}+${i}`;
-                    
+            subcats.forEach((subcatObj) => {
+                const subcatName = subcatObj.name;
+                const svgType = subcatObj.type;
+
+                for (let i = 1; i <= 6; i++) {
+                    const id = `bellini-${genderKey.toLowerCase()}-${subcatName.toLowerCase().replace(/[^a-z]/g, '')}-${i}`;
+                    const price = Math.floor(Math.random() * 350) + 95;
+                    const colorObj = colorPalette[i % colorPalette.length];
+                    const isNew = i <= 2;
+                    const isFeatured = i === 1 || i === 4;
+
+                    // Generate pure white studio vector SVG image
+                    const primaryImg = createProductSvg(svgType, colorObj.primary, colorObj.accent);
+
                     masterProducts.push({
                         id: id,
-                        productName: `${genderKey === 'Men' ? "Men's" : genderKey === 'Women' ? "Women's" : "Luxury"} ${subcat.slice(0, -1) || subcat} No. ${i}`,
+                        productName: `${genderKey === 'Men' ? "Men's" : genderKey === 'Women' ? "Women's" : "Luxury"} ${subcatName.slice(0, -1) || subcatName} ${colorObj.name}`,
                         category: genderKey,
-                        subcategory: subcat,
+                        subcategory: subcatName,
                         gender: genderKey,
                         price: price,
                         currency: "EUR",
                         primaryImage: primaryImg,
-                        galleryImages: [primaryImg, primaryImg, primaryImg],
-                        description: `Handcrafted in Monza, Italy. Exquisitely tailored ${subcat.toLowerCase()} featuring immaculate silhouette design, premium hardware, and breathable contemporary fabric suited for timeless elegance.`,
+                        description: `Handcrafted in Monza, Italy. Exquisitely tailored ${subcatName.toLowerCase()} featuring immaculate silhouette design, premium hardware, and breathable contemporary fabric suited for timeless elegance.`,
                         material: materialsList[i % materialsList.length],
-                        color: colorsList[i % colorsList.length],
-                        sizes: genderKey === 'Accessories' ? ["One Size"] : ["XS", "S", "M", "L", "XL", "XXL"],
-                        stock: 15,
+                        color: colorObj.name,
+                        sizes: genderKey === 'Accessories' ? ["One Size"] : ["XS", "S", "M", "L", "XL"],
+                        stock: 12,
                         isNewArrival: isNew,
                         isFeatured: isFeatured
                     });
@@ -448,7 +601,7 @@
         let wishlist = JSON.parse(localStorage.getItem('bellini_wishlist')) || [];
         let activeProductModal = null;
 
-        // --- NAVIGATION & ROUTER ---
+        // Router
         function navigateTo(route) {
             currentRoute = route;
             currentCategoryFilter = null;
@@ -502,7 +655,7 @@
             menu.classList.toggle('-translate-x-full');
         }
 
-        // --- RENDER ROUTER CONTROLLER ---
+        // Page Renderer
         function renderPage() {
             const main = document.getElementById('main-content');
             updateBadges();
@@ -522,16 +675,17 @@
             }
         }
 
-        // --- HOME PAGE ---
+        // Home View
         function renderHomePage() {
             const featuredItems = masterProducts.filter(p => p.isFeatured).slice(0, 8);
-            const newArrivals = masterProducts.filter(p => p.isNewArrival).slice(0, 8);
 
             return `
-                <!-- Cinematic Hero Section -->
-                <section class="relative h-[85vh] flex items-center justify-center overflow-hidden">
-                    <div class="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/40 to-transparent z-10"></div>
-                    <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&q=80&w=2000" alt="BELLINI Campaign" class="absolute inset-0 w-full h-full object-cover object-center filter brightness-75 scale-105 transition-transform duration-1000">
+                <!-- Hero Section -->
+                <section class="relative h-[80vh] flex items-center justify-center overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/50 to-transparent z-10"></div>
+                    <div class="absolute inset-0 flex items-center justify-center opacity-25">
+                        <div class="w-[600px] h-[600px] rounded-full bg-brand-champagne/20 blur-3xl animate-pulse"></div>
+                    </div>
                     
                     <div class="relative z-20 text-center px-4 max-w-4xl mx-auto animate-fade-in">
                         <span class="text-xs uppercase tracking-[0.3em] text-brand-champagne font-semibold mb-3 block">Monza • Italia</span>
@@ -539,20 +693,20 @@
                         <p class="font-serif italic text-xl sm:text-2xl text-brand-ivory/90 tracking-widest mb-8">"Stile Senza Tempo"</p>
                         <div class="flex flex-col sm:flex-row justify-center gap-4">
                             <button onclick="navigateToCategory('Men')" class="px-8 py-4 bg-brand-ivory text-brand-black font-medium text-xs tracking-[0.2em] uppercase hover:bg-brand-champagne transition-colors">
-                                Explore Men (400+ Products)
+                                Explore Men Collection
                             </button>
                             <button onclick="navigateToCategory('Women')" class="px-8 py-4 glass-panel text-brand-ivory font-medium text-xs tracking-[0.2em] uppercase hover:border-brand-champagne transition-colors">
-                                Explore Women (460+ Products)
+                                Explore Women Collection
                             </button>
                         </div>
                     </div>
                 </section>
 
                 <!-- Brand Philosophy Banner -->
-                <section class="py-24 bg-brand-charcoal/50 border-y border-brand-border">
+                <section class="py-20 bg-brand-charcoal/50 border-y border-brand-border">
                     <div class="max-w-4xl mx-auto px-4 text-center">
                         <span class="text-xs uppercase tracking-[0.3em] text-brand-champagne mb-4 block">Philosophy</span>
-                        <h2 class="font-serif text-3xl sm:text-4xl text-brand-ivory leading-relaxed mb-6">
+                        <h2 class="font-serif text-2xl sm:text-3xl text-brand-ivory leading-relaxed mb-6">
                             "Fashion is more than what you wear. It is an expression of who you are. At BELLINI, we believe in timeless elegance, refined simplicity, and effortless personal style."
                         </h2>
                         <div class="w-16 h-[1px] bg-brand-champagne mx-auto mt-6"></div>
@@ -566,32 +720,29 @@
                         <h2 class="font-serif text-3xl sm:text-4xl text-brand-ivory tracking-wide">The Italian Master Catalog</h2>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <div onclick="navigateToCategory('Men')" class="relative h-[450px] group cursor-pointer overflow-hidden rounded-xl glass-card">
-                            <img src="https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?auto=format&fit=crop&q=80&w=800" alt="Men" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-70">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
-                            <div class="absolute bottom-8 left-8 right-8">
-                                <span class="text-[10px] uppercase tracking-[0.3em] text-brand-champagne block mb-1">20 Subcategories • 400 Items</span>
-                                <h3 class="font-serif text-2xl text-brand-ivory mb-2">Men's Tailoring & Casual</h3>
-                                <span class="text-xs uppercase tracking-widest text-brand-ivory underline underline-offset-8">Discover Collection</span>
+                        <div onclick="navigateToCategory('Men')" class="glass-card p-8 rounded-2xl cursor-pointer group text-center">
+                            <div class="w-full aspect-[4/5] bg-white rounded-xl mb-6 overflow-hidden p-4 flex items-center justify-center">
+                                <img src="${createProductSvg('blazer', '#141414', '#D4AF37')}" class="w-full h-full object-contain group-hover:scale-105 transition-transform">
                             </div>
+                            <span class="text-[10px] uppercase tracking-[0.3em] text-brand-champagne block mb-1">20 Subcategories</span>
+                            <h3 class="font-serif text-2xl text-brand-ivory mb-2">Men's Apparel</h3>
+                            <span class="text-xs uppercase tracking-widest text-brand-champagne underline">Discover Collection</span>
                         </div>
-                        <div onclick="navigateToCategory('Women')" class="relative h-[450px] group cursor-pointer overflow-hidden rounded-xl glass-card">
-                            <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=800" alt="Women" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-70">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
-                            <div class="absolute bottom-8 left-8 right-8">
-                                <span class="text-[10px] uppercase tracking-[0.3em] text-brand-champagne block mb-1">23 Subcategories • 460 Items</span>
-                                <h3 class="font-serif text-2xl text-brand-ivory mb-2">Women's Couture & Ready-to-Wear</h3>
-                                <span class="text-xs uppercase tracking-widest text-brand-ivory underline underline-offset-8">Discover Collection</span>
+                        <div onclick="navigateToCategory('Women')" class="glass-card p-8 rounded-2xl cursor-pointer group text-center">
+                            <div class="w-full aspect-[4/5] bg-white rounded-xl mb-6 overflow-hidden p-4 flex items-center justify-center">
+                                <img src="${createProductSvg('dress', '#78350F', '#F4F1EA')}" class="w-full h-full object-contain group-hover:scale-105 transition-transform">
                             </div>
+                            <span class="text-[10px] uppercase tracking-[0.3em] text-brand-champagne block mb-1">23 Subcategories</span>
+                            <h3 class="font-serif text-2xl text-brand-ivory mb-2">Women's Couture</h3>
+                            <span class="text-xs uppercase tracking-widest text-brand-champagne underline">Discover Collection</span>
                         </div>
-                        <div onclick="navigateToCategory('Accessories')" class="relative h-[450px] group cursor-pointer overflow-hidden rounded-xl glass-card">
-                            <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&q=80&w=800" alt="Accessories" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-70">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
-                            <div class="absolute bottom-8 left-8 right-8">
-                                <span class="text-[10px] uppercase tracking-[0.3em] text-brand-champagne block mb-1">18 Subcategories • 360 Items</span>
-                                <h3 class="font-serif text-2xl text-brand-ivory mb-2">Luxury Accessories & Leather</h3>
-                                <span class="text-xs uppercase tracking-widest text-brand-ivory underline underline-offset-8">Discover Collection</span>
+                        <div onclick="navigateToCategory('Accessories')" class="glass-card p-8 rounded-2xl cursor-pointer group text-center">
+                            <div class="w-full aspect-[4/5] bg-white rounded-xl mb-6 overflow-hidden p-4 flex items-center justify-center">
+                                <img src="${createProductSvg('handbag', '#141414', '#D4AF37')}" class="w-full h-full object-contain group-hover:scale-105 transition-transform">
                             </div>
+                            <span class="text-[10px] uppercase tracking-[0.3em] text-brand-champagne block mb-1">18 Subcategories</span>
+                            <h3 class="font-serif text-2xl text-brand-ivory mb-2">Luxury Leather & Accessories</h3>
+                            <span class="text-xs uppercase tracking-widest text-brand-champagne underline">Discover Collection</span>
                         </div>
                     </div>
                 </section>
@@ -614,9 +765,9 @@
             `;
         }
 
-        // --- CATEGORY PAGE (With Subcategory Navigation & 20 Products Per Subcat) ---
+        // Category View
         function renderCategoryPage() {
-            const subcats = subcategoriesConfig[currentCategoryFilter] || [];
+            const subcatObjs = subcategoriesConfig[currentCategoryFilter] || [];
             let filteredProducts = masterProducts.filter(p => p.gender === currentCategoryFilter);
             
             if (currentSubcategoryFilter) {
@@ -625,28 +776,27 @@
 
             return `
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-                    <!-- Category Header -->
                     <div class="text-center max-w-3xl mx-auto mb-12">
                         <span class="text-xs uppercase tracking-[0.3em] text-brand-champagne mb-2 block">BELLINI Monza Division</span>
                         <h1 class="font-serif text-4xl sm:text-5xl font-bold tracking-wide text-brand-ivory mb-4">${currentCategoryFilter} Collection</h1>
                         <p class="text-sm text-brand-muted leading-relaxed">
-                            Discover our comprehensive assortment of uncompromising Italian craftsmanship. Every piece features distinct silhouette construction and pure white background studio isolation.
+                            Discover our comprehensive assortment of uncompromising Italian craftsmanship on pure white backgrounds.
                         </p>
                     </div>
 
-                    <!-- Subcategory Filter Bar -->
+                    <!-- Subcategory Filters -->
                     <div class="flex flex-wrap gap-2 justify-center mb-12 pb-6 border-b border-brand-border">
                         <button onclick="navigateToSubcategory('${currentCategoryFilter}', null)" class="px-4 py-2 text-xs uppercase tracking-wider rounded-full transition-colors ${!currentSubcategoryFilter ? 'bg-brand-champagne text-brand-black font-semibold' : 'bg-brand-surface text-brand-muted hover:text-brand-ivory'}">
                             All ${currentCategoryFilter} (${masterProducts.filter(p => p.gender === currentCategoryFilter).length})
                         </button>
-                        ${subcats.map(sub => `
-                            <button onclick="navigateToSubcategory('${currentCategoryFilter}', '${sub}')" class="px-4 py-2 text-xs uppercase tracking-wider rounded-full transition-colors ${currentSubcategoryFilter === sub ? 'bg-brand-champagne text-brand-black font-semibold' : 'bg-brand-surface text-brand-muted hover:text-brand-ivory'}">
-                                ${sub} (${masterProducts.filter(p => p.gender === currentCategoryFilter && p.subcategory === sub).length})
+                        ${subcatObjs.map(sub => `
+                            <button onclick="navigateToSubcategory('${currentCategoryFilter}', '${sub.name}')" class="px-4 py-2 text-xs uppercase tracking-wider rounded-full transition-colors ${currentSubcategoryFilter === sub.name ? 'bg-brand-champagne text-brand-black font-semibold' : 'bg-brand-surface text-brand-muted hover:text-brand-ivory'}">
+                                ${sub.name} (${masterProducts.filter(p => p.gender === currentCategoryFilter && p.subcategory === sub.name).length})
                             </button>
                         `).join('')}
                     </div>
 
-                    <!-- Products Grid (4 cols desktop, 3 cols tablet, 2 cols mobile) -->
+                    <!-- Products Grid -->
                     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                         ${filteredProducts.map(p => renderProductCard(p)).join('')}
                     </div>
@@ -654,13 +804,13 @@
             `;
         }
 
-        // --- NEW ARRIVALS PAGE ---
+        // New Arrivals View
         function renderNewArrivalsPage() {
             const newArrivals = masterProducts.filter(p => p.isNewArrival);
             return `
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
                     <div class="text-center max-w-3xl mx-auto mb-12">
-                        <span class="text-xs uppercase tracking-[0.3em] text-brand-champagne mb-2 block">Spring / Summer 2026 Release</span>
+                        <span class="text-xs uppercase tracking-[0.3em] text-brand-champagne mb-2 block">Spring / Summer 2026</span>
                         <h1 class="font-serif text-4xl sm:text-5xl font-bold tracking-wide text-brand-ivory mb-4">New Arrivals</h1>
                         <p class="text-sm text-brand-muted">The latest contemporary expressions straight from our Monza atelier.</p>
                     </div>
@@ -671,42 +821,37 @@
             `;
         }
 
-        // --- COLLECTIONS PAGE ---
+        // Collections View
         function renderCollectionsPage() {
             return `
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
                     <div class="text-center max-w-3xl mx-auto mb-16">
                         <span class="text-xs uppercase tracking-[0.3em] text-brand-champagne mb-2 block">Curated Italian Aesthetics</span>
                         <h1 class="font-serif text-4xl sm:text-5xl font-bold tracking-wide text-brand-ivory mb-4">Signature Collections</h1>
-                        <p class="text-sm text-brand-muted">Explore thematic capsules representing the pinnacle of Italian sartorial excellence.</p>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div class="relative h-[500px] rounded-2xl overflow-hidden glass-card cursor-pointer group" onclick="navigateToCategory('Men')">
-                            <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=1000" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
-                            <div class="absolute bottom-10 left-10 right-10">
-                                <span class="text-xs uppercase tracking-[0.3em] text-brand-champagne block mb-2">Men's Capsule</span>
-                                <h3 class="font-serif text-3xl text-brand-ivory mb-3">Italian Sartorial Essentials</h3>
-                                <p class="text-xs text-brand-muted mb-4">Unstructured linen blazers, pure cotton poplin shirts, and handcrafted loafers.</p>
-                                <span class="text-xs uppercase tracking-widest text-brand-ivory underline">Explore 400+ Products</span>
+                        <div class="glass-card p-8 rounded-2xl cursor-pointer group text-center" onclick="navigateToCategory('Men')">
+                            <div class="w-full aspect-[16/9] bg-white rounded-xl mb-6 overflow-hidden p-6 flex items-center justify-center">
+                                <img src="${createProductSvg('blazer', '#141414', '#D4AF37')}" class="w-full h-full object-contain">
                             </div>
+                            <span class="text-xs uppercase tracking-[0.3em] text-brand-champagne block mb-2">Men's Capsule</span>
+                            <h3 class="font-serif text-3xl text-brand-ivory mb-3">Italian Sartorial Essentials</h3>
+                            <span class="text-xs uppercase tracking-widest text-brand-ivory underline">Explore Men Collection</span>
                         </div>
-                        <div class="relative h-[500px] rounded-2xl overflow-hidden glass-card cursor-pointer group" onclick="navigateToCategory('Women')">
-                            <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&q=80&w=1000" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
-                            <div class="absolute bottom-10 left-10 right-10">
-                                <span class="text-xs uppercase tracking-[0.3em] text-brand-champagne block mb-2">Women's Capsule</span>
-                                <h3 class="font-serif text-3xl text-brand-ivory mb-3">Refined Elegance & Silk</h3>
-                                <p class="text-xs text-brand-muted mb-4">Minimalist slip dresses, fluid silk blouses, and sculptural evening wear.</p>
-                                <span class="text-xs uppercase tracking-widest text-brand-ivory underline">Explore 460+ Products</span>
+                        <div class="glass-card p-8 rounded-2xl cursor-pointer group text-center" onclick="navigateToCategory('Women')">
+                            <div class="w-full aspect-[16/9] bg-white rounded-xl mb-6 overflow-hidden p-6 flex items-center justify-center">
+                                <img src="${createProductSvg('dress', '#78350F', '#F4F1EA')}" class="w-full h-full object-contain">
                             </div>
+                            <span class="text-xs uppercase tracking-[0.3em] text-brand-champagne block mb-2">Women's Capsule</span>
+                            <h3 class="font-serif text-3xl text-brand-ivory mb-3">Refined Silk & Couture</h3>
+                            <span class="text-xs uppercase tracking-widest text-brand-ivory underline">Explore Women Collection</span>
                         </div>
                     </div>
                 </div>
             `;
         }
 
-        // --- ABOUT PAGE ---
+        // About View
         function renderAboutPage() {
             return `
                 <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -720,35 +865,20 @@
                             Fashion is more than what you wear. It is an expression of who you are. At <strong class="text-brand-ivory font-semibold">BELLINI</strong>, we believe in timeless elegance, refined simplicity, and effortless personal style.
                         </p>
                         <p>
-                            Founded in the historic city of Monza, Italy, our fashion house bridges traditional Italian tailoring heritage with contemporary minimalist aesthetics. Every collection is meticulously designed to ensure longevity, superior fabric purity, and absolute comfort.
+                            Founded in the historic city of Monza, Italy, our fashion house bridges traditional Italian tailoring heritage with contemporary minimalist aesthetics. Every collection is meticulously designed on pure white studio backgrounds to ensure complete fabric purity and absolute silhouette clarity.
                         </p>
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 border-t border-brand-border text-center">
-                            <div>
-                                <span class="font-serif text-3xl text-brand-champagne block mb-1">1,220+</span>
-                                <span class="text-xs uppercase tracking-widest text-brand-ivory">Unique Luxury Products</span>
-                            </div>
-                            <div>
-                                <span class="font-serif text-3xl text-brand-champagne block mb-1">61</span>
-                                <span class="text-xs uppercase tracking-widest text-brand-ivory">Subcategories</span>
-                            </div>
-                            <div>
-                                <span class="font-serif text-3xl text-brand-champagne block mb-1">100%</span>
-                                <span class="text-xs uppercase tracking-widest text-brand-ivory">Italian Craftsmanship</span>
-                            </div>
-                        </div>
                     </div>
                 </div>
             `;
         }
 
-        // --- CONTACT PAGE ---
+        // Contact View
         function renderContactPage() {
             return `
                 <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
                     <div class="text-center mb-16">
                         <span class="text-xs uppercase tracking-[0.3em] text-brand-champagne mb-2 block">Client Concierge</span>
                         <h1 class="font-serif text-4xl sm:text-5xl font-bold tracking-wide text-brand-ivory mb-4">Contact & Boutique</h1>
-                        <p class="text-sm text-brand-muted">Our client advisors in Monza are at your disposal for bespoke styling and inquiries.</p>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div class="glass-panel p-8 rounded-2xl space-y-6">
@@ -765,10 +895,6 @@
                                     <i class="fa-regular fa-envelope text-brand-champagne"></i>
                                     <span class="text-brand-ivory">contact@bellini-milano.it</span>
                                 </div>
-                                <div class="flex items-center space-x-4">
-                                    <i class="fa-regular fa-clock text-brand-champagne"></i>
-                                    <span>Monday – Saturday: 10:00 – 19:30 CET</span>
-                                </div>
                             </div>
                         </div>
                         <div class="glass-panel p-8 rounded-2xl">
@@ -776,15 +902,15 @@
                             <form onsubmit="handleContactSubmit(event)" class="space-y-4">
                                 <div>
                                     <label class="block text-xs uppercase tracking-widest text-brand-muted mb-2">Full Name</label>
-                                    <input type="text" required placeholder="Giulia Rossi" class="w-full bg-brand-surface border border-brand-border px-4 py-3 text-brand-ivory text-sm rounded-lg focus:outline-none focus:border-brand-champagne">
+                                    <input type="text" required placeholder="Marco Rossi" class="w-full bg-brand-surface border border-brand-border px-4 py-3 text-brand-ivory text-sm rounded-lg focus:outline-none focus:border-brand-champagne">
                                 </div>
                                 <div>
                                     <label class="block text-xs uppercase tracking-widest text-brand-muted mb-2">Email Address</label>
-                                    <input type="email" required placeholder="giulia@rossi.it" class="w-full bg-brand-surface border border-brand-border px-4 py-3 text-brand-ivory text-sm rounded-lg focus:outline-none focus:border-brand-champagne">
+                                    <input type="email" required placeholder="marco@rossi.it" class="w-full bg-brand-surface border border-brand-border px-4 py-3 text-brand-ivory text-sm rounded-lg focus:outline-none focus:border-brand-champagne">
                                 </div>
                                 <div>
                                     <label class="block text-xs uppercase tracking-widest text-brand-muted mb-2">Message</label>
-                                    <textarea rows="4" required placeholder="Inquiry regarding bespoke tailoring or sizing..." class="w-full bg-brand-surface border border-brand-border px-4 py-3 text-brand-ivory text-sm rounded-lg focus:outline-none focus:border-brand-champagne"></textarea>
+                                    <textarea rows="4" required placeholder="Inquiry regarding bespoke styling..." class="w-full bg-brand-surface border border-brand-border px-4 py-3 text-brand-ivory text-sm rounded-lg focus:outline-none focus:border-brand-champagne"></textarea>
                                 </div>
                                 <button type="submit" class="w-full py-4 bg-brand-ivory text-brand-black hover:bg-brand-champagne transition-colors font-medium text-xs tracking-[0.2em] uppercase rounded-lg">
                                     Send Message
@@ -796,22 +922,19 @@
             `;
         }
 
-        // --- PRODUCT CARD RENDERER ---
+        // Product Card Component
         function renderProductCard(product) {
             const isWishlisted = wishlist.some(item => item.id === product.id);
             return `
                 <div class="glass-card group rounded-xl overflow-hidden flex flex-col relative animate-fade-in">
-                    <!-- Wishlist Button -->
                     <button onclick="toggleWishlist('${product.id}')" class="absolute top-3 right-3 z-10 w-9 h-9 rounded-full bg-black/60 backdrop-blur-md flex items-center justify-center text-brand-ivory hover:text-brand-champagne transition-colors">
                         <i class="${isWishlisted ? 'fa-solid fa-heart text-brand-champagne' : 'fa-regular fa-heart'}"></i>
                     </button>
                     
-                    <!-- Pure White Background Image Container -->
-                    <div class="relative bg-white aspect-[4/5] overflow-hidden cursor-pointer" onclick="openProductDetail('${product.id}')">
-                        <img src="${product.primaryImage}" alt="${product.productName}" class="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-500">
+                    <div class="relative bg-white aspect-[4/5] overflow-hidden cursor-pointer flex items-center justify-center p-4" onclick="openProductDetail('${product.id}')">
+                        <img src="${product.primaryImage}" alt="${product.productName}" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500">
                     </div>
                     
-                    <!-- Product Metadata -->
                     <div class="p-4 flex flex-col flex-grow justify-between bg-brand-charcoal/90">
                         <div>
                             <span class="text-[10px] uppercase tracking-widest text-brand-champagne mb-1 block">${product.subcategory}</span>
@@ -826,7 +949,7 @@
             `;
         }
 
-        // --- PRODUCT DETAIL MODAL ---
+        // Product Detail Modal
         function openProductDetail(productId) {
             const product = masterProducts.find(p => p.id === productId);
             if (!product) return;
@@ -834,7 +957,7 @@
 
             const modalContent = document.getElementById('product-detail-content');
             modalContent.innerHTML = `
-                <div class="bg-white aspect-[4/5] rounded-xl overflow-hidden flex items-center justify-center p-4">
+                <div class="bg-white aspect-[4/5] rounded-xl overflow-hidden flex items-center justify-center p-6">
                     <img src="${product.primaryImage}" alt="${product.productName}" class="w-full h-full object-contain">
                 </div>
                 <div class="flex flex-col justify-between">
@@ -846,7 +969,7 @@
                         
                         <div class="space-y-4 mb-6">
                             <div>
-                                <span class="text-xs uppercase tracking-widest text-brand-ivory block mb-2">Material & Weave</span>
+                                <span class="text-xs uppercase tracking-widest text-brand-ivory block mb-2">Material</span>
                                 <span class="text-xs text-brand-muted bg-brand-surface px-3 py-1.5 rounded border border-brand-border inline-block">${product.material}</span>
                             </div>
                             <div>
@@ -891,7 +1014,7 @@
             activeProductModal = null;
         }
 
-        // --- CART & WISHLIST LOGIC ---
+        // Shopping Bag & Wishlist handlers
         function addToCartFromModal() {
             if (!activeProductModal) return;
             const item = {
@@ -943,7 +1066,7 @@
             localStorage.setItem('bellini_wishlist', JSON.stringify(wishlist));
             updateBadges();
             renderPage();
-            if (document.getElementById('wishlist-drawer').classList.contains('hidden') === false) {
+            if (!document.getElementById('wishlist-drawer').classList.contains('hidden')) {
                 renderWishlistItems();
             }
         }
@@ -1045,7 +1168,7 @@
             `).join('');
         }
 
-        // --- SEARCH MODAL & LIVE SEARCH ---
+        // Live Search Drawer
         function openSearchModal() {
             document.getElementById('search-modal').classList.remove('hidden');
             setTimeout(() => document.getElementById('search-input').focus(), 100);
@@ -1058,7 +1181,7 @@
         function handleLiveSearch(query) {
             const container = document.getElementById('search-results-container');
             if (!query || query.trim().length < 2) {
-                container.innerHTML = `<div class="col-span-full text-center text-brand-muted text-xs uppercase tracking-widest py-8">Type at least 2 characters to search 1,220+ items...</div>`;
+                container.innerHTML = `<div class="col-span-full text-center text-brand-muted text-xs uppercase tracking-widest py-8">Type to search items...</div>`;
                 return;
             }
 
@@ -1066,7 +1189,7 @@
             const results = masterProducts.filter(p => p.productName.toLowerCase().includes(q) || p.subcategory.toLowerCase().includes(q) || p.material.toLowerCase().includes(q)).slice(0, 12);
 
             if (results.length === 0) {
-                container.innerHTML = `<div class="col-span-full text-center text-brand-muted text-xs uppercase tracking-widest py-8">No matching Italian luxury products found.</div>`;
+                container.innerHTML = `<div class="col-span-full text-center text-brand-muted text-xs uppercase tracking-widest py-8">No matching luxury products found.</div>`;
                 return;
             }
 
@@ -1084,7 +1207,7 @@
             `).join('');
         }
 
-        // --- AUTH & CHECKOUT MODALS ---
+        // Auth & Checkout
         function openAuthModal() {
             document.getElementById('auth-modal').classList.remove('hidden');
         }
@@ -1120,18 +1243,18 @@
             cart = [];
             localStorage.setItem('bellini_cart', JSON.stringify(cart));
             updateBadges();
-            showToast("Order successfully placed. Grazie for shopping with BELLINI Monza.");
+            showToast("Order placed successfully. Grazie for shopping with BELLINI.");
         }
 
         function handleContactSubmit(e) {
             e.preventDefault();
-            showToast("Your inquiry has been sent to our Monza concierge.");
+            showToast("Your message has been sent to our Monza boutique.");
             e.target.reset();
         }
 
         function handleNewsletter(e) {
             e.preventDefault();
-            showToast("Successfully subscribed to BELLINI privileges.");
+            showToast("Subscribed to BELLINI newsletter.");
             e.target.reset();
         }
 
@@ -1144,7 +1267,6 @@
             }, 3500);
         }
 
-        // Initialize App on Window Load
         window.onload = function() {
             renderPage();
             updateBadges();
